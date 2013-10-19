@@ -4,7 +4,6 @@
 	$Engine->createSession("SpaceEngineToken", 0);
 	$Engine->destroySession("SpaceEngineConnected");
 	$Engine->destroySession("SpaceEngineToken");
-	session_regenerate_id(true);
 	session_destroy();
 
 	/* Inclusion de la vue */
