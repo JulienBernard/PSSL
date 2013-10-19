@@ -1,0 +1,136 @@
+/* Style CSS by Julien Bernard */
+
+body {
+	width: 100%;
+	height: 100%;
+}
+@media only screen {
+	body {
+		background-image: url("../img/large-bg2.png");
+		background-repeat: no-repeat;
+		background-color: #34495e;
+		background-attachment: fixed;
+		background-size: cover;
+	}
+}
+@media only screen and (min-width: 768px) {
+	body {
+		background-image: url("../img/small-bg2.png");
+		background-repeat: no-repeat;
+		background-color: #34495e;
+		background-attachment: fixed;
+		background-size: contain;
+	}
+}
+@media only screen and (min-width: 1280px) {
+	body {
+		background-image: url("../img/medium-bg2.png");
+		background-repeat: no-repeat;
+		background-color: #34495e;
+		background-attachment: fixed;
+		background-size: cover;
+	}
+}
+@media only screen and (min-width: 1440px) {
+	body {
+		background-image: url("../img/large-bg2.png");
+		background-repeat: no-repeat;
+		background-color: #34495e;
+		background-attachment: fixed;
+		background-size: cover;
+	}
+}
+
+/* @override Foundation */
+.top-bar {
+	background: #191919;
+	border-bottom: 1px solid #bdc3c7;
+	height: 46px;
+}
+	.top-bar ul {
+		background: #191919;
+	}
+
+.reveal-modal {
+	color: #333;
+}
+	
+a:hover {
+	color: #d35400;
+}
+
+/* Global style */
+.smaller {
+	font-size: 13px;
+}
+
+#modalCheck{
+	display: none;
+}
+.Modal{
+	display: none;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+#modalCheck:checked + .Modal, #modalContent:target{
+	display: block;
+}
+.popup_block{
+	position: absolute;
+	left: 50%;
+	z-index: 90;
+	height: auto;
+	margin-left: -40%;
+	width: 80%;
+	background-color: white;
+	padding: 1.25em;
+	border: solid 1px #666666;
+	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+	top: 100px;
+	color: #333;
+}
+img.btn_close {
+	float: right;
+	margin: -55px -55px 0 0;
+	cursor: pointer;
+}
+
+/* Specific style */
+#header {
+	margin-bottom: 20px;
+}
+
+#game-products-hidden {
+	opacity: 0;
+	position: absolute;
+	background-color: #111;
+	background-image: url("../img/view.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 100%;
+	height: 100%;
+	-moz-transition: all 1s;
+}
+.game-product {
+	width: 100%;
+	position: relative;
+}
+	.game-product:hover #game-products-hidden {
+		opacity: 0.9;
+		background-color: #111;
+		-moz-transition: opacity 0.5s;
+		border-radius: 5px 5px 0 0;
+	}
+
+#footer .copyright {
+	width: auto;
+	padding-top: 25px;
+	height: 110px;
+	background: #212121;
+	color: #ededed;
+}
