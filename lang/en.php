@@ -42,13 +42,16 @@
 	$error["loginError4"] = "A big error has been detected : impossible to create your secure token!";
 	
 	/* admin */
-	$admin["generalAccountType"] = "you are connected as";	
-	$admin["usersBodyTitle1"] = "Users";
-	$admin["usersBodyTitle2"] = "Data";
+	$admin["generalAccountType"] = "you are connected as";
+	$admin["usersBodyTitle11"] = "Pages";
+	$admin["usersBodyTitle21"] = "Data";
+	$admin["usersBodyTitle12"] = "Users";
+	$admin["usersBodyTitle22"] = "Data";
 
 	/* General */
 	$general["deconnection"] = "You are successfully disconnected from the website.";
-	
+	$general["users"] = "users";
+
 	/* Index */
 	$index["stay"] = "Get In Touch!";
 	$index["youtube"] = "Watch our Youtube channel";

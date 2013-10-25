@@ -43,11 +43,14 @@
 	
 	/* admin */
 	$admin["generalAccountType"] = "vous êtes connecté en tant que";
-	$admin["usersBodyTitle1"] = "Utilisateurs";
-	$admin["usersBodyTitle2"] = "Données";
+	$admin["usersBodyTitle11"] = "Pages";
+	$admin["usersBodyTitle21"] = "Données";
+	$admin["usersBodyTitle12"] = "Utilisateurs";
+	$admin["usersBodyTitle22"] = "Données";
 	
 	/* General */
 	$general["deconnection"] = "Vous avez été correctement déconnecté du site.";
+	$general["users"] = "utilisateurs";
 	
 	/* Index */
 	$index["stay"] = "Restez connectés !";

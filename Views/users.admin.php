@@ -8,7 +8,7 @@
 			</div>
 
 			<div class="large-9 small-9 columns">
-				<h4><?php echo $Lang->getAdminText('usersBodyTitle1'); ?></h4>
+				<h4><?php echo $Lang->getAdminText('usersBodyTitle12'); ?></h4>
 				<table class="large-12">
 					<tbody>
 						<?php
@@ -97,11 +97,11 @@
 			</ul>
 
 			<div class="large-3 small-3 columns">
-				<h4><?php echo $Lang->getAdminText('usersBodyTitle2'); ?></h4>
+				<h4><?php echo $Lang->getAdminText('usersBodyTitle22'); ?></h4>
 				
 				<div class="large-12">
 					<p class="center">
-						<?php echo $User->countUsers( 0 ); ?> users
+						<?php echo $User->countUsers( 0 ); ?> <?php echo $Lang->getGeneralText('users'); ?>
 					</p>
 				</div>
 				<div class="large-4 small-4 columns">
