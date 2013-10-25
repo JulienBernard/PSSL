@@ -10,7 +10,7 @@
 			<div class="large-9 small-9 columns">
 				<h4><?php echo $Lang->getAdminText('usersBodyTitle11'); ?></h4>
 				
-				<form action="pages.php" method="POST">
+				<form action="pages.php?create" method="POST">
 					<div class="row collapse ">
 						<div class="small-4 large-4 columns">
 							<span class="prefix radius"><label for="title">Titre de la page</label></span>
@@ -29,10 +29,10 @@
 
 					<div class="row">
 						<div class="large-12 columns">
-							<textarea style="height:150px;"></textarea>
+							<textarea name="text" style="height:150px;"></textarea>
 						</div>
 						<div class="large-12 small-12 center" style="margin-top: 200px;">
-							<input class="button" type="submit" value="Create!">
+							<input class="button" type="submit" name="create" value="Create!">
 						</div>
 					</div>					
 				</form>
