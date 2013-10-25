@@ -1,3 +1,29 @@
+
+	<div class="Modal" id="modalContent">
+		<div class="popup_block">
+			<a href="<?php echo $_SERVER['PHP_SELF']; ?>#noWhere" class="right">&#215;</a>
+			<?php
+			if( $Engine->getError() != null )
+			{
+				echo '<p class="lead">An error has been detected!</p>';
+				echo '<p>'.$Engine->getError().'</p>';
+				echo '<br /><a href="'.$_SERVER["PHP_SELF"].'" class="center">Click here to retry!</a>';
+			}
+			else if( $Engine->getSuccess() != null )
+			{
+				echo '<p class="lead">Success!</p>';
+				echo $Engine->getSuccess();
+				echo '<br /><a href="'.$_SERVER["PHP_SELF"].'" class="center">Click here to retry!</a>';
+			}
+			else if( $Engine->getInfo() != null )
+			{
+				echo '<p class="lead">Informations:</p>';
+				echo $Engine->getInfo();
+				echo '<br /><a href="'.$_SERVER["PHP_SELF"].'" class="center">Click here to retry!</a>';
+			}
+			?>
+		</div>
+	</div>
 	
 	<footer id="footer">
 		<p style="margin: 0;">&copy; 2013 <a target="_blank" href="https://github.com/JulienBernard/SpaceEngine">SpaceEngine</a> by <a target="_blank" href="https://github.com/JulienBernard">Julien Bernard</a>.</p>

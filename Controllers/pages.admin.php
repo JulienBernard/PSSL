@@ -20,12 +20,14 @@
 		$title = null;
 		$text = null;
 		$visibility = null;
+		$lastAuthor = null;
 		
 		if( isset($_POST['create']) )
 		{
 			$title = htmlspecialchars($_POST['title']);
 			$text = htmlspecialchars($_POST['text']);
 			$visibility = htmlspecialchars($_POST['switch-visible']);
+			$lastAuthor = $User->getUsername();
 			
 			$fields = array('title' => $title, 'text' => $text, 'visibility' => $visibility);
 			$return = $Engine->checkParams( $fields );
@@ -35,14 +37,21 @@
 			{
 				if( Page::checkTitleLength( $title ) )
 				{
-					$sendReturn = Page::addPage( $title, $text, $visibility );
+					$sendReturn = Page::addPage( $title, $text, $visibility, $lastAuthor);
+					$Engine->setSuccess("The page '".$title." have been created. Her visibility is ".$visibility."'.");
 				}
 				else
-				{
-					
-				}
+					$Engine->setError("The title must to be greater than 3 characters.");
 			}
+			else
+				$Engine->setError("The title, the text or the visibility has sent an error.");
 		}
+		
+		if( $Engine->getError() != null || $Engine->getSuccess() != null || $Engine->getInfo() != null )
+		{
+			?><script type="text/javascript">redirection(0, 'pages.php?create#modalContent');</script><?php
+		}
+		
 		include_once( PATH_VIEWS."pages.admin.create.php" );
 	}
 	else

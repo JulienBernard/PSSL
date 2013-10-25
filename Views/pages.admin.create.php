@@ -20,9 +20,9 @@
 						</div>
 					</div>
 					<div class="switch large-12 small-12 radius" style="height: 32px;">
-						<input id="hidden" name="switch-visible" type="radio" checked>
+						<input id="hidden" value="false" name="switch-visible" type="radio" checked>
 						<label for="hidden" onclick="">&nbsp;Hidden</label>
-						<input id="visible" name="switch-visible" type="radio">
+						<input id="visible" value="true" name="switch-visible" type="radio">
 						<label for="visible" onclick="">Visible&nbsp;</label>
 						<span></span>
 					</div>

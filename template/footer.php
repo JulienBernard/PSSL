@@ -19,10 +19,7 @@
 				echo $Engine->getInfo();
 				echo '<p class="center"><a style="color: #666;" href="" data-reveal-id="loginModal">Retry</a></p>';
 			}
-			else
-				echo "lol<br />lol2";
 			?>
-			
 		</div>
 	</div>
 	

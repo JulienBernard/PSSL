@@ -174,29 +174,29 @@ class Page
 		*@param string $title	:	titre de la page
 		*@param string $text	:	contenu de la page
 		*@param string $visibility	:	statut de la page (visible, pas visible)
-		*@param int $lastAutor	:	username du dernier auteur.
+		*@param string $lastAutor	:	username du dernier auteur.
 		Retourne 1 si valide, 0 si non
 	*/
 	public static function addPage( $title, $text, $visibility, $lastAuthor )
 	{
 		/* Validation des paramètres */
-		if( !is_string($message) || !is_string($subject) || !is_string($preview) || !is_numeric($recipientId) || !is_numeric($senderId) || empty($message) || $recipientId < 0 || $senderId < 0 )
+		if( !is_string($title) || !is_string($title) || !is_string($visibility) || !is_string($lastAuthor) )
 			return false;
+			
+		if( $visibility == "true" )
+			$visibility = 1;
+		else
+			$visibility = 0;
 			
 		$sql = MyPDO::get();
 		
-		$message .= '
-		
-		'.$preview.'';
-		
-		$req = $sql->prepare('INSERT INTO communications VALUES("", :senderId, :recipientId, :subject, :message, :sendTime, :view)');
+		$req = $sql->prepare('INSERT INTO mod_pages VALUES("", :title, :text, :visibility, :lastAuthor, :activity)');
 		$result = $req->execute( array(
-			':senderId' => (int)$senderId,
-			':recipientId' => (int)$recipientId,
-			':subject' => (String)$subject,
-			':message' => (String)$message,
-			':sendTime' => (int)time(),
-			':view' => 0
+			':title' => (String)$title,
+			':text' => (String)$text,
+			':visibility' => (int)$visibility,
+			':lastAuthor' => (String)$lastAuthor,
+			':activity' => (int)time()
 			));
 		// Si PDO renvoie une erreur
 		if( !$result )

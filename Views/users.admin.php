@@ -76,7 +76,7 @@
 								<dd <?php if( !isset($_GET['p']) ) echo 'class="active"'; ?>><a href="users.php">1</a></dd>
 							<?php
 							$countPage = ceil($countPlayer / $size);
-							for( $i = 1 ; $i < $countPage ; $i++ )
+							for( $i = 1 ; $i <= $countPage ; $i++ )
 							{
 								?>
 								<dd <?php if( isset($_GET['p']) && $_GET['p'] == $i ) echo 'class="active"'; ?>><a href="users.php?p=<?php echo $i; ?>"><?php echo $i+1; ?></a></dd>
