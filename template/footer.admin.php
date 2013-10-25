@@ -4,6 +4,12 @@
 	</footer>
 	
 	<!--
+		NicEdit WYSIWYG editor.
+	-->
+	<script src="js/nicEdit.js" type="text/javascript"></script>
+	<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+
+	<!--
 		Foundation 4 script.
 	-->
 	<script>

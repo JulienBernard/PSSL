@@ -70,25 +70,27 @@
 			<li class="has-dropdown hide-for-small"><a href="#">Navigation</a>
 				<ul class="dropdown">
 					<li><label>Administration</label></li>
-					<li class="has-dropdown"><a href="#" class="">Pages</a>
+					<li class="has-dropdown"><a href="pages.php" class="">Pages</a>
 						<ul class="dropdown">
-							<li><a href="#">Pages list</a></li>
+							<li><a href="pages.php">Pages list</a></li>
+							<li><a href="#">Pages list, are visible</a></li>
+							<li><a href="#">Pages list, are hidden</a></li>
 							<li class="divider"></li>
+							<li><a href="pages.php?create">Create a new page</a></li>
 							<li><a href="#">Latest page created</a></li>
 						</ul>
 					</li>
 					<li class="has-dropdown"><a href="users.php" class="">Users</a>
 						<ul class="dropdown">
 							<li><a href="users.php">Users list</a></li>
-							<li><a href="#">Users lists, by activity</a></li>
+							<li><a href="#">Users list, by activity</a></li>
 							<li class="divider"></li>
 							<li><a href="#">Latest user created</a></li>
 						</ul>
 					</li>
 					<li class="divider"></li>
 					<li><label>Fast Options</label></li>
-					<li><a href="#">Create new page</a></li>
-					<li><a href="#">Create new user</a></li>
+					<li><a href="pages.php?create">Create a new page</a></li>
 					<li><a href="#">See charts</a></li>
 					<li class="divider"></li>
 					<li><a href="index.php">See all &rarr;</a></li>
