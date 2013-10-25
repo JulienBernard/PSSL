@@ -47,6 +47,10 @@
 	$admin["usersBodyTitle21"] = "Données";
 	$admin["usersBodyTitle12"] = "Utilisateurs";
 	$admin["usersBodyTitle22"] = "Données";
+	$admin["pagesLinkCreate"] = "Créer une nouvelle page";
+	$admin["visible"] = "Visible";
+	$admin["hidden"] = "Caché";
+	
 	
 	/* General */
 	$general["deconnection"] = "Vous avez été correctement déconnecté du site.";

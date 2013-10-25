@@ -14,14 +14,14 @@
 						<?php
 						for( $i = 0 ; $i < count($pagesList) ; $i++ )
 						{
-							if( count($pagesList) == 0 OR $pagesList == 0 )
+							if( count($pagesList) == 0 || $pagesList != 0 )
 							{
 								if( $User->getRank() == 3 ) {
 							?>
 								<tr>
 									<td class="center large-1 columns"><?php echo (int)$pagesList[$i]['id']; ?></td>
 									<td class="center large-4 columns"><a href="#" data-dropdown="dropFeature1"><?php echo (String)ucwords($pagesList[$i]['title']); ?></a></td>
-									<td class="smaller center large-3 columns"><?php if( (String)$pagesList[$i]['visible'] == 1 ) echo "Visible"; else echo "Not visible"; ?></td>
+									<td class="smaller center large-3 columns"><?php if( (String)$pagesList[$i]['visible'] == 1 ) echo $Lang->getAdminText('visible'); else echo $Lang->getAdminText('hidden'); ?></td>
 									<td class="smaller center large-2 columns"><a href="#" data-dropdown="dropFeature2">Delete!</a></td>
 								</tr>
 							<?php
@@ -30,7 +30,7 @@
 								<tr>
 									<td class="center large-2 columns"><?php echo (int)$pagesList[$i]['id']; ?></td>
 									<td class="center large-6 columns"><a href="#" data-dropdown="dropFeature1"><?php echo (String)ucwords($pagesList[$i]['title']); ?></a></td>
-									<td class="smaller center large-4 columns"><?php if( (String)$pagesList[$i]['visible'] == 1 ) echo "Visible"; else echo "Not visible"; ?></td>
+									<td class="smaller center large-3 columns"><?php if( (String)$pagesList[$i]['visible'] == 1 ) echo $Lang->getAdminText('visible'); else echo $Lang->getAdminText('hidden'); ?></td>
 								</tr>
 							<?php
 								}
