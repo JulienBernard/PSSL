@@ -15,4 +15,7 @@
 	$pagesList = Page::getPagesList( $start, $size );
 
 	/* Inclusion de la vue */
-	include_once( $Engine->getViewPath() );
+	if( isset($_GET['create']) )
+		include_once( PATH_VIEWS."pages.admin.create.php" );
+	else
+		include_once( $Engine->getViewPath() );

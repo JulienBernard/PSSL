@@ -68,22 +68,22 @@
 					<dt>Pagination : </dt>
 					
 					<?php
-						$countPlayer = $User->countUsers( 0 );
-						if( $countPlayer > $size )
+						$countPages = Page::countPages( 0 );
+						if( $countPages > $size )
 						{
 							?>
-								<dd <?php if( !isset($_GET['p']) ) echo 'class="active"'; ?>><a href="users.php">1</a></dd>
+								<dd <?php if( !isset($_GET['p']) ) echo 'class="active"'; ?>><a href="pages.php">1</a></dd>
 							<?php
-							$countPage = ceil($countPlayer / $size);
+							$countPage = ceil($countPages / $size);
 							for( $i = 1 ; $i < $countPage ; $i++ )
 							{
 								?>
-								<dd <?php if( isset($_GET['p']) && $_GET['p'] == $i ) echo 'class="active"'; ?>><a href="users.php?p=<?php echo $i; ?>"><?php echo $i+1; ?></a></dd>
+								<dd <?php if( isset($_GET['p']) && $_GET['p'] == $i ) echo 'class="active"'; ?>><a href="pages.php?p=<?php echo $i; ?>"><?php echo $i+1; ?></a></dd>
 								<?php
 							}
 						}
 						else {
-							?><dd <?php if( !isset($_GET['p']) ) echo 'class="active"'; ?>><a href="users.php">1</a></dd><?php
+							?><dd <?php if( !isset($_GET['p']) ) echo 'class="active"'; ?>><a href="pages.php">1</a></dd><?php
 						} ?>
 				</dl>
 			</div>
