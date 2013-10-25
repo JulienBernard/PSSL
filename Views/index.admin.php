@@ -2,7 +2,7 @@
 	<main id="main">
 		<div class="row">
 			<div class="large-4 small-4 columns">
-				<a href="#"><span class="center"><img src="./img/admin/page.png" alt="Page" /></span></a>
+				<a href="pages.php"><span class="center"><img src="./img/admin/page.png" alt="Page" /></span></a>
 				<h4>Administrate your pages</h4>
 				<p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
 			</div>
