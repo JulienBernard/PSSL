@@ -2,7 +2,7 @@
 
 	/***
 	 * 
-	 * Point d'entrée de la page d'accueil.
+	 * Point d'entrée de la page
 	 * @author JulienBernard
 	 * 
 	 */
