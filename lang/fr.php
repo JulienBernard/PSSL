@@ -51,6 +51,7 @@
 	/* General */
 	$general["deconnection"] = "Vous avez été correctement déconnecté du site.";
 	$general["users"] = "utilisateurs";
+	$general["pages"] = "pages";
 	
 	/* Index */
 	$index["stay"] = "Restez connectés !";

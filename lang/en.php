@@ -51,6 +51,7 @@
 	/* General */
 	$general["deconnection"] = "You are successfully disconnected from the website.";
 	$general["users"] = "users";
+	$general["pages"] = "pages";
 
 	/* Index */
 	$index["stay"] = "Get In Touch!";
