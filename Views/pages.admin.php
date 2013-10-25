@@ -2,41 +2,43 @@
 		<div class="row">
 			<div class="large-12 small-12">
 				<p class="center">
-					<img src="./img/admin/user.png" alt="Users" /><br />
+					<img src="./img/admin/page.png" alt="Pages" /><br />
 					<?php echo "".ucwords($User->getUsername()).", "; echo $Lang->getAdminText('generalAccountType'); echo " '".$User->getRankText()."'"; ?>
 				</p>
 			</div>
 
 			<div class="large-9 small-9 columns">
-				<h4><?php echo $Lang->getAdminText('usersBodyTitle11'); ?></h4>
+				<h4><?php echo $Lang->getAdminText('usersBodyTitle11'); ?> - <a href="pages.php?create"><?php echo $Lang->getAdminText('pagesLinkCreate'); ?></a></h4>
 				<table class="large-12">
 					<tbody>
 						<?php
 						for( $i = 0 ; $i < count($pagesList) ; $i++ )
 						{
-							if( $User->getRank() == 3 ) {
-						?>
-							<tr>
-								<td class="center large-1 columns"><?php echo (int)$pagesList[$i]['id']; ?></td>
-								<td class="center large-4 columns"><a href="#" data-dropdown="dropFeature1"><?php echo (String)ucwords($pagesList[$i]['title']); ?></a></td>
-								<td class="smaller center large-3 columns"><?php if( (String)$pagesList[$i]['visible'] == 1 ) echo "Visible"; else echo "Not visible"; ?></td>
-								<td class="smaller center large-2 columns"><a href="#" data-dropdown="dropFeature2">Delete!</a></td>
-							</tr>
-						<?php
-							} else {
-						?>
-							<tr>
-								<td class="center large-1 columns"><?php echo (int)$pagesList[$i]['id']; ?></td>
-								<td class="center large-4 columns"><a href="#" data-dropdown="dropFeature1"><?php echo (String)ucwords($pagesList[$i]['title']); ?></a></td>
-								<td class="smaller center large-3 columns"><?php if( (String)$pagesList[$i]['visible'] == 1 ) echo "Visible"; else echo "Not visible"; ?></td>
-								<td class="smaller center large-2 columns"><a href="#" data-dropdown="dropFeature2">Delete!</a></td>
-							</tr>
-						<?php
+							if( count($pagesList) == 0 OR $pagesList == 0 )
+							{
+								if( $User->getRank() == 3 ) {
+							?>
+								<tr>
+									<td class="center large-1 columns"><?php echo (int)$pagesList[$i]['id']; ?></td>
+									<td class="center large-4 columns"><a href="#" data-dropdown="dropFeature1"><?php echo (String)ucwords($pagesList[$i]['title']); ?></a></td>
+									<td class="smaller center large-3 columns"><?php if( (String)$pagesList[$i]['visible'] == 1 ) echo "Visible"; else echo "Not visible"; ?></td>
+									<td class="smaller center large-2 columns"><a href="#" data-dropdown="dropFeature2">Delete!</a></td>
+								</tr>
+							<?php
+								} else {
+							?>
+								<tr>
+									<td class="center large-2 columns"><?php echo (int)$pagesList[$i]['id']; ?></td>
+									<td class="center large-6 columns"><a href="#" data-dropdown="dropFeature1"><?php echo (String)ucwords($pagesList[$i]['title']); ?></a></td>
+									<td class="smaller center large-4 columns"><?php if( (String)$pagesList[$i]['visible'] == 1 ) echo "Visible"; else echo "Not visible"; ?></td>
+								</tr>
+							<?php
+								}
 							}
 						}
-						if( count($usersList) == 0 OR $usersList == 0 )
+						if( count($pagesList) == 0 OR $pagesList == 0 )
 						{
-							echo "<tr><td colspan='3'><span class='bold'>Oups !</span><br />Vous êtes allé trop loin, cette partie du classement n'existe pas.</td></tr>";
+							echo "<tr><td colspan='3'><span class='bold'>Oups !</span><br />Aucune page n'a encore été créé.</td></tr>";
 						}
 						?>
 					</tbody>
@@ -46,19 +48,17 @@
 						?>
 						<tr>
 							<th class="center large-1 columns">ID</th>
-							<th class="center large-4 columns">Username</th>
-							<th class="smaller center large-3 columns">Private Token</th>
-							<th class="smaller center large-2 columns">Rank</th>
-							<th class="smaller center large-2 columns">Password</th>
+							<th class="center large-4 columns">Title</th>
+							<th class="smaller center large-3 columns">Visibility</th>
+							<th class="smaller center large-2 columns">Option</th>
 						</tr>
 						<?php
 							} else {
 						?>
 						<tr>
-							<th class="center large-1 columns">ID</th>
-							<th class="center large-5 columns">Username</th>
-							<th class="smaller center large-3 columns">Private Token</th>
-							<th class="smaller center large-2 columns">Rank</th>
+							<th class="center large-2 columns">ID</th>
+							<th class="center large-6 columns">Title</th>
+							<th class="smaller center large-4 columns">Visibility</th>
 						</tr>
 						<?php } ?>
 					</tfoot>
@@ -100,13 +100,13 @@
 				
 				<div class="large-12">
 					<p class="center">
-						<?php echo $Page->countUsers(); ?> <?php echo $Lang->getGeneralText('pages'); ?>
+						<?php echo Page::countPages(); ?> <?php echo $Lang->getGeneralText('pages'); ?>
 					</p>
 				</div>
 				<div class="large-4 small-4 columns">
 					<p class="center">
-						<?php echo $Page->countPage( true ); ?><br />
-						<?php echo $Page->countPage( false ); ?>
+						<?php echo Page::countPages( 1 ); ?><br />
+						<?php echo Page::countPages( 0 ); ?>
 					</p>
 				</div>
 				<div class="large-8 small-8 columns">
