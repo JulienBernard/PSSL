@@ -28,10 +28,10 @@
 					</div>
 
 					<div class="row">
-						<div class="large-12 columns">
-							<textarea name="text" style="height:150px;"><?php if( isset($text) ) echo $text; ?></textarea>
+						<div class="large-12">
+							<textarea name="text"><?php if( isset($text) ) echo $text; ?></textarea>
 						</div>
-						<div class="large-12 small-12 center" style="margin-top: 200px;">
+						<div class="large-12 small-12 center" style="margin-top: 15px;">
 							<input class="button" type="submit" name="create" value="Create!">
 						</div>
 					</div>					

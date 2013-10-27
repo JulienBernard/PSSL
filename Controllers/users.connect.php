@@ -1,1 +1,2 @@
-<script type="text/javascript">redirection(0, 'oups.php');</script>
+<?php
+	include_once( PATH_VIEWS."pages.php" );
