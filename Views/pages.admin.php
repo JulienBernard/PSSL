@@ -28,7 +28,8 @@
 								} else {
 							?>
 								<tr>
-									<td class="center large-3 columns"><?php echo (int)$pagesList[$i]['id']; ?></td>
+									<td class="center large-1 columns"><a href="pages.php?id=<?php echo (int)$pagesList[$i]['id']; ?>&visitor"><img src="./img/gallery.png" style="height: 20px;" alt="See" /></a></td>
+									<td class="center large-2 columns"><?php echo (int)$pagesList[$i]['id']; ?></td>
 									<td class="center large-6 columns"><a href="#" data-dropdown="dropFeature1"><?php echo (String)ucfirst($pagesList[$i]['title']); ?></a></td>
 									<td class="smaller center large-3 columns"><?php if( (String)$pagesList[$i]['visible'] == 1 ) echo $Lang->getAdminText('visible'); else echo $Lang->getAdminText('hidden'); ?></td>
 								</tr>
@@ -56,7 +57,8 @@
 							} else {
 						?>
 						<tr>
-							<th class="center large-3 columns">ID</th>
+							<th class="center large-1 columns"></th>
+							<th class="center large-2 columns">ID</th>
 							<th class="center large-6 columns">Title</th>
 							<th class="smaller center large-3 columns">Visibility</th>
 						</tr>
