@@ -20,7 +20,7 @@
 							?>
 								<tr>
 									<td class="center large-1 columns"><?php echo (int)$pagesList[$i]['id']; ?></td>
-									<td class="center large-4 columns"><a href="#" data-dropdown="dropFeature1"><?php echo (String)ucwords($pagesList[$i]['title']); ?></a></td>
+									<td class="center large-4 columns"><a href="#" data-dropdown="dropFeature1"><?php echo (String)ucfirst($pagesList[$i]['title']); ?></a></td>
 									<td class="smaller center large-3 columns"><?php if( (String)$pagesList[$i]['visible'] == 1 ) echo $Lang->getAdminText('visible'); else echo $Lang->getAdminText('hidden'); ?></td>
 									<td class="smaller center large-2 columns"><a href="#" data-dropdown="dropFeature2">Delete!</a></td>
 								</tr>
@@ -28,8 +28,8 @@
 								} else {
 							?>
 								<tr>
-									<td class="center large-2 columns"><?php echo (int)$pagesList[$i]['id']; ?></td>
-									<td class="center large-6 columns"><a href="#" data-dropdown="dropFeature1"><?php echo (String)ucwords($pagesList[$i]['title']); ?></a></td>
+									<td class="center large-3 columns"><?php echo (int)$pagesList[$i]['id']; ?></td>
+									<td class="center large-6 columns"><a href="#" data-dropdown="dropFeature1"><?php echo (String)ucfirst($pagesList[$i]['title']); ?></a></td>
 									<td class="smaller center large-3 columns"><?php if( (String)$pagesList[$i]['visible'] == 1 ) echo $Lang->getAdminText('visible'); else echo $Lang->getAdminText('hidden'); ?></td>
 								</tr>
 							<?php
@@ -56,9 +56,9 @@
 							} else {
 						?>
 						<tr>
-							<th class="center large-2 columns">ID</th>
+							<th class="center large-3 columns">ID</th>
 							<th class="center large-6 columns">Title</th>
-							<th class="smaller center large-4 columns">Visibility</th>
+							<th class="smaller center large-3 columns">Visibility</th>
 						</tr>
 						<?php } ?>
 					</tfoot>

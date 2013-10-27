@@ -16,7 +16,7 @@
 							<span class="prefix radius"><label for="title">Titre de la page</label></span>
 						</div>
 						<div class="small-8 large-8 columns">
-							<input type="text" name="title" id="title" placeholder="(Required) Enter your title page...">
+							<input type="text" name="title" id="title" placeholder="(Required) Enter your title page..." <?php if( isset($title) ) echo 'value="'.$title.'"'; ?>>
 						</div>
 					</div>
 					<div class="switch large-12 small-12 radius" style="height: 32px;">
@@ -47,7 +47,6 @@
 
 			<div class="large-3 small-3 columns">
 				<h4><?php echo $Lang->getAdminText('usersBodyTitle21'); ?></h4>
-				
 				<div class="large-12">
 					<p class="center">
 						<?php echo Page::countPages(); ?> <?php echo $Lang->getGeneralText('pages'); ?>
@@ -64,6 +63,12 @@
 						Visible<br />
 						Not visible
 					</p>
+				</div>
+				
+				<h4><?php echo $Lang->getGeneralText('fastNavigation'); ?></h4>
+				<div class="large-12">
+					<a href="pages.php"><?php echo $Lang->getAdminText('navLinkReturnPage'); ?></a><br />
+					<a href="index.php"><?php echo $Lang->getAdminText('navLinkReturnMain'); ?></a>
 				</div>
 			</div>
 		</div>
