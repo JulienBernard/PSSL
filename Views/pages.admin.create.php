@@ -20,16 +20,16 @@
 						</div>
 					</div>
 					<div class="switch large-12 small-12 radius" style="height: 32px;">
-						<input id="hidden" value="false" name="switch-visible" type="radio" checked>
+						<input id="hidden" value="false" name="switch-visible" type="radio" <?php if( (isset($visibility) && $visibility != "true") OR !isset($visibility) ) echo 'checked'; ?>>
 						<label for="hidden" onclick="">&nbsp;Hidden</label>
-						<input id="visible" value="true" name="switch-visible" type="radio">
+						<input id="visible" value="true" name="switch-visible" type="radio" <?php if( isset($visibility) && $visibility == "true" ) echo 'checked'; ?>>
 						<label for="visible" onclick="">Visible&nbsp;</label>
 						<span></span>
 					</div>
 
 					<div class="row">
 						<div class="large-12 columns">
-							<textarea name="text" style="height:150px;"></textarea>
+							<textarea name="text" style="height:150px;"><?php if( isset($text) ) echo $text; ?></textarea>
 						</div>
 						<div class="large-12 small-12 center" style="margin-top: 200px;">
 							<input class="button" type="submit" name="create" value="Create!">

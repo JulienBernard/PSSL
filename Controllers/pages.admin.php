@@ -38,7 +38,7 @@
 				if( Page::checkStringLength( $title ) && Page::checkStringLength( $text, 12, null ) )
 				{
 					$sendReturn = Page::addPage( $title, $text, $visibility, $lastAuthor);
-					$Engine->setSuccess("The page '".$title." have been created. Her visibility is ".$visibility."'.");
+					$Engine->setSuccess("The page '".$title." have been created. Her visibility is '".$visibility."'.");
 				}
 				else
 					$Engine->setError("The title must to be greater than 3 characters. You need to provide the text field.");
