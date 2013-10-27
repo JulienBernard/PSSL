@@ -163,16 +163,23 @@ class Page
 	}
 	
 	/**
-	 * Vérifie si le titre est supérieur à 3 caractères et inférieur à 40.
-	 * @param String title
+	 * Vérifie si la string est supérieur à X caractères et inférieur à X caractères.
+	 * @param String str
 	 */
-	public static function checkTitleLength( $title, $min = 3, $max = 40 ) {
-		if( strlen($title) < $min || strlen($title) > $max )
+	public static function checkStringLength( $str, $min = 3, $max = 40 ) {
+		if( $max === null ) {
+			if( strlen($str) < $min )
+				return false;
+			else
+				return true;
+		}
+		
+		if( strlen($str) < $min || strlen($str) > $max )
 			return false;
 		return true;
 	}
 	
-		/** Fonction qui ajoute une page dans la base de données.
+	/** Fonction qui ajoute une page dans la base de données.
 		*@param string $title	:	titre de la page
 		*@param string $text	:	contenu de la page
 		*@param string $visibility	:	statut de la page (visible, pas visible)
