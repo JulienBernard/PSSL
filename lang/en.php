@@ -50,11 +50,14 @@
 	$admin["pagesLinkCreate"] = "Create a new page";
 	$admin["visible"] = "Visible";
 	$admin["hidden"] = "Hidden";
-	
+	$admin["navLinkReturnPage"] = "Go to pages list";	
+	$admin["navLinkReturnMain"] = "Go to main page";	
+
 	/* General */
 	$general["deconnection"] = "You are successfully disconnected from the website.";
 	$general["users"] = "users";
 	$general["pages"] = "pages";
+	$general["fastNavigation"] = "Fast Navigation";
 
 	/* Index */
 	$index["stay"] = "Get In Touch!";
