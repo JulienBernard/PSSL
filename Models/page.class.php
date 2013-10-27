@@ -6,11 +6,15 @@ class Page
 	private $_title;
 	private $_text;
 	private $_visible;
+	private $_lastAuthor;
+	private $_activity;
 	
 	/* Constructeur de la classe */
 	public function __construct( $id )
 	{
-		if( !filter_var($id, FILTER_VALIDATE_INT) ) {
+		/*  L'id 0 est accepté comme valeur de "page non trouvée".
+			Il faut penser à insérer une fausse page avec l'id 0 ! */
+		if( $id !== 0 && !filter_var($id, FILTER_VALIDATE_INT) ) {
 			throw new Exception('You must provide an integer value!');
 		}
 		$sqlData = $this->getPageData( $id );
@@ -18,6 +22,8 @@ class Page
 		$this->_title = $sqlData['title'];
 		$this->_text = $sqlData['text'];
 		$this->_visible = $sqlData['visible'];
+		$this->_lastAuthor = $sqlData['lastAuthor'];
+		$this->_activity = $sqlData['activity'];
 	}
 	
 	public function getId()
@@ -35,6 +41,14 @@ class Page
 	public function getVisible()
 	{
 		return $this->_visible;
+	}
+	public function getAuthor()
+	{
+		return $this->_lastAuthor;
+	}
+	public function getActivity()
+	{
+		return $this->_activity;
 	}
 	
 	/**
