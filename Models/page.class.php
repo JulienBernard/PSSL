@@ -147,17 +147,19 @@ class Page
 	public static function countPages( $visibility = null ) {
 		
 		$sql = MyPDO::get();
-		if( $visibility != null )
+		if( $visibility === null )
 		{
 			$req = $sql->prepare('SELECT id FROM mod_pages');
 			$req->execute();
+			return $req->rowCount();
 		}
-		else if( $visibility == 1 || $visibility == 0 )
+		else if( $visibility === 1 || $visibility === 0 )
 		{
 			$req = $sql->prepare('SELECT id, visible FROM mod_pages WHERE visible=:visibility');
 			$req->execute(array(':visibility' => $visibility));
+			return $req->rowCount();
 		}
-		return $req->rowCount();
+		return 0;
 	}
 	
 	/**
