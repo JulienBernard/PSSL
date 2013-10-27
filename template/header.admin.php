@@ -61,7 +61,9 @@
 		<!-- Left Nav Section -->
 		<ul class="left">
 			<li class="divider"></li>
-			<li><a href="#">Users</a></li>
+			<li><a href="users.php">Users</a></li>
+			<li class="divider"></li>
+			<li><a href="pages.php">Pages</a></li>
 		</ul>
 
 		<!-- Right Nav Section -->

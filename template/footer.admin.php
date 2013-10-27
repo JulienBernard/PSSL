@@ -13,7 +13,7 @@
 			{
 				echo '<p class="lead">Success!</p>';
 				echo $Engine->getSuccess();
-				echo '<br /><a href="'.$_SERVER["PHP_SELF"].'" class="center">Return to pages list</a> - <a href="'.$_SERVER["PHP_SELF"].'" class="center">Look my page!</a>';
+				echo '<div class="center"><a href="'.$_SERVER["PHP_SELF"].'">Return to pages list</a> - <a href="'.$_SERVER["PHP_SELF"].'">Look my page!</a></div>';
 			}
 			else if( $Engine->getInfo() != null )
 			{

@@ -19,8 +19,9 @@
 								if( $User->getRank() == 3 ) {
 							?>
 								<tr>
+									<td class="center large-1 columns"><acronym title="Have a look!"><a href="pages.php?id=<?php echo (int)$pagesList[$i]['id']; ?>&visitor"><img src="./img/gallery.png" style="height: 20px;" alt="See" /></a></acronym></td>
 									<td class="center large-1 columns"><?php echo (int)$pagesList[$i]['id']; ?></td>
-									<td class="center large-4 columns"><a href="#" data-dropdown="dropFeature1"><?php echo (String)ucfirst($pagesList[$i]['title']); ?></a></td>
+									<td class="center large-5 columns"><a href="#" data-dropdown="dropFeature1"><?php echo (String)ucfirst($pagesList[$i]['title']); ?></a></td>
 									<td class="smaller center large-3 columns"><?php if( (String)$pagesList[$i]['visible'] == 1 ) echo $Lang->getAdminText('visible'); else echo $Lang->getAdminText('hidden'); ?></td>
 									<td class="smaller center large-2 columns"><a href="#" data-dropdown="dropFeature2">Delete!</a></td>
 								</tr>
@@ -28,7 +29,7 @@
 								} else {
 							?>
 								<tr>
-									<td class="center large-1 columns"><a href="pages.php?id=<?php echo (int)$pagesList[$i]['id']; ?>&visitor"><img src="./img/gallery.png" style="height: 20px;" alt="See" /></a></td>
+									<td class="center large-1 columns"><acronym title="Have a look!"><a href="pages.php?id=<?php echo (int)$pagesList[$i]['id']; ?>&visitor"><img src="./img/gallery.png" style="height: 20px;" alt="See" /></a></acronym></td>
 									<td class="center large-2 columns"><?php echo (int)$pagesList[$i]['id']; ?></td>
 									<td class="center large-6 columns"><a href="#" data-dropdown="dropFeature1"><?php echo (String)ucfirst($pagesList[$i]['title']); ?></a></td>
 									<td class="smaller center large-3 columns"><?php if( (String)$pagesList[$i]['visible'] == 1 ) echo $Lang->getAdminText('visible'); else echo $Lang->getAdminText('hidden'); ?></td>
@@ -48,8 +49,9 @@
 						if( $User->getRank() == 3 ) {
 						?>
 						<tr>
+							<th class="center large-1 columns"></th>
 							<th class="center large-1 columns">ID</th>
-							<th class="center large-4 columns">Title</th>
+							<th class="center large-5 columns">Title</th>
 							<th class="smaller center large-3 columns">Visibility</th>
 							<th class="smaller center large-2 columns">Option</th>
 						</tr>
@@ -113,8 +115,8 @@
 				</div>
 				<div class="large-8 small-8 columns">
 					<p>
-						Visible<br />
-						Not visible
+						<?php echo $Lang->getAdminText('visible'); ?><br />
+						<?php echo $Lang->getAdminText('hidden'); ?>
 					</p>
 				</div>
 			</div>
