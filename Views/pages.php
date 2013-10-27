@@ -9,10 +9,10 @@
 									<h4><?php echo $Page->getTitle(); ?></h4>
 									<hr />
 									<p class="subheader">
-										By <?php echo $Page->getAuthor(); ?><br />
-										Last update the <?php echo date('d/m/y', $Page->getActivity()); ?><br />
+										<?php echo $Lang->getGeneralText('by'); ?> <?php echo $Page->getAuthor(); ?><br />
+										<?php echo $Lang->getGeneralText('lastUpdateThe'); ?> <?php echo date('d/m/y', $Page->getActivity()); ?><br />
 									</p>
-									<p><a href="index.php">Return to home</a></p>
+									<p><a href="index.php"><?php echo $Lang->getNavigationText('returnToHome'); ?></a></p>
 								</div>
 								<div class="large-9 small-12 columns">
 									<p>

@@ -14,7 +14,8 @@
 	$navigation["link3"] = "Suivre / Fork";
 	$navigation["connectedLink1"] = "Vous êtes connecté. Et maintenant ?";
 	$navigation["connectedLink2"] = "Suivre / Fork";
-	
+	$navigation["returnToHome"] = "Revenir à l'accueil";
+
 	/* login */
 	$login["title1"] = "Connexion";
 	$login["subtitle1"] = "J'ai déjà un compte";
@@ -43,7 +44,7 @@
 	
 	/* admin */
 	$admin["generalAccountType"] = "vous êtes connecté en tant que";
-	$admin["usersBodyTitle11"] = "Pages";
+	$admin["usersBodyTitle11"] = "Liste des pages";
 	$admin["usersBodyTitle21"] = "Données";
 	$admin["usersBodyTitle12"] = "Utilisateurs";
 	$admin["usersBodyTitle22"] = "Données";
@@ -58,7 +59,9 @@
 	$general["users"] = "utilisateurs";
 	$general["pages"] = "pages";
 	$general["fastNavigation"] = "Navigation";
-	
+	$general["lastUpdateThe"] = "Mise à jour le";
+	$general["by"] = "Par";
+
 	/* Index */
 	$index["stay"] = "Restez connectés !";
 	$index["youtube"] = "Nous sommes sur Youtube ...";

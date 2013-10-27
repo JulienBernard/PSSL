@@ -14,6 +14,7 @@
 	$navigation["link3"] = "Follow / Fork";
 	$navigation["connectedLink1"] = "You are connected! And now?";
 	$navigation["connectedLink2"] = "Follow / Fork";
+	$navigation["returnToHome"] = "Return to home";
 
 	/* login */
 	$login["title1"] = "Connection";
@@ -27,8 +28,8 @@
 	$login["logme"] = "Log me";
 	
 	/* Header */
-	$header["project"] = "THE project";
-	$header["team"] = "THE team";
+	$header["project"] = "Project";
+	$header["team"] = "Team";
 	$header["participate"] = "Participate!";
 	$header["account"] = "My account";
 	$header["logout"] = "Logout";
@@ -43,7 +44,7 @@
 	
 	/* admin */
 	$admin["generalAccountType"] = "you are connected as";
-	$admin["usersBodyTitle11"] = "Pages";
+	$admin["usersBodyTitle11"] = "Pages list";
 	$admin["usersBodyTitle21"] = "Data";
 	$admin["usersBodyTitle12"] = "Users";
 	$admin["usersBodyTitle22"] = "Data";
@@ -58,6 +59,8 @@
 	$general["users"] = "users";
 	$general["pages"] = "pages";
 	$general["fastNavigation"] = "Fast Navigation";
+	$general["lastUpdateThe"] = "Last update the";
+	$general["by"] = "By";
 
 	/* Index */
 	$index["stay"] = "Get In Touch!";
