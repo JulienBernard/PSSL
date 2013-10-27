@@ -192,7 +192,7 @@ class User
 			return 0;
 			
 		if( self::checkUsernameExist($username) ) {
-			if( self::checkUsernameLength($username, 2, 20) && self::checkPasswordLength($password, 2) ) {
+			if( self::checkUsernameLength($username, 2, 20) && self::checkPasswordLength($password, 2, 100) ) {
 				if( $userId = self::checkUserAccountMatch($username,$password) ) {
 					/* Destruction de la session au cas où ! */
 					$Engine->destroySession("SpaceEngineConnected");
@@ -219,6 +219,64 @@ class User
 	}
 	
 	/**
+	 * Vérifie si l'inscription d'un utilisateur peut se faire. Renvoie différente erreur si une erreur en ressort.
+	 * @param String username
+	 * @param String password
+	 * @return
+	 *	1	: Inscription correcte, l'utilisateur est désormais inscrit dans la base de données.
+	 *	0	: Une erreur importante est apparue
+	 *	-1	: L'utilisateur existe déjà
+	 *	-2	: La taille de l'utilisateur ou du mot de passe est inférieur/supérieur à x caractères (défaut 2)
+	 */
+	public static function checkSubscribe( $username, $password ) {
+		$Engine = new Engine( "mock" );
+		/* Validation des paramètres */
+		if( !is_string($username) || !is_string($password) || empty($username) || empty($password) )
+			return 0;
+			
+		if( !self::checkUsernameExist($username) ) {
+			if( self::checkUsernameLength($username, 2, 20) && self::checkPasswordLength($password, 2, 100) ) {
+				/* Destruction de la session au cas où ! */
+				$Engine->destroySession("SpaceEngineConnected");
+				$Engine->destroySession("SpaceEngineToken");
+				if( self::addUser( $username, $password ) )
+					return 1; // Succès !
+				else
+					return 0;
+			} else
+				return -2;
+		} else
+			return -1;
+	}
+	
+	/**
+	 * Enregistre le nouvel utilisateur dans la base de donnée.
+	 * @param String username
+	 * @param String password
+	 * return int lastInsertId	Retourne le dernier ID inséré dans la bdd, ici l'user id !
+	 */
+	private static function addUser( $username, $password ) {
+		
+		/* Validation des paramètres */
+		if( !is_string($username) || !is_string($password) || empty($username) || empty($password) )
+			return false;
+		
+		$sql = MyPDO::get();
+		$req = $sql->prepare('INSERT INTO users VALUES("", :username, :password, :rank, :token, :activity)');
+		$result = $req->execute( array(
+			':username' => $username,
+			':password' => crypt(md5($password), 'salt'),
+			':rank' => 1,
+			':token' => time().$username,
+			':activity' => time(),
+		));
+		
+		if( $result )
+			return $sql->lastInsertId();
+		return 0;
+	}
+	
+	/**
 	 * Vérifie si l'username et le password sont exactes. 
 	 * @param String username
 	 * @param String password
@@ -233,7 +291,7 @@ class User
 		$sql = MyPDO::get();
 		
 		$rq = $sql->prepare('SELECT id FROM users WHERE username=:username AND password=:password');
-		$data = array(':username' => (String)$username, ':password' => (String)$password);
+		$data = array(':username' => (String)$username, ':password' => (String)crypt(md5($password), 'salt'));
 		$rq->execute($data);
 
 		if( $rq->rowCount() != 0)

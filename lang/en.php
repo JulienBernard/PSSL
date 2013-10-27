@@ -26,7 +26,8 @@
 	$login["username"] = "Your username";
 	$login["password"] = "Your password";
 	$login["logme"] = "Log me";
-	
+	$login["subscribe"] = "Subscribe";
+
 	/* Header */
 	$header["project"] = "Project";
 	$header["team"] = "Team";
@@ -41,6 +42,10 @@
 	$error["loginError2"] = "Your USERNAME must be greater than 3 characters and less than 20 characters.<br />Your PASSWORD must be greater than 3 characters.";
 	$error["loginError3"] = "USERNAME and PASSWORD doesn't match!";
 	$error["loginError4"] = "A big error has been detected : impossible to create your secure token!";
+	$error["subscribeSuccess"] = "Success! <a style='color: black;' href='index.php'>Click here if the redirection doesn't work.</a> !";
+	$error["subscribeError"] = "An error has been detected, please contact the administrator.";
+	$error["subscribeError1"] = "This USERNAME already exist.";
+	$error["subscribeError2"] = "Your USERNAME must be greater than 3 characters and less than 20 characters.<br />Your PASSWORD must be greater than 3 characters and less than 100 characters.";
 	
 	/* admin */
 	$admin["generalAccountType"] = "you are connected as";

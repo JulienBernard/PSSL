@@ -26,6 +26,7 @@
 	$login["username"] = "Votre pseudonyme";
 	$login["password"] = "Votre mot de passe";
 	$login["logme"] = "Se connecter";
+	$login["subscribe"] = "S'inscrire";
 	
 	/* Header */
 	$header["project"] = "Le projet";
@@ -41,6 +42,10 @@
 	$error["loginError2"] = "Votre PSEUDONYME doit être supérieur à 3 caractères et être inférieur à 20 caractères.<br />Votre MOT DE PASSE doit être supérieur à 3 caractères.";
 	$error["loginError3"] = "Votre PSEUDONYME ou votre MOT DE PASSE ne correspondent pas.";
 	$error["loginError4"] = "Une importante erreur est survenue : impossible de générer un token sécurisé !";
+	$error["subscribeSuccess"] = "Inscription réussie. <a style='color: black;' href='index.php'>Si la redirection ne se fait pas, cliquez ici</a> !";
+	$error["subscribeError"] = "Une erreur important est survenu, merci de contacter l'administrateur du site.";
+	$error["subscribeError1"] = "Ce PSEUDONYME existe déjà dans notre base de données. Veuillez en choisir un autre.";
+	$error["subscribeError2"] = "Votre PSEUDONYME doit être supérieur à 3 caractères et être inférieur à 20 caractères.<br />Votre MOT DE PASSE doit être supérieur à 3 caractères et inférieur à 100 caractères.";
 	
 	/* admin */
 	$admin["generalAccountType"] = "vous êtes connecté en tant que";

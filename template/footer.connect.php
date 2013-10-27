@@ -1,28 +1,27 @@
 	
 	<div class="Modal" id="modalContent">
 		<div class="popup_block">
-			<a href="#noWhere" class="right">&#215;</a>
+			<a href="<?php echo $_SERVER['PHP_SELF']; if( isset($_SERVER['QUERY_STRING']) ) echo '?'.$_SERVER['QUERY_STRING']; ?>#noWhere" class="right">&#215;</a>
 			<?php
 			if( $Engine->getError() != null )
 			{
 				echo '<p class="lead">An error has been detected!</p>';
 				echo '<p>'.$Engine->getError().'</p>';
+				echo '<br /><a href="'.$_SERVER["PHP_SELF"].'?'.$_SERVER['QUERY_STRING'].'#noWhere" class="center">Click here to retry!</a>';
 			}
 			else if( $Engine->getSuccess() != null )
 			{
 				echo '<p class="lead">Success!</p>';
 				echo $Engine->getSuccess();
+				echo '<div class="center"><a href="'.$_SERVER["PHP_SELF"].'">Return to pages list</a> - <a href="'.$_SERVER["PHP_SELF"].'">Look my page!</a></div>';
 			}
 			else if( $Engine->getInfo() != null )
 			{
 				echo '<p class="lead">Informations:</p>';
 				echo $Engine->getInfo();
-				echo '<p class="center"><a style="color: #666;" href="" data-reveal-id="loginModal">Retry</a></p>';
+				echo '<br /><a href="'.$_SERVER["PHP_SELF"].'?'.$_SERVER['QUERY_STRING'].'#noWhere" class="center">Click here to retry!</a>';
 			}
-			else
-				echo "lol<br />lol2";
 			?>
-			
 		</div>
 	</div>
 	
