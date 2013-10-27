@@ -13,7 +13,7 @@
 			{
 				echo '<p class="lead">Success!</p>';
 				echo $Engine->getSuccess();
-				echo '<br /><a href="'.$_SERVER["PHP_SELF"].'?'.$_SERVER['QUERY_STRING'].'#noWhere" class="center">Click here to retry!</a>';
+				echo '<br /><a href="'.$_SERVER["PHP_SELF"].'" class="center">Click here to retry!</a>';
 			}
 			else if( $Engine->getInfo() != null )
 			{
