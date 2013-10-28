@@ -1,1 +1,4 @@
-<script type="text/javascript">redirection(0, 'oups.php#oups');</script>
+<?php
+
+	/* Inclusion de la vue */
+	include_once( $Engine->getViewPath() );
