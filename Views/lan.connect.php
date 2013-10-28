@@ -39,11 +39,19 @@
 									</select>
 								</div>
 								<div class="center">
+									<input style="width: 25%; margin: auto;" class="center" type="text" name="mail" placeholder="Mail"/>
+									<br />
 									<label for="checkbox1">
-										<input type="checkbox" id="checkbox1" name="present" style="display: none;"><span class="custom checkbox"></span> <?php echo $Lang->getLoginText('IWillBeHere'); ?>
+										<input type="checkbox" id="checkbox1" name="present" style="display: none;"><span class="custom checkbox"></span> <?php echo $Lang->getLoginText('UoT'); ?>
 									</label>
 									<br />
 									<input class="large button" type="submit" name="register" value="<?php echo $Lang->getLoginText('subscribe'); ?>" />
+								</div>
+								<div class="center">
+									<br />
+									<p class="lead">Votre mail doit être valide !</p>
+									<p class="smaller" style="margin-top: -25px;">Votre mail sera uniquement utilisé pour vous prévenir des prochaines événements,<br />
+									mais surtout pour vous demander de valider votre inscription à cette LAN !</p>
 								</div>
 							</form>						
 						</div>
