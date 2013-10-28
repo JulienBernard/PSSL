@@ -271,7 +271,7 @@ class User
 		$req = $sql->prepare('INSERT INTO users VALUES("", :name, :password, :rank, :token, :activity)');
 		$result = $req->execute( array(
 			':name' => $name,
-			':password' => crypt(md5($password), 'salt'),
+			':password' => crypt(md5($password), PASSWORD_SALT),
 			':rank' => 1,
 			':token' => time().$name,
 			':activity' => time(),
@@ -297,7 +297,7 @@ class User
 		$sql = MyPDO::get();
 		
 		$rq = $sql->prepare('SELECT id FROM users WHERE name=:name AND password=:password');
-		$data = array(':name' => (String)$name, ':password' => (String)crypt(md5($password), 'salt'));
+		$data = array(':name' => (String)$name, ':password' => (String)crypt(md5($password), PASSWORD_SALT));
 		$rq->execute($data);
 
 		if( $rq->rowCount() != 0)
