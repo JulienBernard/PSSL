@@ -5,11 +5,13 @@
 				<div class="hide-for-small">
 					<ul data-orbit="" data-options="slide_number:false;bullets:false;timer_speed:4000;" class="orbit">
 						<li class="active">
-							<img src="./img/demo.jpg" />
-							<div class="orbit-caption"><?php echo $Lang->getIndexText('new1'); ?></div>
+							<a href="subscribe.php">
+								<img src="./img/demo2.jpg" />
+								<div class="orbit-caption"><?php echo $Lang->getIndexText('new1'); ?></div>
+							</a>
 						</li>
 						<li class="active">
-							<img src="./img/demo2.jpg" />
+							<img src="./img/demo.jpg" />
 							<div class="orbit-caption"><?php echo $Lang->getIndexText('new2'); ?></div>
 						</li>
 					</ul>
@@ -20,12 +22,14 @@
 				<div class="show-for-small">
 					<ul data-orbit="" data-options="navigation_arrows:false;slide_number:false;bullets:false;timer_speed:3000;" class="orbit">
 						<li class="active">
-							<img src="./img/demo.jpg" />
-							<div class="orbit-caption"><span class="smaller">La prochaine LAN se tiendra à IN'TECH INFO le 21 Décembre 2016 : envie de joueur Terran ?</span></div>
+							<a href="subscribe.php">
+								<img src="./img/demo2.jpg" />
+								<div class="orbit-caption"><?php echo $Lang->getIndexText('new1'); ?></div>
+							</a>
 						</li>
-						<li>
-							<img src="./img/demo2.jpg" />
-							<div class="orbit-caption"><span class="smaller">Les Tournois Fous de League Of Legend reviennent : le prochain tournoi opposera des supports contre ... des supports !</span></div>
+						<li class="active">
+							<img src="./img/demo.jpg" />
+							<div class="orbit-caption"><?php echo $Lang->getIndexText('new2'); ?></div>
 						</li>
 					</ul>
 				</div>
@@ -90,39 +94,40 @@
 		<div class="row">
 			<div class="large-12 columns">
 				<div class="row">
-				<div class="large-8 columns">
-					<div class="panel radius">
-						<div class="row">
-							<div class="large-6 small-6 columns">
-								<h4>Rejoignez un évenement unique en son genre</h4>
-								<hr />
-								<h5 class="subheader">
-									Propulsé par un groupe d'étudiant passionné d'IN'TECH INFO, notre projet vous entraînera vers des sensations fortes à bout de claviers et de jeux en réseau à tout va !
-								</h5>
-							</div>
-							<div class="large-6 small-6 columns">
-								<p>
-									Projet de formation humaine inédit, notre équipe a pour mission d'organiser un évenement autour des <acronym title="Local Area Network">LAN</acronym>.
-								</p>
-								<p>
-									Après quelques LAN amateurs dans nos locaux à Ivry-sur-Seine, nous organiserons un grand évenement E-Sport sur Paris !<br />
-									<a href="#" class="right"><?php echo $Lang->getIndexText('more'); ?></a>
-								</p>
+					<div class="large-8 columns">
+						<div class="panel radius">
+							<div class="row">
+								<div class="large-6 small-6 columns">
+									<h4>Rejoignez un évenement unique en son genre</h4>
+									<hr />
+									<h5 class="subheader">
+										Propulsé par un groupe d'étudiant passionné d'IN'TECH INFO, notre projet vous entraînera vers des sensations fortes à bout de claviers et de jeux en réseau à tout va !
+									</h5>
+								</div>
+								<div class="large-6 small-6 columns">
+									<p>
+										Projet de formation humaine inédit, notre équipe a pour mission d'organiser un évenement autour des <acronym title="Local Area Network">LAN</acronym>.
+									</p>
+									<p>
+										Après quelques LAN amateurs dans nos locaux à Ivry-sur-Seine, nous organiserons un grand évenement E-Sport sur Paris !<br />
+										<a href="#" class="right"><?php echo $Lang->getIndexText('more'); ?></a>
+									</p>
+								</div>
 							</div>
 						</div>
+						<div class="row">
+							<p class="show-for-small smaller" align="center">
+								Suivez-nous sur : <a href="#">Twitter</a> et <a href="#">Facebook</a>
+							</p>
+						</div>
 					</div>
-					<div class="row">
-						<p class="show-for-small smaller" align="center">
-							Suivez-nous sur : <a href="#">Twitter</a> et <a href="#">Facebook</a>
-						</p>
-					</div>
-				</div>
 
-				<div class="large-4 columns hide-for-small">
-					<h3 style="color: #ecf0f1;"><?php echo $Lang->getIndexText('stay'); ?></h3><hr/>
-					<a class="large button expand" href="#"><?php echo $Lang->getIndexText('youtube'); ?></a>
-					<a class="large button expand" href="#"><?php echo $Lang->getIndexText('facebook'); ?></a>
-				</div>
+					<div class="large-4 columns hide-for-small">
+						<h3 style="color: #ecf0f1;"><?php echo $Lang->getIndexText('stay'); ?></h3><hr/>
+						<a class="large button expand" href="http://www.youtube.com/user/PSSLOfficial"><?php echo $Lang->getIndexText('youtube'); ?></a>
+						<a class="large-5 button columns" href="https://www.facebook.com/PSSLan"><?php echo $Lang->getIndexText('facebook'); ?></a>
+						<a class="large-5 button columns" href="https://twitter.com/PSSLan"><?php echo $Lang->getIndexText('twitter'); ?></a>
+					</div>
 				</div>
 			</div>
 		</div>

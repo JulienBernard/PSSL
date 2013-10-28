@@ -45,7 +45,6 @@
 				$subscribe = User::checkSubscribe( $username, $password );
 				if( $subscribe == 1 ) {
 					$Engine->setSuccess($Lang->getErrorText('subscribeSuccess'));
-					?><script type="text/javascript">redirection(3, 'index.php');</script><?php
 				}
 				else if( $subscribe == 0 )
 					$Engine->setError($Lang->getErrorText('subscribeError'));

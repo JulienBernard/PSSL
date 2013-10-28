@@ -23,6 +23,9 @@
 	$login["title2"] = "Inscription";
 	$login["subtitle2"] = "Je n'ai pas de compte";
 	$login["text2"] = "L'inscription au site vous permettra de vous inscrire aux tournois et de renseigner les jeux que vous possédez.Vous aurez également accès à la messagere interne pour communiquer entre participants. Merci de renseigner les champs ci-dessous.";
+	$login["title3"] = "S'inscrire à la prochaine LAN";
+	$login["subtitle3"] = "Date : 8 novembre 2013<br />Lieu : IN'TECH INFO, 74 bis avenue Maurice Thorez 94200 Ivry-sur-Seine (M7 Pierre et Marie Curie)";
+	$login["text3"] = "Merci de renseigner les champs ci-dessous.";
 	$login["username"] = "Votre pseudonyme";
 	$login["password"] = "Votre mot de passe";
 	$login["logme"] = "Se connecter";
@@ -66,12 +69,15 @@
 	$general["fastNavigation"] = "Navigation";
 	$general["lastUpdateThe"] = "Mise à jour le";
 	$general["by"] = "Par";
+	$general["oupsTitle"] = "Vous ne devriez pas être là ...";
+	$general["oupsText"] = " Vous n'avez pas les droits nécessaires pour accèder à cette page.<br />Merci de <a href='index.php'>retourner à la page d'accueil</a>. ";
 
 	/* Index */
 	$index["stay"] = "Restez connectés !";
-	$index["youtube"] = "Nous sommes sur Youtube ...";
-	$index["facebook"] = "... et sur Facebook";
+	$index["youtube"] = "Nous sommes sur Youtube !";
+	$index["facebook"] = "Rejoindre Facebook";
+	$index["twitter"] = "Rejoindre Twitter";
 	$index["more"] = "En savoir plus";
-	$index["new1"] = "Site en cours de construction. Retrouvez prochainement le site de l'événement de l'année PSSL entièrement fonctionnel.";
-	$index["new2"] = "Date à confirmer : la prochaine LAN sera organisée à IN'TECH INFO le 8 novembre 2013 !";
+	$index["new1"] = "La prochaine LAN aura lieu le vendredi 8 novembre 2013 à IN'TECH INFO : inscrivez-vous !";
+	$index["new2"] = "Site en cours de construction. Retrouvez prochainement le site de l'événement de l'année PSSL entièrement fonctionnel.";
 ?>

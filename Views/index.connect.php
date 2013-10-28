@@ -5,12 +5,14 @@
 				<div class="hide-for-small">
 					<ul data-orbit="" data-options="slide_number:false;bullets:false;timer_speed:4000;" class="orbit">
 						<li class="active">
-							<img src="./img/demo.jpg" />
-							<div class="orbit-caption">La prochaine LAN se tiendra à IN'TECH INFO le 21 Décembre 2016 : envie de joueur Terran ?</div>
+							<a href="subscribe.php">
+								<img src="./img/demo2.jpg" />
+								<div class="orbit-caption"><?php echo $Lang->getIndexText('new1'); ?></div>
+							</a>
 						</li>
-						<li>
-							<img src="./img/demo2.jpg" />
-							<div class="orbit-caption">Les Tournois Fous de League Of Legend reviennent : le prochain tournoi opposera des supports contre ... des supports !</div>
+						<li class="active">
+							<img src="./img/demo.jpg" />
+							<div class="orbit-caption"><?php echo $Lang->getIndexText('new2'); ?></div>
 						</li>
 					</ul>
 				</div>
@@ -20,12 +22,14 @@
 				<div class="show-for-small">
 					<ul data-orbit="" data-options="navigation_arrows:false;slide_number:false;bullets:false;timer_speed:3000;" class="orbit">
 						<li class="active">
-							<img src="./img/demo.jpg" />
-							<div class="orbit-caption"><span class="smaller">La prochaine LAN se tiendra à IN'TECH INFO le 21 Décembre 2016 : envie de joueur Terran ?</span></div>
+							<a href="subscribe.php">
+								<img src="./img/demo2.jpg" />
+								<div class="orbit-caption"><?php echo $Lang->getIndexText('new1'); ?></div>
+							</a>
 						</li>
-						<li>
-							<img src="./img/demo2.jpg" />
-							<div class="orbit-caption"><span class="smaller">Les Tournois Fous de League Of Legend reviennent : le prochain tournoi opposera des supports contre ... des supports !</span></div>
+						<li class="active">
+							<img src="./img/demo.jpg" />
+							<div class="orbit-caption"><?php echo $Lang->getIndexText('new2'); ?></div>
 						</li>
 					</ul>
 				</div>
@@ -127,40 +131,3 @@
 			</div>
 		</div>
 	</main>
-
-	<div id="loginModal" class="reveal-modal">
-		<h2><?php echo $Lang->getLoginText('title1'); ?></h2>
-		<p class="lead"><?php echo $Lang->getLoginText('subtitle1'); ?></p>
-		<p>
-			<?php echo $Lang->getLoginText('text1'); ?>
-		</p>
-		
-		<form action="index.php" method="POST">
-			<div class="row">
-				<div class="large-4 columns">
-					<label for="usr"><?php echo $Lang->getLoginText('username'); ?></label>
-					<input id="usr" type="text" name="username" placeholder="Username" />
-				</div>
-				<div class="large-4 columns">
-					<label for="pwd"><?php echo $Lang->getLoginText('password'); ?></label>
-					<input id="pwd" type="password" name="password" placeholder="Password" />
-				</div>
-				<div class="large-4 columns">
-					<br />
-					<input class="small button" type="submit" name="login" value="<?php echo $Lang->getLoginText('logme'); ?>" />
-				</div>
-			</div>
-		</form>
-		
-		<hr />
-		<h2><?php echo $Lang->getLoginText('title2'); ?></h2>
-		<p class="lead"><?php echo $Lang->getLoginText('subtitle2'); ?></p>
-		<p>
-			<?php echo $Lang->getLoginText('text2'); ?>
-		</p>
-		
-		<p>
-			a venir
-		</p>
-		<a class="close-reveal-modal">&#215;</a>
-	</div>

@@ -13,7 +13,7 @@
 			{
 				echo '<p class="lead">Success!</p>';
 				echo $Engine->getSuccess();
-				echo '<div class="center"><a data-reveal-id="loginModal" href="'.$_SERVER["PHP_SELF"].'">'.$Lang->getLoginText("logme").'</a></div>';
+				echo '<div class="center"><a href="'.$_SERVER["PHP_SELF"].'">Click here to validate!</a></div>';
 			}
 			else if( $Engine->getInfo() != null )
 			{

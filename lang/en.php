@@ -66,12 +66,15 @@
 	$general["fastNavigation"] = "Fast Navigation";
 	$general["lastUpdateThe"] = "Last update the";
 	$general["by"] = "By";
+	$general["oupsTitle"] = "You should not to be here...";
+	$general["oupsText"] = " You haven't the necessary rank to see this page!<br />Please, <a href='index.php'>return to the homepage</a>. ";
 
 	/* Index */
 	$index["stay"] = "Get In Touch!";
 	$index["youtube"] = "Watch our Youtube channel";
 	$index["facebook"] = "Join our Facebook page";
+	$index["twitter"] = "Join our Twitter page";
 	$index["more"] = "Read more";
-	$index["new1"] = "Under construction. Stay in touch with the most amazing event of the year in the next future.";
-	$index["new2"] = "Waiting for confirmation: the next LAN will be organised at IN'TECH INFO on November 8, 2013!";
+	$index["new1"] = "The next LAN will be organised at IN'TECH INFO on November 8, 2013: register now";
+	$index["new2"] = "Under construction. Stay in touch with the most amazing event of the year in the next future.";
 ?>
