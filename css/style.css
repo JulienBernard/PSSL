@@ -134,3 +134,12 @@ img.btn_close {
 	background: #212121;
 	color: #ededed;
 }
+
+.center {
+	display: block;
+	text-align: center;
+	margin: auto;
+}
+.italic {
+	font-style: italic;
+}
