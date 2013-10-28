@@ -31,6 +31,9 @@
 	$login["password"] = "Votre mot de passe";
 	$login["logme"] = "Se connecter";
 	$login["subscribe"] = "S'inscrire";
+	$login["IParticipate"] = "Je participe";
+	$login["INotParticipate"] = "Je suis spectateur";
+	$login["IWillBeHere"] = "Je certifie avoir lu et approuvé les <a href='CGU.htm'>conditions générales d'utilisation</a>.";
 	
 	/* Header */
 	$header["project"] = "Le projet";

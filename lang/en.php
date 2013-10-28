@@ -23,12 +23,18 @@
 	$login["title2"] = "Subscription";
 	$login["subtitle2"] = "I haven't an account";
 	$login["text2"] = "Registration to website will allow you to register you for tournaments and enquire the games you have. You will also have access to the internal messaging to communicate with the other participants. Thank you fill in the fields below.";
+	$login["title3"] = "Register for the next LAN";
+	$login["subtitle3"] = "Date: November 8, 2013<br />Place: IN'TECH INFO, 74 bis avenue Maurice Thorez 94200 Ivry-sur-Seine (M7 Pierre et Marie Curie)";
+	$login["text3"] = "By registering, you agree to the honor to be present. If a setback stop you from coming, you can unsubscribe on the same page later. The entry fee will be only 1€ if you register, 2€ if not.<br /><br />We base our budget and our purchases on thèse inscriptions, thank you to check you are available before committing!";
 	$login["username"] = "Your username";
 	$login["name"] = "Your name";
 	$login["password"] = "Your password";
 	$login["logme"] = "Log me";
 	$login["subscribe"] = "Subscribe";
-
+	$login["IParticipate"] = "I will be an entrant";
+	$login["INotParticipate"] = "I will be a viewer";
+	$login["IWillBeHere"] = "I have read and approved the <a href='CGU.htm'>terms of use</a>.";
+	
 	/* Header */
 	$header["project"] = "Project";
 	$header["team"] = "Team";

@@ -31,8 +31,18 @@
 								<?php echo $Lang->getLoginText('text3'); ?>
 							</p>
 							
-							<form action="index.php" method="POST" style="width: 100%; text-align: center;">
-								<div>
+							<form action="subscribe.php" method="POST" class="center custom">
+								<div class="center" style="width: 25%;">
+									<select id="customDropdown1" name="participate" class="medium">
+										<option SELECTED><?php echo $Lang->getLoginText('IParticipate'); ?></option>
+										<option><?php echo $Lang->getLoginText('INotParticipate'); ?></option>
+									</select>
+								</div>
+								<div class="center">
+									<label for="checkbox1">
+										<input type="checkbox" id="checkbox1" name="present" style="display: none;"><span class="custom checkbox"></span> <?php echo $Lang->getLoginText('IWillBeHere'); ?>
+									</label>
+									<br />
 									<input class="large button" type="submit" name="register" value="<?php echo $Lang->getLoginText('subscribe'); ?>" />
 								</div>
 							</form>						

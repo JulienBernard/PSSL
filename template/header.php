@@ -61,9 +61,9 @@
 					<li>
 					<?php
 						if( isset($_SESSION['SpaceEngineLanguage']) && $_SESSION['SpaceEngineLanguage'] == 'en' )
-							echo '<a href="?lang=fr" style="background: #191919;"><img src="./img/language.png" alt="Hey, je suis Français !" /></a>';
+							echo '<a href="'.$_SERVER["PHP_SELF"].'?lang=fr" style="background: #191919;"><img src="./img/language.png" alt="Hey, je suis Français !" /></a>';
 						else
-							echo '<a href="?lang=en" style="background: #191919;"><img src="./img/language.png" alt="Hey, I am English!" /></a>';
+							echo '<a href="'.$_SERVER["PHP_SELF"].'?lang=en" style="background: #191919;"><img src="./img/language.png" alt="Hey, I am English!" /></a>';
 					?>
 					</li>
 					<li class="link">
