@@ -143,8 +143,8 @@
 		<form action="index.php" method="POST">
 			<div class="row">
 				<div class="large-4 columns">
-					<label for="usr"><?php echo $Lang->getLoginText('username'); ?></label>
-					<input id="usr" type="text" name="username" placeholder="Username" />
+					<label for="usr"><?php echo $Lang->getLoginText('name'); ?></label>
+					<input id="usr" type="text" name="name" placeholder="Name" />
 				</div>
 				<div class="large-4 columns">
 					<label for="pwd"><?php echo $Lang->getLoginText('password'); ?></label>
@@ -167,8 +167,8 @@
 		<form action="index.php" method="POST">
 			<div class="row">
 				<div class="large-4 columns">
-					<label for="usr"><?php echo $Lang->getLoginText('username'); ?></label>
-					<input id="usr" type="text" name="username" placeholder="Username" />
+					<label for="usr"><?php echo $Lang->getLoginText('name'); ?></label>
+					<input id="usr" type="text" name="name" placeholder="Name" />
 				</div>
 				<div class="large-4 columns">
 					<label for="pwd"><?php echo $Lang->getLoginText('password'); ?></label>

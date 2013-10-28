@@ -3,7 +3,7 @@
 			<div class="large-12 small-12">
 				<p class="center">
 					<img src="./img/admin/page.png" alt="Pages" /><br />
-					<?php echo "".ucwords($User->getUsername()).", "; echo $Lang->getAdminText('generalAccountType'); echo " '".$User->getRankText()."'"; ?>
+					<?php echo "".ucwords($User->getName()).", "; echo $Lang->getAdminText('generalAccountType'); echo " '".$User->getRankText()."'"; ?>
 				</p>
 			</div>
 

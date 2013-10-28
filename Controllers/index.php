@@ -2,17 +2,17 @@
 	/* Une action sur un formulaire (envoie par POST) a été effectuée.  */
 	if( isset($_POST) ) {
 		if( isset($_POST['login']) ) {
-			$fields = array('username' => $_POST['username'], 'password' => $_POST['password']);
+			$fields = array('name' => $_POST['name'], 'password' => $_POST['password']);
 			$return = $Engine->checkParams($fields);
 			
 			if( $return == 1 ) {
 				include_once(PATH_MODELS."myPDO.class.php");
 				include_once(PATH_MODELS."user.class.php");
 			
-				$username = (String)htmlspecialchars(strtolower($_POST['username']));
+				$name = (String)htmlspecialchars(strtolower($_POST['name']));
 				$password = (String)htmlspecialchars($_POST['password']);
 				
-				$login = User::checkLogin( $username, $password );
+				$login = User::checkLogin( $name, $password );
 				if( $login == 1 ) {
 					$Engine->setSuccess($Lang->getErrorText('loginSuccess'));
 					?><script type="text/javascript">redirection(3, 'index.php');</script><?php
@@ -32,17 +32,17 @@
 				$Engine->setInfo("Un des champs est vide.");
 		}
 		else if( isset($_POST['subscribe']) ) {
-			$fields = array('username' => $_POST['username'], 'password' => $_POST['password']);
+			$fields = array('name' => $_POST['name'], 'password' => $_POST['password']);
 			$return = $Engine->checkParams($fields);
 			
 			if( $return == 1 ) {
 				include_once(PATH_MODELS."myPDO.class.php");
 				include_once(PATH_MODELS."user.class.php");
 			
-				$username = (String)htmlspecialchars(strtolower($_POST['username']));
+				$name = (String)htmlspecialchars(strtolower($_POST['name']));
 				$password = (String)htmlspecialchars($_POST['password']);
 				
-				$subscribe = User::checkSubscribe( $username, $password );
+				$subscribe = User::checkSubscribe( $name, $password );
 				if( $subscribe == 1 ) {
 					$Engine->setSuccess($Lang->getErrorText('subscribeSuccess'));
 				}

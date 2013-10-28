@@ -31,20 +31,9 @@
 								<?php echo $Lang->getLoginText('text3'); ?>
 							</p>
 							
-							<form action="index.php" method="POST">
-								<div class="row">
-									<div class="large-4 columns">
-										<label for="usr"><?php echo $Lang->getLoginText('username'); ?></label>
-										<input id="usr" type="text" name="username" placeholder="Username" />
-									</div>
-									<div class="large-4 columns">
-										<label for="pwd"><?php echo $Lang->getLoginText('password'); ?></label>
-										<input id="pwd" type="password" name="password" placeholder="Password" />
-									</div>
-									<div class="large-4 columns">
-										<br />
-										<input class="small button" type="submit" name="subscribe" value="<?php echo $Lang->getLoginText('subscribe'); ?>" />
-									</div>
+							<form action="index.php" method="POST" style="width: 100%; text-align: center;">
+								<div>
+									<input class="large button" type="submit" name="register" value="<?php echo $Lang->getLoginText('subscribe'); ?>" />
 								</div>
 							</form>						
 						</div>

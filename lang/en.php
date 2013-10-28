@@ -24,6 +24,7 @@
 	$login["subtitle2"] = "I haven't an account";
 	$login["text2"] = "Registration to website will allow you to register you for tournaments and enquire the games you have. You will also have access to the internal messaging to communicate with the other participants. Thank you fill in the fields below.";
 	$login["username"] = "Your username";
+	$login["name"] = "Your name";
 	$login["password"] = "Your password";
 	$login["logme"] = "Log me";
 	$login["subscribe"] = "Subscribe";
