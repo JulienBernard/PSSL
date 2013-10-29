@@ -1,7 +1,89 @@
 
 	<div id="accountModal" class="reveal-modal">
-		<h2>NOT IMPLEMENTED YET</h2>
-		<p class="lead">Please retry later.</p>
+		<h2>MY ACCOUNT</h2>
+		<p class="lead center">(Private) Oh, this is my personal data</p>
+		<table style="margin:auto; width: 60%;">
+			<thead>
+				<tr>
+					<th style="text-align: center;">My name is..</th>
+					<th style="text-align: center;">My username is..</th>
+					<th style="text-align: center;">My email is..</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align: center;">Julien Bernard</td>
+					<td style="text-align: center;">Jibi</td>
+					<td style="text-align: center;">jibi@free.fr</td>
+				</tr>
+			</tbody>
+		</table>
+		<br /><br /><br />
+		<p class="lead center">(Public) Hey look, this is my game list!</p>
+		<table style="margin:auto; width: 50%;">
+			<tbody>
+				<tr>
+					<td style="text-align: center;">Star Citizen</td>
+					<td style="text-align: center;">Medium</td>
+				</tr>
+				<tr>
+					<td style="text-align: center;">Age of Empire</td>
+					<td style="text-align: center;">Medium</td>
+				</tr>
+				<tr>
+					<td style="text-align: center;">League of Legend</td>
+					<td style="text-align: center;">Medium</td>
+				</tr>
+				<tr>
+					<td style="text-align: center;">Star Conflict</td>
+					<td style="text-align: center;">Newbie</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th style="text-align: center;">I play this game: it's awesome!</th>
+					<th style="text-align: center;">I think my level is..</th>
+				</tr>
+			</tfoot>
+		</table>
+		<br /><hr /><br />
+		<p class="lead center">Add or suggest a game</p>	
+		<form action="index.php" method="POST" class="custom" style="width:60%; margin:auto;">
+		<div class="row columns">
+			<div class="large-6 columns">
+				<div class="large-12">
+					<select id="customDropdown1" name="game">
+						<option DISABLED>Games</option>
+						<option SELECTED>Star Citizen</option>
+						<option>Age of Empire III</option>
+						<option>League of Legend</option>
+						<option>Starcraft II</option>
+					</select>
+				</div>
+				<div class="large-12">
+					<select id="customDropdown2" name="level">
+						<option DISABLED>Level</option>
+						<option SELECTED>High</option>
+						<option>Medium</option>
+						<option>Low</option>
+						<option>Newbie</option>
+					</select>
+				</div>
+				<div class="large-12 center">
+					<input type="submit" value="Add this game" class="small button" />
+				</div>
+			</div>
+			<div class="large-6 columns">
+				<br /><br /><br />
+				<div class="large-12">
+					<input type="text" id="name" name="name" placeholder="Add a new game: name?" />
+				</div>
+				<div class="large-12 center">
+					<input type="submit" value="Suggest this game" class="small button" />
+				</div>
+			</div>
+		</div>
+		</form>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
 
