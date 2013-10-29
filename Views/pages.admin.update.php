@@ -10,29 +10,29 @@
 			<div class="large-9 small-9 columns">
 				<h4><?php echo $Lang->getAdminText('usersBodyTitle11'); ?></h4>
 				
-				<form action="pages.php?create" method="POST">
+				<form action="pages.php?update=<?php echo $Page->getId(); ?>" method="POST">
 					<div class="row collapse ">
 						<div class="small-4 large-4 columns">
 							<span class="prefix radius"><label for="title">Titre de la page</label></span>
 						</div>
 						<div class="small-8 large-8 columns">
-							<input type="text" name="title" id="title" placeholder="(Required) Enter your title page..." value="<?php echo $Page->getTitle(); ?>">
+							<input type="text" name="title" id="title" placeholder="(Required) Enter your title page..." value="<?php echo $title; ?>">
 						</div>
 					</div>
 					<div class="switch large-12 small-12 radius" style="height: 32px;">
-						<input id="hidden" value="false" name="switch-visible" type="radio" <?php if( ($Page->getVisible() == 0) ) echo 'checked'; ?>>
+						<input id="hidden" value="false" name="switch-visible" type="radio" <?php if( ($visibility == 0) ) echo 'checked'; ?>>
 						<label for="hidden" onclick="">&nbsp;Hidden</label>
-						<input id="visible" value="true" name="switch-visible" type="radio" <?php if( $Page->getVisible() == 1 ) echo 'checked'; ?>>
+						<input id="visible" value="true" name="switch-visible" type="radio" <?php if( $visibility == 1 ) echo 'checked'; ?>>
 						<label for="visible" onclick="">Visible&nbsp;</label>
 						<span></span>
 					</div>
 
 					<div class="row">
 						<div class="large-12">
-							<textarea name="text" style="height: 150px;"><?php echo $Page->getText(); ?></textarea>
+							<textarea name="text" style="height: 150px;"><?php echo $text; ?></textarea>
 						</div>
 						<div class="large-12 small-12 center" style="margin-top: 15px;">
-							<input class="button" type="submit" name="create" value="Create!">
+							<input class="button" type="submit" name="update" value="Update!">
 						</div>
 					</div>					
 				</form>

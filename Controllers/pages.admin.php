@@ -61,13 +61,45 @@
 			$id = (int)$_GET['update'];
 		else
 			$id = 0;
-		
+				
 		$Page = new Page($id);
 		
+		$title = $Page->getTitle();
+		$text = $Page->getText();
+		$visibility = $Page->getVisible();
+		$lastAuthor = $Page->getAuthor();
+		
+		if( isset($_POST['update']) )
+		{
+			$title = htmlspecialchars($_POST['title']);
+			$text = htmlspecialchars($_POST['text']);
+			$visibility = htmlspecialchars($_POST['switch-visible']);
+			$lastAuthor = $User->getUsername();
+			
+			$fields = array('title' => $title, 'text' => $text, 'visibility' => $visibility);
+			$return = $Engine->checkParams( $fields );
+			
+			/* Champs valides */
+			if( $return == 1  )
+			{
+				if( Page::checkStringLength( $title ) && Page::checkStringLength( $text, 12, null ) )
+				{
+					$sendReturn = Page::updatePage( $id, $title, $text, $visibility, $lastAuthor);
+					if( $sendReturn )
+						$Engine->setSuccess("The page '".$title." have been updated. Her visibility is '".$visibility."'.");
+					else
+						$Engine->setError("An error has been catch.");
+				}
+				else
+					$Engine->setError("The title must to be greater than 3 characters. You need to provide the text field.");
+			}
+			else
+				$Engine->setError("You must provide the following informations: title, visiblity and text.");
+		}
 			
 		if( $Engine->getError() != null || $Engine->getSuccess() != null || $Engine->getInfo() != null )
 		{
-			?><script type="text/javascript">redirection(0, 'pages.php?create#modalContent');</script><?php
+			?><script type="text/javascript">redirection(0, 'pages.php?update=<?php echo $id; ?>#modalContent');</script><?php
 		}
 		
 		include_once( PATH_VIEWS."pages.admin.update.php" );

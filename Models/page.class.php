@@ -228,4 +228,41 @@ class Page
 			return 1;
 	}
 	
+	/** Fonction qui modifie une page dans la base de données.
+		*@param string $title	:	titre de la page
+		*@param string $text	:	contenu de la page
+		*@param string $visibility	:	statut de la page (visible, pas visible)
+		*@param string $lastAutor	:	username du dernier auteur.
+		Retourne 1 si valide, 0 si non
+	*/
+	public static function updatePage( $id, $title, $text, $visibility, $lastAuthor )
+	{
+		/* Validation des paramètres */
+		if( !is_numeric($id) || !is_string($title) || !is_string($title) || !is_string($visibility) || !is_string($lastAuthor) )
+			return false;
+			
+		if( $visibility == "true" )
+			$visibility = 1;
+		else
+			$visibility = 0;
+			
+		$sql = MyPDO::get();
+		
+				$rq = $sql->prepare('UPDATE BtoP SET buildingPopulation=:values WHERE planetId=:planetId AND buildingId=:idBuilding');
+
+		$req = $sql->prepare('UPDATE mod_pages SET title=:title, text=:text, visible=:visibility, lastAuthor=:lastAuthor, activity=:activity WHERE id=:id');
+		$result = $req->execute( array(
+			':title' => (String)$title,
+			':text' => (String)$text,
+			':visibility' => (int)$visibility,
+			':lastAuthor' => (String)$lastAuthor,
+			':activity' => (int)time(),
+			':id' => (int)$id
+			));
+		// Si PDO renvoie une erreur
+		if( !$result )
+			return 0;
+		else
+			return 1;
+	}
 }
