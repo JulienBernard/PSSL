@@ -25,7 +25,7 @@ class NextEvent
 		$this->_price = $sqlData['price'];
 		$this->_present = $sqlData['present'];
 	}
-	
+
 	public function getId()
 	{
 		return $this->_id;
@@ -51,6 +51,57 @@ class NextEvent
 		return $this->_present;
 	}
 	
+	/**
+	 * Enregistre l'utilisateur pour le prochain event
+	 * @param int userId
+	 * @param String name
+	 * @param String mail
+	 * @param double price
+	 * @param boolean participate
+	 * return int lastInsertId	Retourne le dernier ID inséré dans la bdd, ici l'user id !
+	 */
+	public static function addEvent( $userId, $name, $mail, $price, $participate ) {
+		/* Validation des paramètres */
+		if( !is_numeric($userId) || !is_string($name) || !is_string($mail) || !is_double($price) || !is_bool($participate) || empty($name) ||  empty($userId) || empty($mail) )
+			return false;
+		
+		$sql = MyPDO::get();
+		$req = $sql->prepare('INSERT INTO next_event VALUES("", :userId, :name, :mail, :price, :participate)');
+		$result = $req->execute( array(
+			':userId' => $userId,
+			':name' => $name,
+			':mail' => $mail,
+			':price' => $price,
+			':participate' => $participate
+		));
+		
+		if( $result )
+			return $sql->lastInsertId();
+		return 0;
+	}
+	
+	/** Supprimer une entrée dand la bdd
+	 * @param int $userId	:	id de l'utilisateur (vérification)
+	 * @param int $id		:	id de la communication
+	 * Retourne 1 si valide, 0 si non
+	 */
+	public static function deleteFromEvent( $userId )
+	{
+		/* Validation des paramètres */
+		if( !is_numeric($userId) || $userId < 0 )
+			return false;
+			
+		$sql = MyPDO::get();
+
+		$rq = $sql->prepare('DELETE FROM next_event WHERE userId=:userId');
+		$result = $rq->execute(array(':userId' => $userId));
+		
+		if( !$result )
+			return 0;
+		else
+			return 1;
+	}
+	
 	public static function isValidEmail( $mail ) {
 		return filter_var($mail) && preg_match('/@.+\./', $mail);
 	}
@@ -62,18 +113,18 @@ class NextEvent
 	public static function checkIfUserExist( $id ) {
 		
 		/* Validation des paramètres */
-		if( !is_int($id) || empty($id) )
+		if( !is_numeric($id) || empty($id) )
 			return false;
 			
 		$sql = MyPDO::get();
-		$rq = $sql->prepare('SELECT id FROM next_event WHERE userId=:id');
+		$rq = $sql->prepare('SELECT userId FROM next_event WHERE userId=:id');
 		$data = array(':id' => (int)$id);
 		$rq->execute($data);
 		
 		if( $rq->rowCount() != 0)
 		{
 			$row = $rq->fetch();
-			return (int)$row['id'];
+			return (int)$row['userId'];
 		}
 		return false;
 	}

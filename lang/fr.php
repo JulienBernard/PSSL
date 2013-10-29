@@ -31,6 +31,7 @@
 	$login["password"] = "Votre mot de passe";
 	$login["logme"] = "Se connecter";
 	$login["subscribe"] = "S'inscrire";
+	$login["unsubscribe"] = "Se désincrire";
 	$login["IParticipate"] = "Je participe";
 	$login["INotParticipate"] = "Je suis spectateur";
 	$login["UoT"] = "Je certifie avoir lu et approuvé les <a href='CGU.htm'>conditions générales d'utilisation</a>.";
@@ -53,6 +54,12 @@
 	$error["subscribeError"] = "Une erreur important est survenu, merci de contacter l'administrateur du site.";
 	$error["subscribeError1"] = "Ce PSEUDONYME existe déjà dans notre base de données. Veuillez en choisir un autre.";
 	$error["subscribeError2"] = "Votre PSEUDONYME doit être supérieur à 3 caractères et être inférieur à 20 caractères.<br />Votre MOT DE PASSE doit être supérieur à 3 caractères et inférieur à 100 caractères.";
+	$error["addSuccess"] = "Inscription validée. <a style='color: black;' href='subscribe.php'>Si la redirection ne se fait pas, cliquez ici</a> !";
+	$error["delSuccess"] = "Désinscription validée. <a style='color: black;' href='subscribe.php'>Si la redirection ne se fait pas, cliquez ici</a> !";
+	$error["addError1"] = "Un des champs est vide.";
+	$error["addError2"] = "Vous êtes déjà enregistré pour cette lan.";
+	$error["addError3"] = "Ce mail n'est pas valide.";
+	$error["addError4"] = "Une importante erreur est survenue : impossible de vous ajouter dans la base de données !";
 	
 	/* admin */
 	$admin["generalAccountType"] = "vous êtes connecté en tant que";
@@ -75,7 +82,9 @@
 	$general["by"] = "Par";
 	$general["oupsTitle"] = "Vous ne devriez pas être là ...";
 	$general["oupsText"] = " Vous n'avez pas les droits nécessaires pour accèder à cette page.<br />Merci de <a href='index.php'>retourner à la page d'accueil</a>. ";
-
+	$general["emailValid"] = "Votre mail doit être valide ! (INACTIF POUR L'INSTANT)";
+	$general["emailUse"] = "Votre mail sera uniquement utilisé pour vous prévenir des prochaines événements,<br />mais surtout pour vous demander de valider votre inscription à cette LAN !";
+	
 	/* Index */
 	$index["stay"] = "Restez connectés !";
 	$index["youtube"] = "Nous sommes sur Youtube !";

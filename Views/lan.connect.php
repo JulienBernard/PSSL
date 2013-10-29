@@ -32,28 +32,40 @@
 							</p>
 							
 							<form action="subscribe.php" method="POST" class="center custom">
-								<div class="center" style="width: 25%;">
-									<select id="customDropdown1" name="participate" class="medium">
-										<option SELECTED><?php echo $Lang->getLoginText('IParticipate'); ?></option>
-										<option><?php echo $Lang->getLoginText('INotParticipate'); ?></option>
-									</select>
-								</div>
-								<div class="center">
-									<input style="width: 25%; margin: auto;" class="center" type="text" name="mail" placeholder="Mail"/>
-									<br />
-									<label for="checkbox1">
-										<input type="checkbox" id="checkbox1" name="present" style="display: none;"><span class="custom checkbox"></span> <?php echo $Lang->getLoginText('UoT'); ?>
-									</label>
-									<br />
-									<input class="large button" type="submit" name="register" value="<?php echo $Lang->getLoginText('subscribe'); ?>" />
-								</div>
-								<div class="center">
-									<br />
-									<p class="lead">Votre mail doit être valide !</p>
-									<p class="smaller" style="margin-top: -25px;">Votre mail sera uniquement utilisé pour vous prévenir des prochaines événements,<br />
-									mais surtout pour vous demander de valider votre inscription à cette LAN !</p>
-								</div>
-							</form>						
+							<?php
+								if( $exist ) {
+								?>
+									<div class="center">
+										<input class="large button" type="submit" name="unregister" value="<?php echo $Lang->getLoginText('unsubscribe'); ?>" />
+									</div>
+								<?php
+								}
+								else {
+							?>
+									<div class="center" style="width: 25%;">
+										<select id="customDropdown1" name="participate" class="medium">
+											<option SELECTED><?php echo $Lang->getLoginText('IParticipate'); ?></option>
+											<option><?php echo $Lang->getLoginText('INotParticipate'); ?></option>
+										</select>
+									</div>
+									<div class="center">
+										<input style="width: 25%; margin: auto;" class="center" type="text" name="mail" placeholder="Mail"/>
+										<br />
+										<label for="checkbox1">
+											<input type="checkbox" id="checkbox1" name="present" style="display: none;"><span class="custom checkbox"></span> <?php echo $Lang->getLoginText('UoT'); ?>
+										</label>
+										<br />
+										<input class="large button" type="submit" name="register" value="<?php echo $Lang->getLoginText('subscribe'); ?>" />
+									</div>
+									<div class="center">
+										<br />
+										<p class="lead"><?php echo $Lang->getGeneralText('emailValid'); ?></p>
+										<p class="smaller" style="margin-top: -25px;"><?php echo $Lang->getGeneralText('emailUse'); ?></p>
+									</div>
+								<?php
+								}
+								?>
+							</form>
 						</div>
 					</div>
 				</div>

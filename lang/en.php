@@ -30,6 +30,7 @@
 	$login["name"] = "Your name";
 	$login["password"] = "Your password";
 	$login["logme"] = "Log me";
+	$login["unsubscribe"] = "Unsubscribe";
 	$login["subscribe"] = "Subscribe";
 	$login["IParticipate"] = "I will be an entrant";
 	$login["INotParticipate"] = "I will be a viewer";
@@ -53,6 +54,12 @@
 	$error["subscribeError"] = "An error has been detected, please contact the administrator.";
 	$error["subscribeError1"] = "This USERNAME already exist.";
 	$error["subscribeError2"] = "Your USERNAME must be greater than 3 characters and less than 20 characters.<br />Your PASSWORD must be greater than 3 characters and less than 100 characters.";
+	$error["addSuccess"] = "Success! <a style='color: black;' href='index.php'>Click here if the redirection doesn't work.</a> !";
+	$error["delSuccess"] = "Success! <a style='color: black;' href='index.php'>Click here if the redirection doesn't work.</a> !";
+	$error["addError1"] = "One of the fields is empty.";
+	$error["addError2"] = "You are already registered for this event.";
+	$error["addError3"] = "This email is not a valid email!";
+	$error["addError4"] = "An error has been detected, please contact the administrator.";
 	
 	/* admin */
 	$admin["generalAccountType"] = "you are connected as";
@@ -75,13 +82,15 @@
 	$general["by"] = "By";
 	$general["oupsTitle"] = "You should not to be here...";
 	$general["oupsText"] = " You haven't the necessary rank to see this page!<br />Please, <a href='index.php'>return to the homepage</a>. ";
-
+	$general["emailValid"] = "Email must be valid! (INACTIVE FOR THE MOMENT)";
+	$general["emailUse"] = "Your email address will only be used to notify you of upcoming events,<br />but also to ask you to confirm your subscription to the event!";
+	
 	/* Index */
 	$index["stay"] = "Get In Touch!";
 	$index["youtube"] = "Watch our Youtube channel";
 	$index["facebook"] = "Join our Facebook page";
 	$index["twitter"] = "Join our Twitter page";
 	$index["more"] = "Read more";
-	$index["new1"] = "The next LAN will be organised at IN'TECH INFO on November 8, 2013: register now";
+	$index["new1"] = "The next LAN will be organised at IN'TECH INFO on November 8, 2013: register now!";
 	$index["new2"] = "Under construction. Stay in touch with the most amazing event of the year in the next future.";
 ?>

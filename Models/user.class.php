@@ -313,7 +313,7 @@ class User
 	 * Vérifie si l'name existe dans la bdd.
 	 * @param String name
 	 */
-	private static function checkIfUserExist( $name ) {
+	private static function checkNameExist( $name ) {
 		
 		/* Validation des paramètres */
 		if( !is_string($name) || empty($name) )
