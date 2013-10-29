@@ -1,4 +1,4 @@
-	
+
 	<div class="Modal" id="modalContent">
 		<div class="popup_block">
 			<a href="<?php echo $_SERVER['PHP_SELF']; if( isset($_SERVER['QUERY_STRING']) ) echo '?'.$_SERVER['QUERY_STRING']; ?>#noWhere" class="right">&#215;</a>
@@ -13,7 +13,7 @@
 			{
 				echo '<p class="lead">Success!</p>';
 				echo $Engine->getSuccess();
-				echo '<div class="center"><a href="'.$_SERVER["PHP_SELF"].'">Return to pages list</a> - <a href="'.$_SERVER["PHP_SELF"].'">Look my page!</a></div>';
+				echo '<div class="center"><a href="'.$_SERVER["PHP_SELF"].'">Return to the last page</a></div>';
 			}
 			else if( $Engine->getInfo() != null )
 			{
