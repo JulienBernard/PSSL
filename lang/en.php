@@ -42,6 +42,7 @@
 	$header["participate"] = "Participate!";
 	$header["account"] = "My account";
 	$header["logout"] = "Logout";
+	$header["subscribe"] = "Register me for the next event at November 8, 2013";
 
 	/* error */
 	$error["loginSuccess"] = "Success! <a style='color: black;' href='index.php'>Click here if the redirection doesn't work.</a> !";

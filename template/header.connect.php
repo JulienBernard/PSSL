@@ -61,7 +61,10 @@
 					<li>
 						<a href="logout.php" style="background: #191919;"><?php echo $Lang->getHeaderText('logout'); ?></a>
 					</li>
-				</ul>				
+					<li>
+						<a href="subscribe.php" style="color: #bdc3c7; background: #191919;"><?php echo $Lang->getHeaderText('subscribe'); ?></a>
+					</li>
+				</ul>
 				<ul class="right">
 					<li>
 					<?php

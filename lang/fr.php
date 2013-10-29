@@ -42,7 +42,8 @@
 	$header["participate"] = "Participez !";
 	$header["account"] = "Mon compte";
 	$header["logout"] = "Déconnexion";
-	
+	$header["subscribe"] = "S'inscrire à la prochaine LAN du 8 novembre 2013";
+
 	/* error */
 	$error["loginSuccess"] = "Connexion réussie. <a style='color: black;' href='index.php'>Si la redirection ne se fait pas, cliquez ici</a> !";
 	$error["loginError"] = "Une erreur important est survenu, merci de contacter l'administrateur du site.";
