@@ -13,12 +13,12 @@
 	/* Configuration de la base de données */
 	define("SQL_DSN", "mysql:host=localhost;dbname=spaceengine");
 	define("SQL_USER", "root");
-	define("SQL_PASS", "");
+	define("SQL_PASS", "root");
 	define("SQL_ENCODE", "utf8");
 	
 	/* Chemin d'accès du site */
-	define("BASE_SITE", "http://localhost:8000/Intech/S4/PSSL/");
-	define('BASE_PATH', '/Intech/S4/PSSL/');
+	define("BASE_SITE", "http://localhost/Intechinfo/PSSL/");
+	define('BASE_PATH', '/Intechinfo/PSSL/');
 	
 	/* Informations par défaut */
 	define("DEFAULT_DESCRIPTION", "Site propulsé par le SpaceEngine ! SpaceEngine Copyright (C) 2013 Julien Bernard - SpaceEngine is a free website engine under GPL license!");
@@ -33,6 +33,8 @@
 	define("MEMBERS", 1);
 	define("ADMIN", 2);
 	define("SUPER_ADMIN", 3);
+	
+	define("PASSWORD_SALT",  "salt");
 	
 	include_once("./SpaceEngine/ISpaceEngine.php");
 	include_once("./SpaceEngine/engine.class.php");
