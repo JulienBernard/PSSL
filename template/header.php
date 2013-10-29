@@ -67,10 +67,10 @@
 					?>
 					</li>
 					<li class="link">
-						<a href="#" style="background: #191919;"><?php echo $Lang->getHeaderText('project'); ?></a>
+						<a href="pages.php" style="background: #191919;"><?php echo $Lang->getHeaderText('project'); ?></a>
 					</li>
 					<li>
-						<a href="#" style="background: #191919;"><?php echo $Lang->getHeaderText('team'); ?></a>
+						<a href="pages.php" style="background: #191919;"><?php echo $Lang->getHeaderText('team'); ?></a>
 					</li>
 					<li class="has-button">
 						<a href="" class="small button" data-reveal-id="loginModal"><?php echo $Lang->getHeaderText('participate'); ?></a>
