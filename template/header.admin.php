@@ -64,6 +64,8 @@
 			<li><a href="users.php">Users</a></li>
 			<li class="divider"></li>
 			<li><a href="pages.php">Pages</a></li>
+			<li class="divider"></li>
+			<li><a href="games.php">Games</a></li>
 		</ul>
 
 		<!-- Right Nav Section -->
@@ -79,15 +81,17 @@
 							<li><a href="#">Pages list, are hidden</a></li>
 							<li class="divider"></li>
 							<li><a href="pages.php?create">Create a new page</a></li>
-							<li><a href="#">Latest page created</a></li>
 						</ul>
 					</li>
 					<li class="has-dropdown"><a href="users.php" class="">Users</a>
 						<ul class="dropdown">
 							<li><a href="users.php">Users list</a></li>
 							<li><a href="#">Users list, by activity</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Latest user created</a></li>
+						</ul>
+					</li>
+					<li class="has-dropdown"><a href="games.php" class="">Games</a>
+						<ul class="dropdown">
+							<li><a href="games.php">Games list</a></li>
 						</ul>
 					</li>
 					<li class="divider"></li>

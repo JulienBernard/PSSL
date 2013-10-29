@@ -7,7 +7,7 @@
 							<h4><?php echo $Page->getTitle(); ?></h4>
 							<hr />
 							<p class="subheader">
-								<?php echo $Lang->getGeneralText('by'); ?> <?php echo $Page->getAuthor(); ?><br />
+								<?php echo $Lang->getGeneralText('by'); ?> <?php echo ucfirst($Page->getAuthor()); ?><br />
 								<?php echo $Lang->getGeneralText('lastUpdateThe'); ?> <?php echo date('d/m/y', $Page->getActivity()); ?><br />
 							</p>
 							<p><a href="index.php"><?php echo $Lang->getNavigationText('returnToHome'); ?></a></p>
