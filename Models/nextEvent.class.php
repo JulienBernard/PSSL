@@ -8,23 +8,6 @@ class NextEvent
 	private $_mail;
 	private $_price;
 	private $_present;
-	
-	/* Constructeur de la classe */
-	public function __construct( $id )
-	{
-		/*  L'id 0 est accepté comme valeur de "page non trouvée".
-			Il faut penser à insérer une fausse page avec l'id 0 ! */
-		if( $id !== 0 && !filter_var($id, FILTER_VALIDATE_INT) ) {
-			throw new Exception('You must provide an integer value!');
-		}
-		$sqlData = $this->getPageData( $id );
-		$this->_id = $sqlData['id'];
-		$this->_userId = $sqlData['userId'];
-		$this->_name = $sqlData['name'];
-		$this->_mail = $sqlData['mail'];
-		$this->_price = $sqlData['price'];
-		$this->_present = $sqlData['present'];
-	}
 
 	public function getId()
 	{
