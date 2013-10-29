@@ -1,4 +1,10 @@
 
+	<div id="accountModal" class="reveal-modal">
+		<h2>NOT IMPLEMENTED YET</h2>
+		<p class="lead">Please retry later.</p>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+
 	<div class="Modal" id="modalContent">
 		<div class="popup_block">
 			<a href="<?php echo $_SERVER['PHP_SELF']; if( isset($_SERVER['QUERY_STRING']) ) echo '?'.$_SERVER['QUERY_STRING']; ?>#noWhere" class="right">&#215;</a>

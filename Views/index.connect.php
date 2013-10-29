@@ -94,40 +94,91 @@
 		<div class="row">
 			<div class="large-12 columns">
 				<div class="row">
-				<div class="large-8 columns">
-					<div class="panel radius">
-						<div class="row">
-							<div class="large-6 small-6 columns">
-								<h4>Rejoignez un évenement unique en son genre</h4>
-								<hr />
-								<h5 class="subheader">
-									Propulsé par un groupe d'étudiant passionné d'IN'TECH INFO, notre projet vous entraînera vers des sensations fortes à bout de claviers et de jeux en réseau à tout va !
-								</h5>
-							</div>
-							<div class="large-6 small-6 columns">
-								<p>
-									Projet de formation humaine inédit, notre équipe a pour mission d'organiser un évenement autour des <acronym title="Local Area Network">LAN</acronym>.
-								</p>
-								<p>
-									Après quelques LAN amateurs dans nos locaux à Ivry-sur-Seine, nous organiserons un grand évenement E-Sport sur Paris !<br />
-									<a href="#" class="right">En savoir plus</a>
-								</p>
+					<div class="large-8 columns">
+						<div class="panel radius">
+							<div class="row">
+								<div class="large-6 small-6 columns">
+									<h4>Rejoignez un évenement unique en son genre</h4>
+									<hr />
+									<h5 class="subheader">
+										Propulsé par un groupe d'étudiant passionné d'IN'TECH INFO, notre projet vous entraînera vers des sensations fortes à bout de claviers et de jeux en réseau à tout va !
+									</h5>
+								</div>
+								<div class="large-6 small-6 columns">
+									<p>
+										Projet de formation humaine inédit, notre équipe a pour mission d'organiser un évenement autour des <acronym title="Local Area Network">LAN</acronym>.
+									</p>
+									<p>
+										Après quelques LAN amateurs dans nos locaux à Ivry-sur-Seine, nous organiserons un grand évenement E-Sport sur Paris !<br />
+										<a href="#" class="right"><?php echo $Lang->getIndexText('more'); ?></a>
+									</p>
+								</div>
 							</div>
 						</div>
+						<div class="row">
+							<p class="show-for-small smaller" align="center">
+								Suivez-nous sur : <a href="#">Twitter</a> et <a href="#">Facebook</a>
+							</p>
+						</div>
 					</div>
-					<div class="row">
-						<p class="show-for-small smaller" align="center">
-							Suivez-nous sur : <a href="#">Twitter</a> et <a href="#">Facebook</a>
-						</p>
-					</div>
-				</div>
 
-				<div class="large-4 columns hide-for-small">
-					<h3 style="color: #ecf0f1;">Restez connectés !</h3><hr/>
-					<a class="large button expand" href="#">Rejoindre notre Twitter</a>
-					<a class="large button expand" href="#">Rejoindre notre Facebook</a>
-				</div>
+					<div class="large-4 columns hide-for-small">
+						<h3 style="color: #ecf0f1;"><?php echo $Lang->getIndexText('stay'); ?></h3><hr/>
+						<a class="large button expand" href="http://www.youtube.com/user/PSSLOfficial"><?php echo $Lang->getIndexText('youtube'); ?></a>
+						<a class="large-5 button columns" href="https://www.facebook.com/PSSLan"><?php echo $Lang->getIndexText('facebook'); ?></a>
+						<a class="large-5 button columns" href="https://twitter.com/PSSLan"><?php echo $Lang->getIndexText('twitter'); ?></a>
+					</div>
 				</div>
 			</div>
 		</div>
 	</main>
+
+	<div id="loginModal" class="reveal-modal">
+		<h2><?php echo $Lang->getLoginText('title1'); ?></h2>
+		<p class="lead"><?php echo $Lang->getLoginText('subtitle1'); ?></p>
+		<p>
+			<?php echo $Lang->getLoginText('text1'); ?>
+		</p>
+		
+		<form action="index.php" method="POST">
+			<div class="row">
+				<div class="large-4 columns">
+					<label for="usr"><?php echo $Lang->getLoginText('name'); ?></label>
+					<input id="usr" type="text" name="name" placeholder="Name" />
+				</div>
+				<div class="large-4 columns">
+					<label for="pwd"><?php echo $Lang->getLoginText('password'); ?></label>
+					<input id="pwd" type="password" name="password" placeholder="Password" />
+				</div>
+				<div class="large-4 columns">
+					<br />
+					<input class="small button" type="submit" name="login" value="<?php echo $Lang->getLoginText('logme'); ?>" />
+				</div>
+			</div>
+		</form>
+		
+		<hr />
+		<h2><?php echo $Lang->getLoginText('title2'); ?></h2>
+		<p class="lead"><?php echo $Lang->getLoginText('subtitle2'); ?></p>
+		<p>
+			<?php echo $Lang->getLoginText('text2'); ?>
+		</p>
+		
+		<form action="index.php" method="POST">
+			<div class="row">
+				<div class="large-4 columns">
+					<label for="usr"><?php echo $Lang->getLoginText('name'); ?></label>
+					<input id="usr" type="text" name="name" placeholder="Name" />
+				</div>
+				<div class="large-4 columns">
+					<label for="pwd"><?php echo $Lang->getLoginText('password'); ?></label>
+					<input id="pwd" type="password" name="password" placeholder="Password" />
+				</div>
+				<div class="large-4 columns">
+					<br />
+					<input class="small button" type="submit" name="subscribe" value="<?php echo $Lang->getLoginText('subscribe'); ?>" />
+				</div>
+			</div>
+		</form>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>

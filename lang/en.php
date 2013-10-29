@@ -88,9 +88,12 @@
 	/* Index */
 	$index["stay"] = "Get In Touch!";
 	$index["youtube"] = "Watch our Youtube channel";
-	$index["facebook"] = "Join our Facebook page";
-	$index["twitter"] = "Join our Twitter page";
+	$index["facebook"] = "Share on Facebook";
+	$index["twitter"] = "Follow us on Twitter";
 	$index["more"] = "Read more";
 	$index["new1"] = "The next LAN will be organised at IN'TECH INFO on November 8, 2013: register now!";
 	$index["new2"] = "Under construction. Stay in touch with the most amazing event of the year in the next future.";
+	$index["title"] = "Join a unique event!";
+	$index["subtitle"] = "Powered by a group of passionate students from IN'TECH INFO, our project will lead you to huge thrills of network games!";
+	$index["text"] = "<p>Unpublished human project, our team's mission is to organize an event around the <acronym title='Local Area Network'>LAN</acronym>.</p><p>After some LANs in our local in Ivry-sur-Seine, we will organize a big event ESport in Paris!<br /><a href='#' class='right'>Read more</a></p><br />";
 ?>

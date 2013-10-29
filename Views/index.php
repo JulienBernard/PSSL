@@ -98,20 +98,14 @@
 						<div class="panel radius">
 							<div class="row">
 								<div class="large-6 small-6 columns">
-									<h4>Rejoignez un évenement unique en son genre</h4>
+									<h4><?php echo $Lang->getIndexText('title'); ?></h4>
 									<hr />
 									<h5 class="subheader">
-										Propulsé par un groupe d'étudiant passionné d'IN'TECH INFO, notre projet vous entraînera vers des sensations fortes à bout de claviers et de jeux en réseau à tout va !
+										<?php echo $Lang->getIndexText('subtitle'); ?>
 									</h5>
 								</div>
 								<div class="large-6 small-6 columns">
-									<p>
-										Projet de formation humaine inédit, notre équipe a pour mission d'organiser un évenement autour des <acronym title="Local Area Network">LAN</acronym>.
-									</p>
-									<p>
-										Après quelques LAN amateurs dans nos locaux à Ivry-sur-Seine, nous organiserons un grand évenement E-Sport sur Paris !<br />
-										<a href="#" class="right"><?php echo $Lang->getIndexText('more'); ?></a>
-									</p>
+									<?php echo $Lang->getIndexText('text'); ?>
 								</div>
 							</div>
 						</div>

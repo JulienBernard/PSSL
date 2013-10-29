@@ -78,7 +78,7 @@
 						<a href="#" style="background: #191919;"><?php echo $Lang->getHeaderText('team'); ?></a>
 					</li>
 					<li class="has-button">
-						<a href="" class="alert small button" data-reveal-id="loginModal"><?php echo $Lang->getHeaderText('account'); ?></a>
+						<a href="" class="alert small button" data-reveal-id="accountModal"><?php echo $Lang->getHeaderText('account'); ?></a>
 					</li>
 				</ul>
 			</section>
