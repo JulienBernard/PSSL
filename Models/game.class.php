@@ -8,7 +8,7 @@ class Game
 	private $_pitch;
 	private $_players;
 	private $_image;
-	private $_visible;
+	private $_valide;
 	
 	/* Constructeur de la classe */
 	public function __construct( $id )
@@ -25,7 +25,7 @@ class Game
 		$this->_pitch = $sqlData['pitch'];
 		$this->_players = $sqlData['players'];
 		$this->_image = $sqlData['image'];
-		$this->_visible = $sqlData['visible'];
+		$this->_valide = $sqlData['valide'];
 	}
 	
 	public function getId()
@@ -52,6 +52,10 @@ class Game
 	{
 		return $this->_image;
 	}
+	public function getValide()
+	{
+		return $this->_valide;
+	}
 	
 	/**
 	 * Recupère les données d'un jeu depuis la base de données.
@@ -70,7 +74,7 @@ class Game
         $data = array(':gameId' => $gameId );
 		$rq->execute($data);
 		
-		if( $rq->rowCount() == 0 ) throw new Exception('An hugh error was catch: impossible to get data from this page!');
+		if( $rq->rowCount() == 0 ) throw new Exception('An hugh error was catch: impossible to get data from this game!');
 		$row = $rq->fetch();
 		return $row;
 	}
@@ -141,6 +145,62 @@ class Game
 			return $array;
 		else
 			return 0;
+	}
+	
+	/**
+	 * Vérifie si la string est supérieur à X caractères et inférieur à X caractères.
+	 * @param String str
+	 */
+	public static function checkStringLength( $str, $min = 3, $max = 40 ) {
+		if( $max === null ) {
+			if( strlen($str) < $min )
+				return false;
+			else
+				return true;
+		}
+		
+		if( strlen($str) < $min || strlen($str) > $max )
+			return false;
+		return true;
+	}
+	
+	/** Fonction qui modifie un jeu dans la base de données.
+		*@param int $id			:	id du jeu
+		*@param int $pageId		:	id de la fiche du jeu
+		*@param String $name	:	nom du jeu
+		*@param String $pitch	:	courte description
+		*@param String $players	:	1v1, 2v2, 3v3 etc.
+		*@param String $image	:	nom de l'image dans le dossier /img
+		*@param int $valide		:	si tout est remplis, fiche valide !
+		Retourne 1 si valide, 0 si non
+	*/
+	public static function updateGame( $id, $pageId, $name, $pitch, $players, $image, $valide )
+	{
+		/* Validation des paramètres */
+		if( !is_numeric($id) || !is_numeric($pageId) || !is_string($name) || !is_string($pitch) || !is_string($players) || !is_string($image) )
+			return false;
+			
+		if( $valide == "true" )
+			$valide = 1;
+		else
+			$valide = 0;
+			
+		$sql = MyPDO::get();
+		$req = $sql->prepare('UPDATE mod_games SET pageId=:pageId, name=:name, pitch=:pitch, players=:players, image=:image, valide=:valide WHERE id=:id');
+		$result = $req->execute( array(
+			':pageId' => (int)$pageId,
+			':name' => (String)$name,
+			':pitch' => (String)$pitch,
+			':players' => (String)$players,
+			':image' => (String)$image,
+			':valide' => (string)$valide,
+			':id' => (int)$id
+			));
+		// Si PDO renvoie une erreur
+		if( !$result )
+			return 0;
+		else
+			return 1;
 	}
 	
 	/** Retourne le nombre de jeux

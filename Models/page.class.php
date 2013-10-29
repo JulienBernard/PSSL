@@ -247,9 +247,6 @@ class Page
 			$visibility = 0;
 			
 		$sql = MyPDO::get();
-		
-				$rq = $sql->prepare('UPDATE BtoP SET buildingPopulation=:values WHERE planetId=:planetId AND buildingId=:idBuilding');
-
 		$req = $sql->prepare('UPDATE mod_pages SET title=:title, text=:text, visible=:visibility, lastAuthor=:lastAuthor, activity=:activity WHERE id=:id');
 		$result = $req->execute( array(
 			':title' => (String)$title,
