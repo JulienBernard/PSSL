@@ -21,7 +21,7 @@
 								<tr>
 									<td class="center large-1 columns"><acronym title="Have a look!"><a href="pages.php?id=<?php echo (int)$pagesList[$i]['id']; ?>&visitor"><img src="./img/gallery.png" style="height: 20px;" alt="See" /></a></acronym></td>
 									<td class="center large-1 columns"><?php echo (int)$pagesList[$i]['id']; ?></td>
-									<td class="center large-5 columns"><a href="#" data-dropdown="dropFeature1"><?php echo (String)ucfirst($pagesList[$i]['title']); ?></a></td>
+									<td class="center large-5 columns"><a href="pages.php?update=<?php echo (int)$pagesList[$i]['id']; ?>"><?php echo (String)ucfirst($pagesList[$i]['title']); ?></a></td>
 									<td class="smaller center large-3 columns"><?php if( (String)$pagesList[$i]['visible'] == 1 ) echo $Lang->getAdminText('visible'); else echo $Lang->getAdminText('hidden'); ?></td>
 									<td class="smaller center large-2 columns"><a href="#" data-dropdown="dropFeature2">Delete!</a></td>
 								</tr>

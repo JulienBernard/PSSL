@@ -54,5 +54,23 @@
 		
 		include_once( PATH_VIEWS."pages.admin.create.php" );
 	}
+	/* Inclusion de la vue */
+	else if( isset($_GET['update']) )
+	{
+		if( is_numeric($_GET['update']) && $_GET['update'] > 0 )
+			$id = (int)$_GET['update'];
+		else
+			$id = 0;
+		
+		$Page = new Page($id);
+		
+			
+		if( $Engine->getError() != null || $Engine->getSuccess() != null || $Engine->getInfo() != null )
+		{
+			?><script type="text/javascript">redirection(0, 'pages.php?create#modalContent');</script><?php
+		}
+		
+		include_once( PATH_VIEWS."pages.admin.update.php" );
+	}
 	else
 		include_once( $Engine->getViewPath() );
