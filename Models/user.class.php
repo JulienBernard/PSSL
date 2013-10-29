@@ -4,6 +4,7 @@ class User
 {
 	private $_id;
 	private $_name;
+	private $_username;
 	private $_rank;
 	private $_rankText;
 	private $_activity;
@@ -17,6 +18,7 @@ class User
 		$sqlData = $this->getUserData( $id );
 		$this->_id = $sqlData['id'];
 		$this->_name = $sqlData['name'];
+		$this->_username = $sqlData['username'];
 		$this->_rank = $sqlData['rank'];
 		if( $this->_rank == 3 )
 			$this->_rankText = "super admin";
@@ -34,6 +36,10 @@ class User
 	public function getName()
 	{
 		return $this->_name;
+	}
+	public function getUsername()
+	{
+		return $this->_username;
 	}
 	public function getRank()
 	{
@@ -83,7 +89,7 @@ class User
 		if( $startPosition == 0 )
 		{
 			$rq = $sql->prepare('
-				SELECT id, name, rank, token, activity
+				SELECT id, name, username, rank, token, activity
 				FROM users
 				WHERE users.id > (SELECT AVG(id) FROM users)
 				ORDER BY users.id DESC
@@ -104,7 +110,7 @@ class User
 			{
 				unset($array);
 				$rq = $sql->prepare('
-					SELECT id, name, rank, token, activity
+					SELECT id, name, username, rank, token, activity
 					FROM users
 					ORDER BY users.id DESC
 					LIMIT :startPosition, :size
@@ -119,7 +125,7 @@ class User
 		}
 		else {
 			$rq = $sql->prepare('
-				SELECT id, name, rank, token, activity
+				SELECT id, name, username, rank, token, activity
 				FROM users
 				ORDER BY users.id DESC
 				LIMIT :startPosition, :size
@@ -181,7 +187,7 @@ class User
 	
 	/**
 	 * Vérifie si la connexion d'un utilisateur peut se faire. Renvoie différente erreur si une erreur en ressort.
-	 * @param String name
+	 * @param String username
 	 * @param String password
 	 * @return
 	 *	1	: Connexion correcte, l'utilisateur est connecté.
@@ -191,15 +197,15 @@ class User
 	 *	-3	: Le mot de passe ne correspond pas à cet utilisateur
 	 *	-4	: Impossible de générer un token sécurisé !
 	 */
-	public static function checkLogin( $name, $password ) {
+	public static function checkLogin( $username, $password ) {
 		$Engine = new Engine( "mock" );
 		/* Validation des paramètres */
-		if( !is_string($name) || !is_string($password) || empty($name) || empty($password) )
+		if( !is_string($username) || !is_string($password) || empty($username) || empty($password) )
 			return 0;
 			
-		if( self::checkNameExist($name) ) {
-			if( self::checkStringLength($name, 2, 20) && self::checkStringLength($password, 2, 100) ) {
-				if( $userId = self::checkUserAccountMatch($name, $password) ) {
+		if( self::checkUsernameExist($username) ) {
+			if( self::checkStringLength($username, 2, 20) && self::checkStringLength($password, 2, 100) ) {
+				if( $userId = self::checkUserAccountMatch($username, $password) ) {
 					/* Destruction de la session au cas où ! */
 					$Engine->destroySession("SpaceEngineConnected");
 					$Engine->destroySession("SpaceEngineToken");
@@ -227,6 +233,7 @@ class User
 	/**
 	 * Vérifie si l'inscription d'un utilisateur peut se faire. Renvoie différente erreur si une erreur en ressort.
 	 * @param String name
+	 * @param String username
 	 * @param String password
 	 * @return
 	 *	1	: Inscription correcte, l'utilisateur est désormais inscrit dans la base de données.
@@ -234,10 +241,10 @@ class User
 	 *	-1	: L'utilisateur existe déjà
 	 *	-2	: La taille de l'utilisateur ou du mot de passe est inférieur/supérieur à x caractères (défaut 2)
 	 */
-	public static function checkSubscribe( $name, $password ) {
+	public static function checkSubscribe( $name, $username, $password ) {
 		$Engine = new Engine( "mock" );
 		/* Validation des paramètres */
-		if( !is_string($name) || !is_string($password) || empty($name) || empty($password) )
+		if( !is_string($name) || !is_string($username) || !is_string($password) || empty($name) || empty($username) || empty($password) )
 			return 0;
 			
 		if( !self::checkNameExist($name) ) {
@@ -245,7 +252,7 @@ class User
 				/* Destruction de la session au cas où ! */
 				$Engine->destroySession("SpaceEngineConnected");
 				$Engine->destroySession("SpaceEngineToken");
-				if( self::addUser( $name, $password ) )
+				if( self::addUser( $name, $username, $password ) )
 					return 1; // Succès !
 				else
 					return 0;
@@ -258,22 +265,24 @@ class User
 	/**
 	 * Enregistre le nouvel utilisateur dans la base de donnée.
 	 * @param String name
+	 * @param String username
 	 * @param String password
 	 * return int lastInsertId	Retourne le dernier ID inséré dans la bdd, ici l'user id !
 	 */
-	private static function addUser( $name, $password ) {
+	private static function addUser( $name, $username, $password ) {
 		
 		/* Validation des paramètres */
-		if( !is_string($name) || !is_string($password) || empty($name) || empty($password) )
+		if( !is_string($name) || !is_string($username) || !is_string($password) || empty($name) || empty($username) || empty($password) )
 			return false;
 		
 		$sql = MyPDO::get();
-		$req = $sql->prepare('INSERT INTO users VALUES("", :name, :password, :rank, :token, :activity)');
+		$req = $sql->prepare('INSERT INTO users VALUES("", :name, :username, :password, :rank, :token, :activity)');
 		$result = $req->execute( array(
 			':name' => $name,
+			':username' => $username,
 			':password' => crypt(md5($password), PASSWORD_SALT),
 			':rank' => 1,
-			':token' => time().$name,
+			':token' => time().$username,
 			':activity' => time(),
 		));
 		
@@ -284,20 +293,20 @@ class User
 	
 	/**
 	 * Vérifie si l'name et le password sont exactes. 
-	 * @param String name
+	 * @param String username
 	 * @param String password
 	 * @return id de l'utilisateur ou 0 (erreur)
 	 */
-	private static function checkUserAccountMatch( $name, $password ) {
+	private static function checkUserAccountMatch( $username, $password ) {
 		
 		/* Validation des paramètres */
-		if( !is_string($name) || !is_string($password) || empty($name) || empty($password) )
+		if( !is_string($username) || !is_string($password) || empty($username) || empty($password) )
 			return false;
 		
 		$sql = MyPDO::get();
 		
-		$rq = $sql->prepare('SELECT id FROM users WHERE name=:name AND password=:password');
-		$data = array(':name' => (String)$name, ':password' => (String)crypt(md5($password), PASSWORD_SALT));
+		$rq = $sql->prepare('SELECT id FROM users WHERE username=:username AND password=:password');
+		$data = array(':username' => (String)$username, ':password' => (String)crypt(md5($password), PASSWORD_SALT));
 		$rq->execute($data);
 
 		if( $rq->rowCount() != 0)
@@ -322,6 +331,29 @@ class User
 		$sql = MyPDO::get();
 		$rq = $sql->prepare('SELECT id FROM users WHERE name=:name');
 		$data = array(':name' => (String)$name);
+		$rq->execute($data);
+		
+		if( $rq->rowCount() != 0)
+		{
+			$row = $rq->fetch();
+			return (int)$row['id'];
+		}
+		return false;
+	}
+	
+		/**
+	 * Vérifie si l'username existe dans la bdd.
+	 * @param String name
+	 */
+	private static function checkUsernameExist( $username ) {
+		
+		/* Validation des paramètres */
+		if( !is_string($username) || empty($username) )
+			return false;
+			
+		$sql = MyPDO::get();
+		$rq = $sql->prepare('SELECT id FROM users WHERE username=:username');
+		$data = array(':username' => (String)strtolower($username));
 		$rq->execute($data);
 		
 		if( $rq->rowCount() != 0)

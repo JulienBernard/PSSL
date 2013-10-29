@@ -39,7 +39,7 @@
 	/* Header */
 	$header["project"] = "Le projet";
 	$header["team"] = "L'équipe";
-	$header["participate"] = "Participez !";
+	$header["participate"] = "Connexion";
 	$header["account"] = "Mon compte";
 	$header["logout"] = "Déconnexion";
 	$header["subscribe"] = "S'inscrire à la prochaine LAN du 8 novembre 2013";

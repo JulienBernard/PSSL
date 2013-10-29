@@ -137,8 +137,8 @@
 		<form action="index.php" method="POST">
 			<div class="row">
 				<div class="large-4 columns">
-					<label for="usr"><?php echo $Lang->getLoginText('name'); ?></label>
-					<input id="usr" type="text" name="name" placeholder="Name" />
+					<label for="usr"><?php echo $Lang->getLoginText('username'); ?></label>
+					<input id="usr" type="text" name="username" placeholder="Username" />
 				</div>
 				<div class="large-4 columns">
 					<label for="pwd"><?php echo $Lang->getLoginText('password'); ?></label>
@@ -160,15 +160,19 @@
 		
 		<form action="index.php" method="POST">
 			<div class="row">
-				<div class="large-4 columns">
+				<div class="large-3 columns">
 					<label for="usr"><?php echo $Lang->getLoginText('name'); ?></label>
 					<input id="usr" type="text" name="name" placeholder="Name" />
 				</div>
-				<div class="large-4 columns">
+				<div class="large-3 columns">
+					<label for="usr"><?php echo $Lang->getLoginText('username'); ?></label>
+					<input id="usr" type="text" name="username" placeholder="Username (Use for login)" />
+				</div>
+				<div class="large-3 columns">
 					<label for="pwd"><?php echo $Lang->getLoginText('password'); ?></label>
 					<input id="pwd" type="password" name="password" placeholder="Password" />
 				</div>
-				<div class="large-4 columns">
+				<div class="large-3 columns">
 					<br />
 					<input class="small button" type="submit" name="subscribe" value="<?php echo $Lang->getLoginText('subscribe'); ?>" />
 				</div>

@@ -17,7 +17,7 @@
 	$navigation["returnToHome"] = "Return to home";
 
 	/* login */
-	$login["title1"] = "Connection";
+	$login["title1"] = "Login";
 	$login["subtitle1"] = "I already have an account";
 	$login["text1"] = "Please enter your login and your password.";
 	$login["title2"] = "Subscription";
@@ -39,7 +39,7 @@
 	/* Header */
 	$header["project"] = "Project";
 	$header["team"] = "Team";
-	$header["participate"] = "Participate!";
+	$header["participate"] = "Login";
 	$header["account"] = "My account";
 	$header["logout"] = "Logout";
 	$header["subscribe"] = "Register me for the next event at November 8, 2013";
