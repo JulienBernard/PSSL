@@ -17,6 +17,9 @@ class Page
 		if( $id !== 0 && !filter_var($id, FILTER_VALIDATE_INT) ) {
 			throw new Exception('You must provide an integer value!');
 		}
+		
+		
+		
 		$sqlData = $this->getPageData( $id );
 		$this->_id = $sqlData['id'];
 		$this->_title = $sqlData['title'];
@@ -68,7 +71,9 @@ class Page
         $data = array(':idPage' => $pageId );
 		$rq->execute($data);
 		
-		if( $rq->rowCount() == 0 ) throw new Exception('An hugh error was catch: impossible to get data from this page!');
+		if( $rq->rowCount() == 0 )
+			return 0;
+			
 		$row = $rq->fetch();
 		return $row;
 	}
