@@ -49,40 +49,44 @@
 		<br /><hr /><br />
 		<p class="lead center">Add or suggest a game</p>	
 		<form action="index.php" method="POST" class="custom" style="width:60%; margin:auto;">
-		<div class="row columns">
-			<div class="large-6 columns">
-				<div class="large-12">
-					<select id="customDropdown1" name="game">
-						<option DISABLED>Games</option>
-						<option SELECTED>Star Citizen</option>
-						<option>Age of Empire III</option>
-						<option>League of Legend</option>
-						<option>Starcraft II</option>
-					</select>
+			<div class="row columns">
+				<div class="large-6 columns">
+					<div class="large-12">
+						<select id="customDropdown1" name="game">
+							<option DISABLED>Games</option>
+							<?php
+								include_once(PATH_MODELS."game.class.php");
+								$gamesList = Game::getGamesList( 0, 999 );
+								for( $i = 0 ; $i < count($gamesList) ; $i++ )
+								{
+									echo "<option value='".$gamesList[$i]['id']."'>".$gamesList[$i]['name']."</option>\n";
+								}
+							?>
+						</select>
+					</div>
+					<div class="large-12">
+						<select id="customDropdown2" name="level">
+							<option DISABLED>Level</option>
+							<option SELECTED>High</option>
+							<option>Medium</option>
+							<option>Low</option>
+							<option>Newbie</option>
+						</select>
+					</div>
+					<div class="large-12 center">
+						<input value="Add this game" class="small button secondary" />
+					</div>
 				</div>
-				<div class="large-12">
-					<select id="customDropdown2" name="level">
-						<option DISABLED>Level</option>
-						<option SELECTED>High</option>
-						<option>Medium</option>
-						<option>Low</option>
-						<option>Newbie</option>
-					</select>
-				</div>
-				<div class="large-12 center">
-					<input type="submit" value="Add this game" class="small button" />
+				<div class="large-6 columns">
+					<br /><br /><br />
+					<div class="large-12">
+						<input type="text" id="name" name="name" placeholder="Suggest a new game: name?" />
+					</div>
+					<div class="large-12 center">
+						<input type="submit" value="Suggest this game" name="suggest" class="small button success" />
+					</div>
 				</div>
 			</div>
-			<div class="large-6 columns">
-				<br /><br /><br />
-				<div class="large-12">
-					<input type="text" id="name" name="name" placeholder="Add a new game: name?" />
-				</div>
-				<div class="large-12 center">
-					<input type="submit" value="Suggest this game" class="small button" />
-				</div>
-			</div>
-		</div>
 		</form>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>

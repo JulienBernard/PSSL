@@ -83,23 +83,39 @@ class Game
 	 * @param int $size				:	taille de la liste (plus elle est grande, plus la requête sera longue à effectuer !)
 	 * @param int $startPosition	:	position de départ
 	 */
-	public static function getGamesList( $startPosition = 0, $size = 10 ) {
+	public static function getGamesList( $startPosition = 0, $size = 10, $admin = false ) {
 		$sql = MyPDO::get();
 
 		/* Si on arrive sur la page de classement "principale",
 			on effectue une recherche sur la moitié supérieur aux nombre d'habitants
 			moyen retournée par MySql [SELECT AVG(pl_population)] */
-		if( $startPosition == 0 )
-		{
+		if( $admin == true ) {
 			$rq = $sql->prepare('
 				SELECT *
 				FROM mod_games
-				WHERE mod_games.id > (SELECT AVG(id) FROM mod_games)
 				ORDER BY mod_games.id DESC
 				LIMIT :startPosition, :size
 			');
 			$rq->bindValue('startPosition', (int)$startPosition, PDO::PARAM_INT);
 			$rq->bindValue('size', (int)$size, PDO::PARAM_INT);
+			$rq->execute() or die(print_r($rq->errorInfo()));
+			
+			while( $row = $rq->fetch() )
+				$array[] = $row;
+		}
+		else if( $startPosition == 0 )
+		{
+			$rq = $sql->prepare('
+				SELECT *
+				FROM mod_games
+				WHERE valide=:true
+				AND mod_games.id > (SELECT AVG(id) FROM mod_games)
+				ORDER BY mod_games.id DESC
+				LIMIT :startPosition, :size
+			');
+			$rq->bindValue('startPosition', (int)$startPosition, PDO::PARAM_INT);
+			$rq->bindValue('size', (int)$size, PDO::PARAM_INT);
+			$rq->bindValue('true', (int)1, PDO::PARAM_INT);
 			$rq->execute() or die(print_r($rq->errorInfo()));
 			
 			$array = array();
@@ -115,11 +131,13 @@ class Game
 				$rq = $sql->prepare('
 					SELECT *
 					FROM mod_games
+					WHERE valide=:true
 					ORDER BY mod_games.id DESC
 					LIMIT :startPosition, :size
 				');
 				$rq->bindValue('startPosition', (int)$startPosition, PDO::PARAM_INT);
 				$rq->bindValue('size', (int)$size, PDO::PARAM_INT);
+				$rq->bindValue('true', (int)1, PDO::PARAM_INT);
 				$rq->execute() or die(print_r($rq->errorInfo()));
 				
 				while( $row = $rq->fetch() )
@@ -130,11 +148,13 @@ class Game
 			$rq = $sql->prepare('
 				SELECT *
 				FROM mod_games
+				WHERE valide=:true
 				ORDER BY mod_games.id DESC
 				LIMIT :startPosition, :size
 			');
 			$rq->bindValue('startPosition', (int)$startPosition, PDO::PARAM_INT);
 			$rq->bindValue('size', (int)$size, PDO::PARAM_INT);
+			$rq->bindValue('true', (int)1, PDO::PARAM_INT);
 			$rq->execute() or die(print_r($rq->errorInfo()));
 			
 			while( $row = $rq->fetch() )
@@ -162,6 +182,33 @@ class Game
 		if( strlen($str) < $min || strlen($str) > $max )
 			return false;
 		return true;
+	}
+	
+	/** Fonction qui ajoute un jeu dans la base de données.
+		*@param string $name	:	nom du jeu
+		Retourne 1 si valide, 0 si non
+	*/
+	public static function addGame( $name )
+	{
+		/* Validation des paramètres */
+		if( !is_string($name) )
+			return false;
+			
+		$sql = MyPDO::get();
+		$req = $sql->prepare('INSERT INTO mod_games VALUES("", :pageId, :name, :pitch, :players, :image, :valide)');
+		$result = $req->execute( array(
+			':pageId' => (int)0,
+			':name' => (String)$name,
+			':pitch' => (String)"Description à venir",
+			':players' => (String)"1v1",
+			':image' => (String)"lol.jpeg",
+			':valide' => (int)0
+			));
+		// Si PDO renvoie une erreur
+		if( !$result )
+			return 0;
+		else
+			return 1;
 	}
 	
 	/** Fonction qui modifie un jeu dans la base de données.

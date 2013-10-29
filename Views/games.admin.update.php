@@ -38,7 +38,7 @@
 					<div class="large-12 small-12 radius">
 						<select id="customDropdown1" name="pageId">
 							<option DISABLED>This game is associated to the page who name is..</option>
-							<option value='1'>Oups</option>
+							<option value='0'>Oups</option>
 							<?php
 									include_once(PATH_MODELS."page.class.php");
 									$pagesList = Page::getPagesList( 0, 999 );

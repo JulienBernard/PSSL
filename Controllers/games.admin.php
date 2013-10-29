@@ -12,7 +12,7 @@
 		$start = (int)$_GET['p'] * $size;
 		
 	$User = new User( $_SESSION['SpaceEngineConnected'] );
-	$gamesList = Game::getGamesList( $start, $size );
+	$gamesList = Game::getGamesList( $start, $size, true);
 
 	if( isset($_GET['create']) )
 	{
@@ -68,7 +68,7 @@
 		$players = $Game->getPlayers();
 		$image = $Game->getImage();
 		$valide = $Game->getValide();
-		
+	
 		if( isset($_POST['update']) )
 		{
 			$pageId = htmlspecialchars($_POST['pageId']);
