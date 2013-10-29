@@ -25,7 +25,7 @@
 	$login["text2"] = "L'inscription au site vous permettra de vous inscrire aux tournois et de renseigner les jeux que vous possédez. Vous aurez également accès à la messagere interne pour communiquer entre participants. Merci de renseigner les champs ci-dessous.<br /><br /><span class='center italic smaller'>Nous garantissons un accès protégé et chiffré de toutes les informations personnelles stockées dans notre base de données.</span>";
 	$login["title3"] = "S'inscrire à la prochaine LAN";
 	$login["subtitle3"] = "Date : 8 novembre 2013<br />Lieu : IN'TECH INFO, 74 bis avenue Maurice Thorez 94200 Ivry-sur-Seine (M7 Pierre et Marie Curie)";
-	$login["text3"] = "En vous inscrivant, vous vous engagez sur l'honneur à être présent. Si un contre-temps vous empêche de venir, vous pourrez vous désinscrire sur cette même page plus tard. Le coût d'entrée ne sera que de 1€ si vous vous inscrivez, 2€ si non.<br /><br />Nous basons notre budget et nos achats selon ces inscriptions, merci de vérifier vos dispositions avant de valider !";
+	$login["text3"] = "En vous inscrivant, vous vous engagez sur l'honneur à être présent. Si un contre-temps vous empêche de venir, vous pourrez vous désinscrire sur cette même page plus tard. Le coût d'entrée ne sera que de 1€ si vous vous inscrivez et de 2€ sur place.<br /><br />Nous basons notre budget et nos achats selon ces inscriptions, merci de vérifier vos dispositions avant de valider !";
 	$login["name"] = "Votre nom";
 	$login["username"] = "Votre pseudonyme";
 	$login["password"] = "Votre mot de passe";
