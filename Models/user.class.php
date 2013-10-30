@@ -319,29 +319,6 @@ class User
 	}
 	
 	/**
-	 * Vérifie si l'utilisateur existe dans la bdd.
-	 * @param String name
-	 */
-	private static function checkUsernameExist($username ) {
-		
-		/* Validation des paramètres */
-		if( !is_string($username) || empty($username) )
-			return false;
-		
-		$sql = MyPDO::get();
-		$rq = $sql->prepare('SELECT id FROM users WHERE username=:username');
-		$data = array(':username' => (String)$username);
-		$rq->execute($data);
-		
-		if( $rq->rowCount() != 0)
-		{
-			$row = $rq->fetch();
-			return (int)$row['id'];
-		}
-		return false;
-	}
-	
-		/**
 	 * Vérifie si l'username existe dans la bdd.
 	 * @param String name
 	 */
