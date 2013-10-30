@@ -25,6 +25,65 @@
 		</div>
 	</div>
 	
+	<div id="loginModal" class="reveal-modal">
+		<h2><?php echo $Lang->getLoginText('title1'); ?></h2>
+		<p class="lead"><?php echo $Lang->getLoginText('subtitle1'); ?></p>
+		<p>
+			<?php echo $Lang->getLoginText('text1'); ?>
+		</p>
+		
+		<form action="index.php" method="POST">
+			<div class="row">
+				<div class="large-4 columns">
+					<label for="usr"><?php echo $Lang->getLoginText('username'); ?></label>
+					<input id="usr" type="text" name="username" placeholder="Username" />
+				</div>
+				<div class="large-4 columns">
+					<label for="pwd"><?php echo $Lang->getLoginText('password'); ?></label>
+					<input id="pwd" type="password" name="password" placeholder="Password" />
+				</div>
+				<div class="large-4 columns">
+					<br />
+					<input class="small button" type="submit" name="login" value="<?php echo $Lang->getLoginText('logme'); ?>" />
+				</div>
+			</div>
+		</form>
+		
+		<hr />
+		<h2><?php echo $Lang->getLoginText('title2'); ?></h2>
+		<p class="lead"><?php echo $Lang->getLoginText('subtitle2'); ?></p>
+		<p>
+			<?php echo $Lang->getLoginText('text2'); ?>
+		</p>
+		
+		<form action="index.php" method="POST">
+			<div class="row">
+				
+				<div class="large-2 columns">
+					<label for="firstname"><?php echo $Lang->getLoginText('firstname'); ?></label>
+					<input id="firstname" type="text" name="firstname" placeholder="Prénom" />
+				</div>
+				<div class="large-2 columns">
+					<label for="name"><?php echo $Lang->getLoginText('name'); ?></label>
+					<input id="name" type="text" name="name" placeholder="Name" />
+				</div>
+				<div class="large-3 columns">
+					<label for="username"><?php echo $Lang->getLoginText('username'); ?></label>
+					<input id="username" type="text" name="username" placeholder="Username (Use for login)" />
+				</div>
+				<div class="large-3 columns">
+					<label for="pwd2"><?php echo $Lang->getLoginText('password'); ?></label>
+					<input id="pwd2" type="password" name="password" placeholder="Password" />
+				</div>
+				<div class="large-2 columns">
+					<br />
+					<input class="small button" type="submit" name="subscribe" value="<?php echo $Lang->getLoginText('subscribe'); ?>" />
+				</div>
+			</div>
+		</form>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+	
 	<footer id="footer">
 		<div class="row">
 			<div class="large-12 columns">

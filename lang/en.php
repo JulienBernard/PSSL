@@ -28,6 +28,7 @@
 	$login["text3"] = "By registering, you agree to the honor to be present. If a setback stop you from coming, you can unsubscribe on the same page later. The entry fee will be only 1€ if you register, 2€ if not.<br /><br />We base our budget and our purchases on thèse inscriptions, thank you to check you are available before committing!";
 	$login["username"] = "Your username";
 	$login["name"] = "Your name";
+	$login["firstname"] = "Your first name";
 	$login["password"] = "Your password";
 	$login["logme"] = "Log me";
 	$login["unsubscribe"] = "Unsubscribe";

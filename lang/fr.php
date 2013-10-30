@@ -27,6 +27,7 @@
 	$login["subtitle3"] = "Date : 8 novembre 2013<br />Lieu : IN'TECH INFO, 74 bis avenue Maurice Thorez 94200 Ivry-sur-Seine (M7 Pierre et Marie Curie)";
 	$login["text3"] = "En vous inscrivant, vous vous engagez sur l'honneur à être présent. Si un contre-temps vous empêche de venir, vous pourrez vous désinscrire sur cette même page plus tard. Le coût d'entrée ne sera que de 1€ si vous vous inscrivez et de 2€ sur place.<br /><br />Nous basons notre budget et nos achats selon ces inscriptions, merci de vérifier vos dispositions avant de valider !";
 	$login["name"] = "Votre nom";
+	$login["firstname"] = "Votre prénom";
 	$login["username"] = "Votre pseudonyme";
 	$login["password"] = "Votre mot de passe";
 	$login["logme"] = "Se connecter";
