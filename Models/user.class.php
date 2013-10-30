@@ -247,7 +247,7 @@ class User
 		if( !is_string($name) || !is_string($username) || !is_string($password) || empty($name) || empty($username) || empty($password) )
 			return 0;
 			
-		if( !self::checkNameExist($name, $username) ) {
+		if( !self::checkUsernameExist($username) ) {
 			if( self::checkStringLength($name, 2, 20) && self::checkStringLength($password, 2, 100) ) {
 				/* Destruction de la session au cas où ! */
 				$Engine->destroySession("SpaceEngineConnected");
@@ -322,15 +322,15 @@ class User
 	 * Vérifie si l'utilisateur existe dans la bdd.
 	 * @param String name
 	 */
-	private static function checkNameExist( $name, $username ) {
+	private static function checkUsernameExist($username ) {
 		
 		/* Validation des paramètres */
-		if( !is_string($name) || empty($name) || !is_string($username) || empty($username) )
+		if( !is_string($username) || empty($username) )
 			return false;
 		
 		$sql = MyPDO::get();
-		$rq = $sql->prepare('SELECT id FROM users WHERE name=:name OR username=:username');
-		$data = array(':name' => (String)$name, ':username' => (String)$username);
+		$rq = $sql->prepare('SELECT id FROM users WHERE username=:username');
+		$data = array(':username' => (String)$username);
 		$rq->execute($data);
 		
 		if( $rq->rowCount() != 0)
