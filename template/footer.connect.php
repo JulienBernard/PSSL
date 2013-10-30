@@ -1,5 +1,12 @@
 
 	<div id="accountModal" class="reveal-modal">
+		<?php
+			// Not really MVC, but necessary here because the account feature is just accessible by a modal on all pages!
+			include_once(PATH_MODELS."user.class.php");
+			include_once(PATH_MODELS."game.class.php");
+			$User = new User( $_SESSION['SpaceEngineConnected'] );
+			$gamesList = Game::getGamesList( 0, 999 );
+		?>
 		<h2>MY ACCOUNT</h2>
 		<p class="lead center">(Private) Oh, this is my personal data</p>
 		<table style="margin:auto; width: 60%;">
@@ -7,14 +14,14 @@
 				<tr>
 					<th style="text-align: center;">My name is..</th>
 					<th style="text-align: center;">My username is..</th>
-					<th style="text-align: center;">My email is..</th>
+					<th style="text-align: center;">My last activity is..</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td style="text-align: center;">Julien Bernard</td>
-					<td style="text-align: center;">Jibi</td>
-					<td style="text-align: center;">jibi@free.fr</td>
+					<td style="text-align: center;"><?php echo $User->getName(); ?></td>
+					<td style="text-align: center;"><?php echo $User->getUsername(); ?></td>
+					<td style="text-align: center;"><?php echo date('d/m/y - I:i', $User->getActivity()); ?></td>
 				</tr>
 			</tbody>
 		</table>
@@ -23,20 +30,8 @@
 		<table style="margin:auto; width: 50%;">
 			<tbody>
 				<tr>
-					<td style="text-align: center;">Star Citizen</td>
-					<td style="text-align: center;">Medium</td>
-				</tr>
-				<tr>
-					<td style="text-align: center;">Age of Empire</td>
-					<td style="text-align: center;">Medium</td>
-				</tr>
-				<tr>
-					<td style="text-align: center;">League of Legend</td>
-					<td style="text-align: center;">Medium</td>
-				</tr>
-				<tr>
-					<td style="text-align: center;">Star Conflict</td>
-					<td style="text-align: center;">Newbie</td>
+					<td style="text-align: center;">Feature to come..</td>
+					<td style="text-align: center;">..very soon!</td>
 				</tr>
 			</tbody>
 			<tfoot>
@@ -55,8 +50,6 @@
 						<select id="customDropdown1" name="game">
 							<option DISABLED>Games</option>
 							<?php
-								include_once(PATH_MODELS."game.class.php");
-								$gamesList = Game::getGamesList( 0, 999 );
 								for( $i = 0 ; $i < count($gamesList) ; $i++ )
 								{
 									echo "<option value='".$gamesList[$i]['id']."'>".$gamesList[$i]['name']."</option>\n";
@@ -91,6 +84,14 @@
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
 
+	<div id="notYetModal" class="reveal-modal">
+		<h3>Not implemented yet!</h3>
+		<p class="lead">
+			Please, retry later.
+		</p>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+	
 	<div class="Modal" id="modalContent">
 		<div class="popup_block">
 			<a href="<?php echo $_SERVER['PHP_SELF']; if( isset($_SERVER['QUERY_STRING']) ) echo '?'.$_SERVER['QUERY_STRING']; ?>#noWhere" class="right">&#215;</a>

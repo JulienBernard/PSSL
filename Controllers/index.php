@@ -1,4 +1,11 @@
 <?php
+
+	include_once(PATH_MODELS."myPDO.class.php");
+	include_once(PATH_MODELS."game.class.php");
+	for( $i = 0; $i < 4 ; $i++ )
+		$games[] = new Game( rand(1, Game::countGames(1)) );
+	$specialGame = new Game( rand(1, Game::countGames(1)) );
+
 	/* Une action sur un formulaire (envoie par POST) a été effectuée.  */
 	if( isset($_POST) ) {
 		if( isset($_POST['login']) ) {
@@ -6,7 +13,6 @@
 			$return = $Engine->checkParams($fields);
 			
 			if( $return == 1 ) {
-				include_once(PATH_MODELS."myPDO.class.php");
 				include_once(PATH_MODELS."user.class.php");
 			
 				$username = (String)htmlspecialchars(strtolower($_POST['username']));
@@ -36,7 +42,6 @@
 			$return = $Engine->checkParams($fields);
 			
 			if( $return == 1 ) {
-				include_once(PATH_MODELS."myPDO.class.php");
 				include_once(PATH_MODELS."user.class.php");
 			
 				$name = (String)htmlspecialchars(strtolower($_POST['name']));

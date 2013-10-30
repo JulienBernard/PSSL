@@ -41,52 +41,48 @@
 		<div class="row">
 			<div class="large-12 columns">
 				<div class="row">
-					<div class="large-3 small-6 columns">
-						<div class="game-product">
-							<a href="subscribe.php">
-								<div id="game-products-hidden"></div>
-								<img src="./img/lol.jpeg" style="border-radius: 5px 5px 0 0" />
-							</a>
+					<?php
+						for( $i = 0 ; $i < count($games)-2 ; $i++ )
+						{
+						?>
+						<div class="large-3 small-6 columns">
+							<div class="game-product">
+								<a href="pages.php?id=<?php echo $games[$i]->getPageId(); ?>">
+									<div id="game-products-hidden"></div>
+									<img src="./img/<?php echo $games[$i]->getImage(); ?>" style="border-radius: 5px 5px 0 0" />
+								</a>
+							</div>
+							<h6 class="panel" style="margin-top: 0; border-radius: 0 0 5px 5px"><?php echo $games[$i]->getName(); ?><br /><a href="#" data-reveal-id="loginModal">Rejoindre ce tournoi !</a><br /><span class="smaller">(<?php echo $games[$i]->getPlayers(); ?>)</span></h6>
 						</div>
-						<h6 class="panel" style="margin-top: 0; border-radius: 0 0 5px 5px">League Of Legend<br /><a href="subscribe.php">Rejoindre ce tournoi !</a><br /><span class="smaller">(5v5)</span></h6>
-					</div>
-					<div class="large-3 small-6 columns">
-						<div class="game-product">
-							<a href="subscribe.php">
-								<div id="game-products-hidden"></div>
-								<img src="./img/cs.jpg" style="border-radius: 5px 5px 0 0" />
-							</a>
-						</div>
-						<h6 class="panel" style="margin-top: 0; border-radius: 0 0 5px 5px">Counter Strike G.O.<br /><a href="subscribe.php">Rejoindre ce tournoi !</a><br /><span class="smaller">(5v5 - 7v7)</span></h6>
-					</div>
+						<?php
+						}
+					?>
 					<div class="large-6 small-12 columns right">
 						<div class="game-product">
-							<a href="subscribe.php">
+							<a href="pages.php?id=<?php echo $specialGame->getPageId(); ?>">
 								<div id="game-products-hidden"></div>
-								<img src="./img/xrebirth.jpg" style="border-radius: 5px 5px 0 0" />
+								<img style="height: 500px;" src="./img/<?php echo $specialGame->getImage(); ?>" style="border-radius: 5px 5px 0 0" />
 							</a>
 						</div>
-						<h6 class="panel" style="margin-bottom: 0;">X : Rebirth<br /><a href="subscribe.php">Je jouerai à ce jeu !</a><br /><span class="smaller">(6 membres)</span></h6>
-						<h6 class="panel smaller" style="margin-top: 0; border-radius:0 0 5px 5px; padding-bottom: 35px;">Jeu de gestion et de simulation disponible sur PC et prenant place dans les confins de l'espace.</h6>
+						<h6 class="panel" style="margin-bottom: 0;"><?php echo $specialGame->getName(); ?><br /><a href="#" data-reveal-id="loginModal">Je jouerai à ce jeu !</a><br /><span class="smaller">(? membres)</span></h6>
+						<h6 class="panel smaller" style="margin-top: 0; border-radius:0 0 5px 5px; padding-bottom: 10px;"><?php echo $specialGame->getPitch(); ?></h6>
 					</div>
-					<div class="large-3 small-4 columns hide-for-small">
-						<div class="game-product">
-							<a href="subscribe.php">
-								<div id="game-products-hidden"></div>
-								<img src="./img/cs.jpg" style="border-radius: 5px 5px 0 0" />
-							</a>
+					<?php
+						for( $i = 2 ; $i < count($games) ; $i++ )
+						{
+						?>
+						<div class="large-3 small-6 columns">
+							<div class="game-product">
+								<a href="pages.php?id=<?php echo $games[$i]->getPageId(); ?>">
+									<div id="game-products-hidden"></div>
+									<img src="./img/<?php echo $games[$i]->getImage(); ?>" style="border-radius: 5px 5px 0 0" />
+								</a>
+							</div>
+							<h6 class="panel" style="margin-top: 0; border-radius: 0 0 5px 5px"><?php echo $games[$i]->getName(); ?><br /><a href="#" data-reveal-id="loginModal">Rejoindre ce tournoi !</a><br /><span class="smaller">(<?php echo $games[$i]->getPlayers(); ?>)</span></h6>
 						</div>
-						<h6 class="panel" style="margin-top: 0; border-radius: 0 0 5px 5px">Counter Strike : G.O.<br /><a href="subscribe.php">Rejoindre ce tournoi !</a><br /><span class="smaller">(5v5 - 7v7)</span></h6>
-					</div>
-					<div class="large-3 small-4 columns hide-for-small">
-						<div class="game-product">
-							<a href="subscribe.php">
-								<div id="game-products-hidden"></div>
-								<img src="./img/sc2.jpg" style="border-radius: 5px 5px 0 0" />
-							</a>
-						</div>
-						<h6 class="panel" style="margin-top: 0; border-radius: 0 0 5px 5px">Starcraft II<br /><a href="subscribe.php">Rejoindre ce tournoi !</a><br /><span class="smaller">(1v1 - 2v2)</span></h6>
-					</div>
+						<?php
+						}
+					?>
 				</div>
 			</div>
 		</div>
