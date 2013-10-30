@@ -93,6 +93,8 @@
 						<p class="smaller">
 							&copy; 2013 - Le contenu présent sur ce site appartient à leur auteurs respectifs.<br />
 							Propulsé par une équipe de folie composée de Brice, Corentin, Johan, Julien, Ludovic, Lionel et Romain.
+							<img style="height:40px;" src="./img/esiea.png" alt="ESIEA" />
+							<img style="height:40px;" src="./img/intechinfo.png" alt="IN'TECH INFO" />
 						</p>
 					</div>
 					<div class="large-4 columns">
