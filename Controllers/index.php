@@ -38,7 +38,7 @@
 				$Engine->setInfo("Un des champs est vide.");
 		}
 		else if( isset($_POST['subscribe']) ) {
-			$fields = array('firstname' => $_POST['firstname'], ('name' => $_POST['name'], 'username' => $_POST['username'], 'password' => $_POST['password']);
+			$fields = array('firstname' => $_POST['firstname'], 'name' => $_POST['name'], 'username' => $_POST['username'], 'password' => $_POST['password']);
 			$return = $Engine->checkParams($fields);
 			
 			if( $return == 1 ) {
