@@ -48,7 +48,7 @@
 				$name = (String)htmlspecialchars(strtolower($_POST['name']));
 				$username = (String)htmlspecialchars(strtolower($_POST['username']));
 				$password = (String)htmlspecialchars($_POST['password']);
-				$name = $firstname + " " + $name;
+				$name = $firstname." ".$name;
 				
 				$subscribe = User::checkSubscribe( $name, $username, $password );
 				if( $subscribe == 1 ) {
