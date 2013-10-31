@@ -52,7 +52,7 @@
 									<img src="./img/<?php echo $games[$i]->getImage(); ?>" style="border-radius: 5px 5px 0 0" />
 								</a>
 							</div>
-							<h6 class="panel" style="margin-top: 0; border-radius: 0 0 5px 5px"><?php echo $games[$i]->getName(); ?><br /><a href="#" data-reveal-id="loginModal">Rejoindre ce tournoi !</a><br /><span class="smaller">(<?php echo $games[$i]->getPlayers(); ?>)</span></h6>
+							<h6 class="panel" style="margin-top: 0; border-radius: 0 0 5px 5px"><?php echo ucfirst($games[$i]->getName()); ?><br /><a href="#" data-reveal-id="loginModal">Rejoindre ce tournoi !</a><br /><span class="smaller">(<?php echo $games[$i]->getPlayers(); ?>)</span></h6>
 						</div>
 						<?php
 						}
@@ -64,7 +64,7 @@
 								<img style="height: 500px;" src="./img/<?php echo $specialGame->getImage(); ?>" style="border-radius: 5px 5px 0 0" />
 							</a>
 						</div>
-						<h6 class="panel" style="margin-bottom: 0;"><?php echo $specialGame->getName(); ?><br /><a href="#" data-reveal-id="loginModal">Je jouerai à ce jeu !</a><br /><span class="smaller">(? membres)</span></h6>
+						<h6 class="panel" style="margin-bottom: 0;"><?php echo ucfirst($specialGame->getName()); ?><br /><a href="#" data-reveal-id="loginModal">Je jouerai à ce jeu !</a><br /><span class="smaller">(? membres)</span></h6>
 						<h6 class="panel smaller" style="margin-top: 0; border-radius:0 0 5px 5px; padding-bottom: 10px;"><?php echo $specialGame->getPitch(); ?></h6>
 					</div>
 					<?php
@@ -78,7 +78,7 @@
 									<img src="./img/<?php echo $games[$i]->getImage(); ?>" style="border-radius: 5px 5px 0 0" />
 								</a>
 							</div>
-							<h6 class="panel" style="margin-top: 0; border-radius: 0 0 5px 5px"><?php echo $games[$i]->getName(); ?><br /><a href="#" data-reveal-id="loginModal">Rejoindre ce tournoi !</a><br /><span class="smaller">(<?php echo $games[$i]->getPlayers(); ?>)</span></h6>
+							<h6 class="panel" style="margin-top: 0; border-radius: 0 0 5px 5px"><?php echo ucfirst($games[$i]->getName()); ?><br /><a href="#" data-reveal-id="loginModal">Rejoindre ce tournoi !</a><br /><span class="smaller">(<?php echo $games[$i]->getPlayers(); ?>)</span></h6>
 						</div>
 						<?php
 						}
