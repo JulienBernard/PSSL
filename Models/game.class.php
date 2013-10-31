@@ -220,7 +220,7 @@ class Game
 	public static function addGameToUserList( $gameId, $level, $userId )
 	{
 		/* Validation des paramètres */
-		if( !is_int($gameId) || !is_int($level) || !is_int($userId) )
+		if( !is_numeric($gameId) || !is_numeric($level) || !is_numeric($userId) )
 			return false;
 			
 		$sql = MyPDO::get();

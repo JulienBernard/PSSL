@@ -5,7 +5,7 @@
 			include_once(PATH_MODELS."user.class.php");
 			include_once(PATH_MODELS."game.class.php");
 			$User = new User( $_SESSION['SpaceEngineConnected'] );
-			$gamesList = Game::getGamesList( 0, 999 );
+			$gamesList = Game::getGamesList( 0, 999 );					// TO DO : (0 , 999, false, userid) dans la fct : si userid, alors check les jeux qu'il n'a pas ajouté à sa liste (join u_to_g where gameid ! ...)
 		?>
 		<h2>MY ACCOUNT</h2>
 		<p class="lead center">(Private) Oh, this is my personal data</p>

@@ -36,7 +36,7 @@
 			include_once(PATH_MODELS."myPDO.class.php");
 			include_once(PATH_MODELS."game.class.php");
 		
-			$gameId = (int)htmlspecialchars(strtolower($_POST['gameId']));
+			$gameId = (int)htmlspecialchars(strtolower($_POST['game']));
 			$level = (int)htmlspecialchars(strtolower($_POST['level']));
 			
 			$game = Game::addGameToUserList( $gameId, $level, $User->getId() );
