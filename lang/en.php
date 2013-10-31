@@ -62,7 +62,9 @@
 	$error["addError2"] = "You are already registered for this event.";
 	$error["addError3"] = "This email is not a valid email!";
 	$error["addError4"] = "An error has been detected, please contact the administrator.";
-	
+	$error["suggestSuccess"] = "Success! Thank a lot to help us!<br />This game will be add to our game list in a few day if it will be accepted by the administrators. Be patient :)";
+	$error["suggestError"] = "Une erreur semble être survenue :<br />- Vous ne pouvez proposer qu'un seul jeu à la fois,<br />- Ce jeu a déjà été proposé par un autre utilisateur.";
+
 	/* admin */
 	$admin["generalAccountType"] = "you are connected as";
 	$admin["usersBodyTitle11"] = "Pages list";

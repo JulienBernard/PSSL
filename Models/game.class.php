@@ -188,16 +188,16 @@ class Game
 		*@param string $name	:	nom du jeu
 		Retourne 1 si valide, 0 si non
 	*/
-	public static function addGame( $name )
+	public static function addGame( $name, $userId )
 	{
 		/* Validation des paramètres */
-		if( !is_string($name) )
+		if( !is_string($name) || !is_numeric($userId) )
 			return false;
 			
 		$sql = MyPDO::get();
 		$req = $sql->prepare('INSERT INTO mod_games VALUES("", :pageId, :name, :pitch, :players, :image, :valide)');
 		$result = $req->execute( array(
-			':pageId' => (int)time(), // pageId doit être unique, pour éviter une erreur on force l'id au timestamp actuel (il n'y aura jamais plus de 180.000.000 jeux ^^)
+			':pageId' => (int)999999+$userId,	// Une seule proposition par joueur en même temps
 			':name' => (String)$name,
 			':pitch' => (String)"Description à venir",
 			':players' => (String)"1v1",

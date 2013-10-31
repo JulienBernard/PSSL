@@ -6,6 +6,7 @@
 		$games[] = new Game( rand(1, Game::countGames(1)) );
 	$specialGame = new Game( rand(1, Game::countGames(1)) );
 	
+	$User = new User( $_SESSION['SpaceEngineConnected'] );
 	if( isset($_POST['suggest']) ) {
 		$fields = array('name' => $_POST['name']);
 		$return = $Engine->checkParams($fields);
@@ -16,15 +17,13 @@
 		
 			$name = (String)htmlspecialchars(strtolower($_POST['name']));
 			
-			$game = Game::addGame( $name );
+			$game = Game::addGame( $name, $User->getId() );
 			if( $game == 1 ) {
-				$Engine->setSuccess($Lang->getErrorText('loginSuccess'));
+				$Engine->setSuccess($Lang->getErrorText('suggestSuccess'));
 				?><script type="text/javascript">redirection(3, 'index.php');</script><?php
 			}
 			else if( $game == 0 )
-				$Engine->setError($Lang->getErrorText('loginError'));
-			else if( $game == -1 )
-				$Engine->setError($Lang->getErrorText('loginError1'));
+				$Engine->setError($Lang->getErrorText('suggestError'));
 		}
 		else
 			$Engine->setInfo("Un des champs est vide.");

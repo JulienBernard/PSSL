@@ -62,7 +62,9 @@
 	$error["addError2"] = "Vous êtes déjà enregistré pour cette lan.";
 	$error["addError3"] = "Ce mail n'est pas valide.";
 	$error["addError4"] = "Une importante erreur est survenue : impossible de vous ajouter dans la base de données !";
-	
+	$error["suggestSuccess"] = "Le jeu a bien été proposé aux administrateurs. Merci de votre participation !<br />La validation d'un jeu (incluant la création de sa propre page) peut prendre quelque jours, merci de votre patience.";
+	$error["suggestError"] = "Une erreur semble être survenue :<br />- Vous ne pouvez proposer qu'un seul jeu à la fois,<br />- Ce jeu a déjà été proposé par un autre utilisateur.";
+
 	/* admin */
 	$admin["generalAccountType"] = "vous êtes connecté en tant que";
 	$admin["usersBodyTitle11"] = "Liste des pages";
