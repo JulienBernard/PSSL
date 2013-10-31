@@ -14,7 +14,7 @@
 			include_once(PATH_MODELS."myPDO.class.php");
 			include_once(PATH_MODELS."game.class.php");
 		
-			$name = (String)htmlspecialchars($_POST['name']);
+			$name = (String)htmlspecialchars(strtolower($_POST['name']));
 			
 			$game = Game::addGame( $name );
 			if( $game == 1 ) {

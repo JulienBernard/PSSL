@@ -197,7 +197,7 @@ class Game
 		$sql = MyPDO::get();
 		$req = $sql->prepare('INSERT INTO mod_games VALUES("", :pageId, :name, :pitch, :players, :image, :valide)');
 		$result = $req->execute( array(
-			':pageId' => (int)0,
+			':pageId' => (int)time(), // pageId doit être unique, pour éviter une erreur on force l'id au timestamp actuel (il n'y aura jamais plus de 180.000.000 jeux ^^)
 			':name' => (String)$name,
 			':pitch' => (String)"Description à venir",
 			':players' => (String)"1v1",
