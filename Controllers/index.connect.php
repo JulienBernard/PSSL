@@ -28,6 +28,28 @@
 		else
 			$Engine->setInfo("Un des champs est vide.");
 	}
+	else if( isset($_POST['add']) ) {
+		$fields = array('game' => $_POST['game'], 'level' => $_POST['level']);
+		$return = $Engine->checkParams($fields);
+		
+		if( $return == 1 ) {
+			include_once(PATH_MODELS."myPDO.class.php");
+			include_once(PATH_MODELS."game.class.php");
+		
+			$gameId = (int)htmlspecialchars(strtolower($_POST['gameId']));
+			$level = (int)htmlspecialchars(strtolower($_POST['level']));
+			
+			$game = Game::addGameToUserList( $gameId, $level, $User->getId() );
+			if( $game == 1 ) {
+				$Engine->setSuccess($Lang->getErrorText('suggestSuccess'));
+				?><script type="text/javascript">redirection(3, 'index.php');</script><?php
+			}
+			else if( $game == 0 )
+				$Engine->setError($Lang->getErrorText('suggestError'));
+		}
+		else
+			$Engine->setInfo("Un des champs est vide.");
+	}
 
 		
 	if( $Engine->getError() != null || $Engine->getSuccess() != null || $Engine->getInfo() != null )

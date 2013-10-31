@@ -211,6 +211,32 @@ class Game
 			return 1;
 	}
 	
+	/** Fonction qui ajoute un jeu à la liste de jeu de l'utilisateur dans la base de données.
+		*@param int $gameId	:	id du jeu (table mod_games)
+		*@param int $level	:	niveau de l'utilisateur sur ce jeu
+		*@param int $userId	:	id de l'utilisateur
+		Retourne 1 si valide, 0 si non
+	*/
+	public static function addGameToUserList( $gameId, $level, $userId )
+	{
+		/* Validation des paramètres */
+		if( !is_int($gameId) || !is_int($level) || !is_int($userId) )
+			return false;
+			
+		$sql = MyPDO::get();
+		$req = $sql->prepare('INSERT INTO user_to_game VALUES(:userId, :gameId, :level)');
+		$result = $req->execute( array(
+			':userId' => (int)$userId,
+			':gameId' => (int)$gameId,
+			':level' => (int)$level
+			));
+		// Si PDO renvoie une erreur
+		if( !$result )
+			return 0;
+		else
+			return 1;
+	}
+	
 	/** Fonction qui modifie un jeu dans la base de données.
 		*@param int $id			:	id du jeu
 		*@param int $pageId		:	id de la fiche du jeu

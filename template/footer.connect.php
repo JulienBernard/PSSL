@@ -52,7 +52,7 @@
 							<?php
 								for( $i = 0 ; $i < count($gamesList) ; $i++ )
 								{
-									echo "<option value='".$gamesList[$i]['id']."'>".$gamesList[$i]['name']."</option>\n";
+									echo "<option value='".$gamesList[$i]['id']."'>".ucfirst($gamesList[$i]['name'])."</option>\n";
 								}
 							?>
 						</select>
@@ -60,14 +60,15 @@
 					<div class="large-12">
 						<select id="customDropdown2" name="level">
 							<option DISABLED>Level</option>
-							<option SELECTED>High</option>
-							<option>Medium</option>
-							<option>Low</option>
-							<option>Newbie</option>
+							<option value="5">Pro</option>
+							<option value="4">High</option>
+							<option value="3">Medium</option>
+							<option value="2" SELECTED>Low</option>
+							<option value="1">Newbie</option>
 						</select>
 					</div>
 					<div class="large-12 center">
-						<input value="Add this game" class="small button secondary" />
+						<input type="submit" value="Add this game" name="add" class="small button secondary" />
 					</div>
 				</div>
 				<div class="large-6 columns">
