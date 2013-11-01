@@ -51,7 +51,7 @@
 		<nav class="top-bar">
 			<ul class="title-area">
 				<li class="name">
-					<h1><a href="index.php">PSSL</a></h1>
+					<a href="index.php"><img src="./img/logo.png" style="width: 69px; margin-top: 3px; display: inline-block;"/><h1 style="display: inline-block;">PSSL</a></h1>
 				</li>
 				<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
 			</ul>

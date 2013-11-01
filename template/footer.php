@@ -93,18 +93,21 @@
 						<p class="smaller">
 							&copy; 2013 - Le contenu présent sur ce site appartient à leur auteurs respectifs.<br />
 							Propulsé par une équipe de folie composée de Brice, Corentin, Johan, Julien, Ludovic, Lionel et Romain.
-							<img style="height:40px;" src="./img/esiea.png" alt="ESIEA" />
-							<img style="height:40px;" src="./img/intechinfo.png" alt="IN'TECH INFO" />
 						</p>
 					</div>
 					<div class="large-4 columns">
 						<ul class="inline-list right">
-							<li><a href="#"><?php echo $Lang->getHeaderText('project'); ?></a></li>
-							<li><a href="#"><?php echo $Lang->getHeaderText('team'); ?></a></li>
-							<li><a href="#"><strong><?php echo $Lang->getHeaderText('participate'); ?></strong></a></li>
+							<li><a href="pages.php"><?php echo $Lang->getHeaderText('project'); ?></a></li>
+							<li><a href="pages.php"><?php echo $Lang->getHeaderText('team'); ?></a></li>
+							<li><a href="#" data-reveal-id="loginModal"><strong><?php echo $Lang->getHeaderText('participate'); ?></strong></a></li>
 						</ul>
 						<span class="right smaller"><a href="https://github.com/JulienBernard/PSSL/">Organisateurs ? Site sous licence GNU !</a></span>
 					</div>
+				</div>
+				<div class="center">
+					<img style="height:60px;" src="./img/esieaLogo.gif" alt="ESIEA" />
+					<img style="height:50px;" src="./img/intechinfoLogo.png" alt="IN'TECH INFO" />
+					<img src="./img/logo.png" style="width: 85px; margin-top: 5px;"/>
 				</div>
 			</div>
 		</div>

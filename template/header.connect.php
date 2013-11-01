@@ -51,7 +51,7 @@
 		<nav class="top-bar">
 			<ul class="title-area">
 				<li class="name">
-					<h1><a href="index.php">PSSL</a></h1>
+					<a href="index.php"><img src="./img/logo.png" style="width: 69px; margin-top: 3px; display: inline-block;"/><h1 style="display: inline-block;">PSSL</a></h1>
 				</li>
 				<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
 			</ul>
@@ -59,10 +59,7 @@
 			<section class="top-bar-section" style="padding: 0 5px 0 5px;">
 				<ul class="left">
 					<li>
-						<a href="logout.php" style="background: #191919;"><?php echo $Lang->getHeaderText('logout'); ?></a>
-					</li>
-					<li>
-						<a href="subscribe.php" style="color: #bdc3c7; background: #191919;"><?php echo $Lang->getHeaderText('subscribe'); ?></a>
+						<a href="subscribe.php" style="color: #8FCF3C; background: #191919;"><?php echo $Lang->getHeaderText('subscribe'); ?></a>
 					</li>
 				</ul>
 				<ul class="right">
@@ -81,7 +78,10 @@
 						<a href="pages.php" style="background: #191919;"><?php echo $Lang->getHeaderText('team'); ?></a>
 					</li>
 					<li class="has-button">
-						<a href="" class="alert small button" data-reveal-id="accountModal"><?php echo $Lang->getHeaderText('account'); ?></a>
+						<a href="" class="success button" data-reveal-id="accountModal"><?php echo $Lang->getHeaderText('account'); ?></a>
+					</li>
+					<li class="has-button">
+						<a href="logout.php" class="alert button"><?php echo $Lang->getHeaderText('logout'); ?></a>
 					</li>
 				</ul>
 			</section>

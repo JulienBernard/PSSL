@@ -5,7 +5,7 @@
 				<div class="hide-for-small">
 					<ul data-orbit="" data-options="slide_number:false;bullets:false;timer_speed:4000;" class="orbit">
 						<li class="active">
-							<a href="subscribe.php">
+							<a href="#" data-reveal-id="loginModal">
 								<img src="./img/demo2.jpg" />
 								<div class="orbit-caption"><?php echo $Lang->getIndexText('new1'); ?></div>
 							</a>
