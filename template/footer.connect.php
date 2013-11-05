@@ -139,11 +139,6 @@
 						<span class="right smaller"><a href="https://github.com/JulienBernard/PSSL/">Organisateurs ? Site sous licence GNU !</a></span>
 					</div>
 				</div>
-				<div class="center">
-					<img style="height:60px;" src="./img/esieaLogo.gif" alt="ESIEA" />
-					<img style="height:50px;" src="./img/intechinfoLogo.png" alt="IN'TECH INFO" />
-					<img src="./img/logo.png" style="width: 85px; margin-top: 5px;"/>
-				</div>
 			</div>
 		</div>
 	</footer>

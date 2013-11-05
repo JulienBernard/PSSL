@@ -51,38 +51,32 @@
 		<nav class="top-bar">
 			<ul class="title-area">
 				<li class="name">
-					<a href="index.php"><h1 style="display: inline-block;">PSSL</a></h1>
+					<a href="index.php"><img src="./img/logo.png" style="width: 69px; margin-top: 3px; display: inline-block;"/><h1 style="display: inline-block;">PSSL</a></h1>
 				</li>
 				<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
 			</ul>
 
 			<section class="top-bar-section" style="padding: 0 5px 0 5px;">
 				<ul class="right">
-					<li class="link">
-						<a href="#" data-dropdown="dropFeatureMedium" style="background: #191919;"><?php echo $Lang->getHeaderText('project'); ?></a>
-					</li>
-					<li class="link">
-						<a href="#" data-dropdown="dropFeatureMedium" style="background: #191919;"><?php echo $Lang->getHeaderText('team'); ?></a>
-					</li>
-					<li class="has-button">
-						<a href="" class="success button" data-reveal-id="accountModal"><?php echo $Lang->getHeaderText('account'); ?></a>
-					</li>
-					<li class="has-button">
-						<a href="logout.php" class="alert button"><?php echo $Lang->getHeaderText('logout'); ?></a>
-					</li>
-					<!--<li>
+					<li>
 					<?php
 						if( isset($_SESSION['SpaceEngineLanguage']) && $_SESSION['SpaceEngineLanguage'] == 'en' )
 							echo '<a href="'.$_SERVER["PHP_SELF"].'?lang=fr" style="background: #191919;"><img src="./img/language.png" alt="Hey, je suis Français !" /></a>';
 						else
 							echo '<a href="'.$_SERVER["PHP_SELF"].'?lang=en" style="background: #191919;"><img src="./img/language.png" alt="Hey, I am English!" /></a>';
 					?>
-					</li>-->
+					</li>
+					<li class="link">
+						<a href="pages.php" style="background: #191919;"><?php echo $Lang->getHeaderText('project'); ?></a>
+					</li>
+					<li>
+						<a href="pages.php" style="background: #191919;"><?php echo $Lang->getHeaderText('team'); ?></a>
+					</li>
+					<li class="has-button">
+						<a href="" class="small button" data-reveal-id="loginModal"><?php echo $Lang->getHeaderText('participate'); ?></a>
+					</li>
 				</ul>
 			</section>
 		</nav>
 	</header>
 
-	<ul id="dropFeatureMedium" class="small f-dropdown content" data-dropdown-content>
-		<p><span class="bold">Fonctionnalité à venir</span><br />Priorité <span class="italic">Moyenne</span></p>
-	</ul>

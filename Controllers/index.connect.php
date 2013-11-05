@@ -2,7 +2,7 @@
 
 	include_once(PATH_MODELS."myPDO.class.php");
 	include_once(PATH_MODELS."game.class.php");
-	for( $i = 0; $i < 4 ; $i++ )
+	for( $i = 0; $i < 6 ; $i++ )
 		$games[] = new Game( rand(1, Game::countGames(1)) );
 	$specialGame = new Game( rand(1, Game::countGames(1)) );
 	

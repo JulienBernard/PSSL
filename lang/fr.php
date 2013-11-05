@@ -92,8 +92,8 @@
 	/* Index */
 	$index["stay"] = "Restez connectés !";
 	$index["youtube"] = "Nous sommes sur Youtube !";
-	$index["facebook"] = "Rejoindre Facebook";
-	$index["twitter"] = "Rejoindre Twitter";
+	$index["facebook"] = "Page Facebook";
+	$index["twitter"] = "Page Twitter";
 	$index["more"] = "En savoir plus";
 	$index["new1"] = "La prochaine LAN aura lieu le vendredi 8 novembre 2013 à IN'TECH INFO : inscrivez-vous !";
 	$index["new2"] = "Site en cours de construction. Retrouvez prochainement le site de l'événement de l'année PSSL entièrement fonctionnel.";

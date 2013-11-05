@@ -25,7 +25,7 @@
 		</div>
 	</div>
 	
-	<div id="loginModal" class="reveal-modal">
+	<div id="loginModal" class="large-12 small-6 reveal-modal">
 		<h2><?php echo $Lang->getLoginText('title1'); ?></h2>
 		<p class="lead"><?php echo $Lang->getLoginText('subtitle1'); ?></p>
 		<p>
@@ -103,11 +103,6 @@
 						</ul>
 						<span class="right smaller"><a href="https://github.com/JulienBernard/PSSL/">Organisateurs ? Site sous licence GNU !</a></span>
 					</div>
-				</div>
-				<div class="center">
-					<img style="height:60px;" src="./img/esieaLogo.gif" alt="ESIEA" />
-					<img style="height:50px;" src="./img/intechinfoLogo.png" alt="IN'TECH INFO" />
-					<img src="./img/logo.png" style="width: 85px; margin-top: 5px;"/>
 				</div>
 			</div>
 		</div>
