@@ -5,12 +5,14 @@
 				<div class="hide-for-small">
 					<ul data-orbit="" data-options="slide_number:false;bullets:false;timer_speed:4000;" class="orbit">
 						<li class="active">
-							<a href="subscribe.php">
+							<a href="pages.php?id=1">
 								<img src="./img/demo2.jpg" />
 							</a>
 						</li>
-						<li class="active">
+						<li>
+						<a href="pages.php?id=3">
 							<img src="./img/demo.jpg" />
+						</a>
 						</li>
 					</ul>
 				</div>
@@ -70,12 +72,12 @@
 				<div class="panel radius">
 					<h4><?php echo $Lang->getLoginText('subscribe'); ?></h4>
 					<p class="subheader">
-						<a href="#">Je crée un compte</a>
+						<a href="#" data-reveal-id="loginModal">Je crée un compte</a>
 					</p>
 					<hr />
 					<h4><?php echo $Lang->getLoginText('logme'); ?></h4>
 					<p class="subheader">
-						<a href="#">Je me connecte</a>
+						<a href="#" data-reveal-id="loginModal">Je me connecte</a>
 					</p>
 				</div>
 				<div class="panel radius">
