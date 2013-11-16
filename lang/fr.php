@@ -71,16 +71,27 @@
 	$admin["usersBodyTitle21"] = "Données";
 	$admin["usersBodyTitle12"] = "Utilisateurs";
 	$admin["usersBodyTitle22"] = "Données";
+	$admin["usersBodyTitle13"] = "Liste des jeux";
+	$admin["usersBodyTitle23"] = "Données";
 	$admin["pagesLinkCreate"] = "Créer une nouvelle page";
+	$admin["gamesLinkCreate"] = "Ajouter un jeu à la liste";
 	$admin["visible"] = "Visible";
 	$admin["hidden"] = "Caché";
 	$admin["navLinkReturnPage"] = "Revenir à la liste des pages";	
+	$admin["navLinkReturnGame"] = "Revenir à la liste des jeux";	
 	$admin["navLinkReturnMain"] = "Revenir à l'index";	
-	
+	$admin["IndexPages"] = "Administrer vos pages";
+	$admin["IndexUsers"] = "Gérer les utilisateurs";
+	$admin["IndexGames"] = "Controler la liste des jeux";
+	$admin["IndexPagesText"] = "La gestion de vos pages vous permet de créer, modifier et supprimer les différentes pages visiblent sur le site. Un éditeur complet vous aide à rédiger et à structurer facilement vos pages.";
+	$admin["IndexUsersText"] = "Chaque création de compte est reporté ici. Vous pouvez vérifier le contenu du profil de chaque utilisateur, modifier son mot de passe ou lui attribuer un autre rang.";
+	$admin["IndexGamesText"] = "Chaque utilisateur enregistré peut proposer un jeu aux administrateurs. Vous pouvez ainsi controler la liste des jeux présent à vos LANs, modifier leur présentation et leur attribuer une page spécifique.";
+
 	/* General */
 	$general["deconnection"] = "Vous avez été correctement déconnecté du site.";
 	$general["users"] = "utilisateurs";
 	$general["pages"] = "pages";
+	$general["games"] = "jeux";
 	$general["fastNavigation"] = "Navigation";
 	$general["lastUpdateThe"] = "Mise à jour le";
 	$general["by"] = "Par";

@@ -8,7 +8,7 @@
 			</div>
 
 			<div class="large-9 small-9 columns">
-				<h4><?php echo $Lang->getAdminText('usersBodyTitle11'); ?></h4>
+				<h4><?php echo $Lang->getAdminText('usersBodyTitle13'); ?> - <a href="games.php?create"><?php echo $Lang->getAdminText('gamesLinkCreate'); ?></a></h4>
 				<table class="large-12">
 					<tbody>
 						<?php
@@ -19,7 +19,7 @@
 								if( $User->getRank() == 3 ) {
 							?>
 								<tr>
-									<td class="center large-1 columns"><acronym title="Have a look!"><a href="pages.php?id=<?php echo (int)$gamesList[$i]['id']; ?>&visitor"><img src="./img/gallery.png" style="height: 20px;" alt="See" /></a></acronym></td>
+									<td class="center large-1 columns"><acronym title="Have a look!"><a href="pages.php?id=<?php echo (int)$gamesList[$i]['pageId']; ?>&visitor"><img src="./img/gallery.png" style="height: 20px;" alt="See" /></a></acronym></td>
 									<td class="center large-1 columns"><?php echo (int)$gamesList[$i]['id']; ?></td>
 									<td class="center large-5 columns"><a href="games.php?update=<?php echo (int)$gamesList[$i]['id']; ?>"><?php echo (String)ucfirst($gamesList[$i]['name']); ?></a></td>
 									<td class="smaller center large-3 columns"><?php if( (String)$gamesList[$i]['valide'] == 1 ) echo $Lang->getAdminText('visible'); else echo $Lang->getAdminText('hidden'); ?></td>
@@ -29,7 +29,7 @@
 								} else {
 							?>
 								<tr>
-									<td class="center large-1 columns"><acronym title="Have a look!"><a href="pages.php?id=<?php echo (int)$gamesList[$i]['id']; ?>&visitor"><img src="./img/gallery.png" style="height: 20px;" alt="See" /></a></acronym></td>
+									<td class="center large-1 columns"><acronym title="Have a look!"><a href="pages.php?id=<?php echo (int)$gamesList[$i]['pageId']; ?>&visitor"><img src="./img/gallery.png" style="height: 20px;" alt="See" /></a></acronym></td>
 									<td class="center large-2 columns"><?php echo (int)$gamesList[$i]['id']; ?></td>
 									<td class="center large-6 columns"><a href="games.php?update=<?php echo (int)$gamesList[$i]['id']; ?>"><?php echo (String)ucfirst($gamesList[$i]['name']); ?></a></td>
 									<td class="smaller center large-3 columns"><?php if( (String)$gamesList[$i]['valide'] == 1 ) echo $Lang->getAdminText('visible'); else echo $Lang->getAdminText('hidden'); ?></td>
@@ -100,11 +100,11 @@
 			</ul>
 
 			<div class="large-3 small-3 columns">
-				<h4><?php echo $Lang->getAdminText('usersBodyTitle21'); ?></h4>
+				<h4><?php echo $Lang->getAdminText('usersBodyTitle23'); ?></h4>
 				
 				<div class="large-12">
 					<p class="center">
-						<?php echo Game::countGames(); ?> <?php echo $Lang->getGeneralText('pages'); ?>
+						<?php echo Game::countGames(); ?> <?php echo $Lang->getGeneralText('games'); ?>
 					</p>
 				</div>
 				<div class="large-4 small-4 columns">

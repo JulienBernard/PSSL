@@ -12,46 +12,40 @@
 		$start = (int)$_GET['p'] * $size;
 		
 	$User = new User( $_SESSION['SpaceEngineConnected'] );
-	$gamesList = Game::getGamesList( $start, $size, true);
+	$gamesList = Game::getGamesList( $start, $size, 0, true);
 
 	if( isset($_GET['create']) )
 	{
 		$title = null;
-		$text = null;
-		$visibility = null;
-		$lastAuthor = null;
 		
 		if( isset($_POST['create']) )
 		{
 			$title = htmlspecialchars($_POST['title']);
-			$text = htmlspecialchars($_POST['text']);
-			$visibility = htmlspecialchars($_POST['switch-visible']);
-			$lastAuthor = $User->getUsername();
 			
-			$fields = array('title' => $title, 'text' => $text, 'visibility' => $visibility);
+			$fields = array('title' => $title);
 			$return = $Engine->checkParams( $fields );
 			
-			/* Champs valides */
-			if( $return == 1  )
-			{
-				if( Page::checkStringLength( $title ) && Page::checkStringLength( $text, 12, null ) )
-				{
-					$sendReturn = Page::addPage( $title, $text, $visibility, $lastAuthor);
-					$Engine->setSuccess("The page '".$title." have been created. Her visibility is '".$visibility."'.");
-				}
-				else
-					$Engine->setError("The title must to be greater than 3 characters. You need to provide the text field.");
+			if( $return == 1 ) {		
+				$title = (String)htmlspecialchars(strtolower($_POST['title']));
+				
+				$game = Game::addGame( $title, $User->getId() );
+				if( $game == 1 ) {
+					$Engine->setSuccess($Lang->getErrorText('suggestSuccess'));
+					?><script type="text/javascript">redirection(3, 'index.php');</script><?php
 			}
-			else
-				$Engine->setError("You must provide the following informations: title, visiblity and text.");
+			else if( $game == 0 )
+				$Engine->setError($Lang->getErrorText('suggestError'));
+		}
+		else
+			$Engine->setInfo("Un des champs est vide.");
 		}
 		
 		if( $Engine->getError() != null || $Engine->getSuccess() != null || $Engine->getInfo() != null )
 		{
-			?><script type="text/javascript">redirection(0, 'pages.php?create#modalContent');</script><?php
+			?><script type="text/javascript">redirection(0, 'games.php?create#modalContent');</script><?php
 		}
 		
-		include_once( PATH_VIEWS."pages.admin.create.php" );
+		include_once( PATH_VIEWS."games.admin.create.php" );
 	}
 	else if( isset($_GET['update']) )
 	{

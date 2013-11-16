@@ -89,7 +89,7 @@ class Game
 		$sql = MyPDO::get();
 
 		/* On selectionne les jeux valides et appartenant au joueur. */
-		if( $list == true ) {
+		if( $list == true && $userId != 0 ) {
 			$rq = $sql->prepare('
 				SELECT *
 				FROM mod_games
@@ -100,6 +100,17 @@ class Game
 			');
 			$rq->bindValue('userId', (int)$userId, PDO::PARAM_INT);
 			$rq->bindValue('true', (int)1, PDO::PARAM_INT);
+			$rq->execute() or die(print_r($rq->errorInfo()));
+			
+			while( $row = $rq->fetch() )
+				$array[] = $row;
+		}
+		else if( $list == true && $userId == 0 ) {
+			$rq = $sql->prepare('
+				SELECT *
+				FROM mod_games
+				ORDER BY mod_games.id DESC
+			');
 			$rq->execute() or die(print_r($rq->errorInfo()));
 			
 			while( $row = $rq->fetch() )

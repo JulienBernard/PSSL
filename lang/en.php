@@ -72,15 +72,24 @@
 	$admin["usersBodyTitle12"] = "Users";
 	$admin["usersBodyTitle22"] = "Data";
 	$admin["pagesLinkCreate"] = "Create a new page";
+	$admin["gamesLinkCreate"] = "Add a game to the list";
 	$admin["visible"] = "Visible";
 	$admin["hidden"] = "Hidden";
-	$admin["navLinkReturnPage"] = "Go to pages list";	
+	$admin["navLinkReturnPage"] = "Go to pages list";
+	$admin["navLinkReturnGame"] = "Go to games list";	
 	$admin["navLinkReturnMain"] = "Go to main page";	
-
+	$admin["IndexPage"] = "Administrate your pages";
+	$admin["IndexUsers"] = "Check & manage users";
+	$admin["IndexGames"] = "Validate the games list";
+	$admin["IndexPagesText"] = "Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.";
+	$admin["IndexUsersText"] = "Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.";
+	$admin["IndexGamesText"] = "Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.";
+	
 	/* General */
 	$general["deconnection"] = "You are successfully disconnected from the website.";
 	$general["users"] = "users";
 	$general["pages"] = "pages";
+	$general["games"] = "games";
 	$general["fastNavigation"] = "Fast Navigation";
 	$general["lastUpdateThe"] = "Last update the";
 	$general["by"] = "By";
