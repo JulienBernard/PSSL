@@ -42,7 +42,7 @@
 								}
 								else {
 							?>
-									<div class="center" style="width: 25%;">
+									<div style="width: 25%; margin: auto;">
 										<select id="customDropdown1" name="participate" class="medium">
 											<option SELECTED><?php echo $Lang->getLoginText('IParticipate'); ?></option>
 											<option><?php echo $Lang->getLoginText('INotParticipate'); ?></option>

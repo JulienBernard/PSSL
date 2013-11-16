@@ -88,7 +88,24 @@
 	$general["oupsText"] = " Vous n'avez pas les droits nécessaires pour accèder à cette page.<br />Merci de <a href='index.php'>retourner à la page d'accueil</a>. ";
 	$general["emailValid"] = "Votre mail doit être valide ! (INACTIF POUR L'INSTANT)";
 	$general["emailUse"] = "Votre mail sera uniquement utilisé pour vous prévenir des prochaines événements,<br />mais surtout pour vous demander de valider votre inscription à cette LAN !";
-	
+	$general["newbie"] = "Débutant";
+	$general["level"] = "Mon niveau";
+	$general["low"] = "Faible";
+	$general["medium"] = "Moyen";
+	$general["high"] = "Haut";
+	$general["pro"] = "Pro";
+	$general["IAm"] = "Je suis ...";
+	$general["CallMe"] = "Je me fais appeler ...";
+	$general["LastActivity"] = "Ma dernière activité date du ...";
+	$general["IPlayThisGame"] = "Je joue a ce jeu : il est génial !";
+	$general["MyLevelIs"] = "Je penses avoir ce niveau";
+	$general["AddOrSuggest"] = "Ajouter ou suggérer un jeu";
+	$general["AddGame"] = "Ajouter à ma liste";
+	$general["SuggestGame"] = "Suggérer ce jeu";
+	$general["DataPrivate"] = "Données privées";
+	$general["DataPublic"] = "Données publiques";
+	$general["AllGames"] = "Vous possèdez tous les jeux présents à nos LANs.<br />Vous pouvez en proposer via le formulaire sur la droite de ce paragraphe.";
+
 	/* Index */
 	$index["stay"] = "Restez connectés !";
 	$index["youtube"] = "Nous sommes sur Youtube !";

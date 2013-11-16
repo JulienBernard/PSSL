@@ -82,34 +82,37 @@ class Game
 	/** Récupère une liste des jeux (selon $size [DEFAUT : 10])
 	 * @param int $size				:	taille de la liste (plus elle est grande, plus la requête sera longue à effectuer !)
 	 * @param int $startPosition	:	position de départ
+	 * @param int $userId			:	id de l'utilisateur
+	 * @param boolean $list			:	si true, affiche la liste des jeux de l'utilisateur, sinon ce qu'il n'a pas !
 	 */
-	public static function getGamesList( $startPosition = 0, $size = 10, $admin = false ) {
+	public static function getGamesList( $startPosition = 0, $size = 10, $userId, $list = false ) {
 		$sql = MyPDO::get();
 
-		/* Si on arrive sur la page de classement "principale",
-			on effectue une recherche sur la moitié supérieur aux nombre d'habitants
-			moyen retournée par MySql [SELECT AVG(pl_population)] */
-		if( $admin == true ) {
+		/* On selectionne les jeux valides et appartenant au joueur. */
+		if( $list == true ) {
 			$rq = $sql->prepare('
 				SELECT *
 				FROM mod_games
+				JOIN user_to_game ON user_to_game.userId=:userId
+				WHERE valide=:true
+				AND user_to_game.gameId=mod_games.id
 				ORDER BY mod_games.id DESC
-				LIMIT :startPosition, :size
 			');
-			$rq->bindValue('startPosition', (int)$startPosition, PDO::PARAM_INT);
-			$rq->bindValue('size', (int)$size, PDO::PARAM_INT);
+			$rq->bindValue('userId', (int)$userId, PDO::PARAM_INT);
+			$rq->bindValue('true', (int)1, PDO::PARAM_INT);
 			$rq->execute() or die(print_r($rq->errorInfo()));
 			
 			while( $row = $rq->fetch() )
 				$array[] = $row;
 		}
+		/* On selectionne les jeux valides et qui n'appartiennent pas au joueur. */
 		else if( $startPosition == 0 )
 		{
 			$rq = $sql->prepare('
 				SELECT *
 				FROM mod_games
 				WHERE valide=:true
-				AND mod_games.id > (SELECT AVG(id) FROM mod_games)
+				AND mod_games.id > (SELECT AVG(id) FROM mod_games JOIN user_to_game ON user_to_game.gameId=mod_games.id)
 				ORDER BY mod_games.id DESC
 				LIMIT :startPosition, :size
 			');
@@ -132,6 +135,7 @@ class Game
 					SELECT *
 					FROM mod_games
 					WHERE valide=:true
+					AND mod_games.id!=(SELECT gameId FROM user_to_game WHERE user_to_game.gameId=mod_games.id)
 					ORDER BY mod_games.id DESC
 					LIMIT :startPosition, :size
 				');
@@ -147,11 +151,14 @@ class Game
 		else {
 			$rq = $sql->prepare('
 				SELECT *
-				FROM mod_games
-				WHERE valide=:true
-				ORDER BY mod_games.id DESC
-				LIMIT :startPosition, :size
+					FROM mod_games
+					JOIN user_to_game ON user_to_game.userId=:userId
+					WHERE valide=:true
+					AND user_to_game.gameId!=mod_games.id
+					ORDER BY mod_games.id DESC
+					LIMIT :startPosition, :size
 			');
+			$rq->bindValue('userId', (int)$userId, PDO::PARAM_INT);
 			$rq->bindValue('startPosition', (int)$startPosition, PDO::PARAM_INT);
 			$rq->bindValue('size', (int)$size, PDO::PARAM_INT);
 			$rq->bindValue('true', (int)1, PDO::PARAM_INT);
