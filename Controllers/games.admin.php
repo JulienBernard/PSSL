@@ -66,7 +66,7 @@
 		if( isset($_POST['update']) )
 		{
 			$pageId = htmlspecialchars($_POST['pageId']);
-			$name = htmlspecialchars($_POST['name']);
+			$name = htmlspecialchars(strtolower($_POST['name']));
 			$pitch = htmlspecialchars($_POST['pitch']);
 			$players = htmlspecialchars($_POST['players']);
 			$image = htmlspecialchars($_POST['image']);
@@ -84,13 +84,13 @@
 					if( $sendReturn )
 						$Engine->setSuccess("The game '".$name." have been updated. Her validity is '".$valide."'.");
 					else
-						$Engine->setError("An error has been catch.");
+						$Engine->setError("This game cannot be linked with this page because it's already used by another game. The name need to be unique too.");
 				}
 				else
 					$Engine->setError("The title must to be greater than 3 characters. You need to provide the text field.");
 			}
 			else
-				$Engine->setError("You must provide the following informations: title, visiblity and text.");
+				$Engine->setError("You must provide the following informations: title.");
 		}
 			
 		if( $Engine->getError() != null || $Engine->getSuccess() != null || $Engine->getInfo() != null )

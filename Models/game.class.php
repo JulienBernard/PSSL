@@ -216,7 +216,7 @@ class Game
 		$req = $sql->prepare('INSERT INTO mod_games VALUES("", :pageId, :name, :pitch, :players, :image, :valide)');
 		$result = $req->execute( array(
 			':pageId' => (int)999999+$userId,	// Une seule proposition par joueur en même temps
-			':name' => (String)$name,
+			':name' => (String)$name,			// Nom unique
 			':pitch' => (String)"Description à venir",
 			':players' => (String)"1v1",
 			':image' => (String)"lol.jpeg",
