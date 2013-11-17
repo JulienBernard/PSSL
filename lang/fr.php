@@ -73,8 +73,11 @@
 	$admin["usersBodyTitle22"] = "Données";
 	$admin["usersBodyTitle13"] = "Liste des jeux";
 	$admin["usersBodyTitle23"] = "Données";
+	$admin["usersBodyTitle14"] = "Liste des tournois";
+	$admin["usersBodyTitle24"] = "Données";
 	$admin["pagesLinkCreate"] = "Créer une nouvelle page";
 	$admin["gamesLinkCreate"] = "Ajouter un jeu à la liste";
+	$admin["tournamentsLinkCreate"] = "Ajouter un tournoi à la liste";
 	$admin["visible"] = "Visible";
 	$admin["hidden"] = "Caché";
 	$admin["navLinkReturnPage"] = "Revenir à la liste des pages";	
@@ -83,9 +86,11 @@
 	$admin["IndexPages"] = "Administrer vos pages";
 	$admin["IndexUsers"] = "Gérer les utilisateurs";
 	$admin["IndexGames"] = "Controler la liste des jeux";
+	$admin["IndexTournament"] = "Préparer les tournois";
 	$admin["IndexPagesText"] = "La gestion de vos pages vous permet de créer, modifier et supprimer les différentes pages visiblent sur le site. Un éditeur complet vous aide à rédiger et à structurer facilement vos pages.";
 	$admin["IndexUsersText"] = "Chaque création de compte est reporté ici. Vous pouvez vérifier le contenu du profil de chaque utilisateur, modifier son mot de passe ou lui attribuer un autre rang.";
 	$admin["IndexGamesText"] = "Chaque utilisateur enregistré peut proposer un jeu aux administrateurs. Vous pouvez ainsi controler la liste des jeux présent à vos LANs, modifier leur présentation et leur attribuer une page spécifique.";
+	$admin["IndexTournamentText"] = "Composante phare des vos LANs, vous pouvez créer et lister les joueurs présents à vos tournois pour une gestion simplifiée des différentes parties à organiser.";
 
 	/* General */
 	$general["deconnection"] = "Vous avez été correctement déconnecté du site.";

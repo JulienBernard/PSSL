@@ -2,7 +2,7 @@
 		<div class="row">
 			<div class="large-12 small-12">
 				<p class="center">
-					<img src="./img/admin/page.png" alt="Pages" /><br />
+					<img src="./img/admin/game.png" alt="Games" /><br />
 					<?php echo "".ucwords($User->getName()).", "; echo $Lang->getAdminText('generalAccountType'); echo " '".$User->getRankText()."'"; ?>
 				</p>
 			</div>
@@ -76,18 +76,18 @@
 						if( $countGames > $size )
 						{
 							?>
-								<dd <?php if( !isset($_GET['p']) ) echo 'class="active"'; ?>><a href="pages.php">1</a></dd>
+								<dd <?php if( !isset($_GET['p']) ) echo 'class="active"'; ?>><a href="games.php">1</a></dd>
 							<?php
 							$countPage = ceil($countGames / $size);
 							for( $i = 1 ; $i <= $countPage ; $i++ )
 							{
 								?>
-								<dd <?php if( isset($_GET['p']) && $_GET['p'] == $i ) echo 'class="active"'; ?>><a href="pages.php?p=<?php echo $i; ?>"><?php echo $i+1; ?></a></dd>
+								<dd <?php if( isset($_GET['p']) && $_GET['p'] == $i ) echo 'class="active"'; ?>><a href="games.php?p=<?php echo $i; ?>"><?php echo $i+1; ?></a></dd>
 								<?php
 							}
 						}
 						else {
-							?><dd <?php if( !isset($_GET['p']) ) echo 'class="active"'; ?>><a href="pages.php">1</a></dd><?php
+							?><dd <?php if( !isset($_GET['p']) ) echo 'class="active"'; ?>><a href="games.php">1</a></dd><?php
 						} ?>
 				</dl>
 			</div>
