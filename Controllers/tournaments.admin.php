@@ -13,7 +13,7 @@
 		
 	$User = new User( $_SESSION['SpaceEngineConnected'] );
 	$tournamentsList = Tournament::getTournamentsList( $start, $size, 0, true);
-
+	
 	if( isset($_GET['create']) )
 	{
 		include_once(PATH_MODELS."game.class.php");
@@ -28,20 +28,25 @@
 			$fields = array('title' => $title, 'gameId' => $gameId);
 			$return = $Engine->checkParams( $fields );
 			
-			if( $return == 1 ) {		
+			if( $return == 1 ) {
 				$title = (String)htmlspecialchars(strtolower($_POST['title']));
 				$gameId = (int)htmlspecialchars(strtolower($_POST['game']));
-
-				$Tournament = Tournament::addTournament( $title, $gameId );
-				if( $Tournament == 1 ) {
-					$Engine->setSuccess($Lang->getErrorText('suggestSuccess'));
-					?><script type="text/javascript">redirection(3, 'index.php');</script><?php
+				
+				if( Tournament::checkStringLength( $title, 3, 100 ) )
+				{
+					$Tournament = Tournament::addTournament( $title, $gameId );
+					if( $Tournament == 1 ) {
+						$Engine->setSuccess($Lang->getErrorText('tournamentSuccess'));
+						?><script type="text/javascript">redirection(3, 'tournaments.php');</script><?php
+				}
+				else
+					$Engine->setError($Lang->getErrorText('tournamentError1'));
+				}
+				else if( $Tournament == 0 )
+					$Engine->setError($Lang->getErrorText('tournamentError'));
 			}
-			else if( $Tournament == 0 )
-				$Engine->setError($Lang->getErrorText('suggestError'));
-		}
-		else
-			$Engine->setInfo("Un des champs est vide.");
+			else
+				$Engine->setInfo("Un des champs est vide.");
 		}
 		
 		if( $Engine->getError() != null || $Engine->getSuccess() != null || $Engine->getInfo() != null )
@@ -58,43 +63,40 @@
 		else
 			$id = 0;
 				
+		include_once(PATH_MODELS."game.class.php");
+		$gamesList = Game::getGamesList( 0, 999, 0, false );
 		$Tournament = new Tournament($id);
 		
-		$pageId = $Tournament->getPageId();
+		$id = $Tournament->getId();
+		$gameId = $Tournament->getGameId();
 		$name = $Tournament->getName();
-		$pitch = $Tournament->getPitch();
-		$players = $Tournament->getPlayers();
-		$image = $Tournament->getImage();
 		$valide = $Tournament->getValide();
 	
 		if( isset($_POST['update']) )
 		{
-			$pageId = htmlspecialchars($_POST['pageId']);
+			$gameId = (int)htmlspecialchars($_POST['gameId']);
 			$name = htmlspecialchars(strtolower($_POST['name']));
-			$pitch = htmlspecialchars($_POST['pitch']);
-			$players = htmlspecialchars($_POST['players']);
-			$image = htmlspecialchars($_POST['image']);
 			$valide = htmlspecialchars($_POST['valide']);
 			
-			$fields = array('pageId' => $pageId, 'name' => $name, 'pitch' => $pitch, 'players' => $players, 'image' => $image, 'valide' => $valide);
+			$fields = array('gameId' => $gameId, 'name' => $name, 'valide' => $valide);
 			$return = $Engine->checkParams( $fields );
 			
 			/* Champs valides */
 			if( $return == 1  )
 			{
-				if( Tournament::checkStringLength( $name ) && Tournament::checkStringLength( $players, 1, 50 ) )
+				if( Tournament::checkStringLength( $name, 3, 100 ) )
 				{
-					$sendReturn = Tournament::updateTournament( $id, $pageId, $name, $pitch, $players, $image, $valide);
+					$sendReturn = Tournament::updateTournament( $id, $gameId, $name, $valide);
 					if( $sendReturn )
-						$Engine->setSuccess("The Tournament '".$name." have been updated. Her validity is '".$valide."'.");
+						$Engine->setSuccess("The tournament '".$name." have been updated. Her validity is '".$valide."'.");
 					else
-						$Engine->setError("This Tournament cannot be linked with this page because it's already used by another Tournament. The name need to be unique too.");
+						$Engine->setError($Lang->getErrorText('tournamentError3'));
 				}
 				else
-					$Engine->setError("The title must to be greater than 3 characters. You need to provide the text field.");
+					$Engine->setError($Lang->getErrorText('tournamentError1'));
 			}
 			else
-				$Engine->setError("You must provide the following informations: title.");
+				$Engine->setError($Lang->getErrorText('tournamentError2'));
 		}
 			
 		if( $Engine->getError() != null || $Engine->getSuccess() != null || $Engine->getInfo() != null )

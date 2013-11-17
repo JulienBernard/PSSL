@@ -64,6 +64,11 @@
 	$error["addError4"] = "Une importante erreur est survenue : impossible de vous ajouter dans la base de données !";
 	$error["suggestSuccess"] = "Le jeu a bien été proposé aux administrateurs. Merci de votre participation !<br />La validation d'un jeu (incluant la création de sa propre page) peut prendre quelque jours, merci de votre patience.";
 	$error["suggestError"] = "Une erreur semble être survenue :<br />- Vous ne pouvez proposer qu'un seul jeu à la fois,<br />- Ce jeu a déjà été proposé par un autre utilisateur.";
+	$error["tournamentSuccess"] =  "Tournoi créé avec succès. <a style='color: black;' href='tournaments.php'>Si la redirection ne se fait pas, cliquez ici</a> !";
+	$error["tournamentError"] = "Une erreur importante semble être survenue. Merci de contacter l'administrateur du site.";
+	$error["tournamentError1"] = "Une erreur semble être survenue :<br />- Le NOM doit être supérieur à 3 caractères.<br />- Le NOM doit être unique et ne pas déjà existé";
+	$error["tournamentError2"] = "Vous devez renseigner les champs suivants : nom du tournoi, jeu du tournoi";
+	$error["tournamentError3"] = "Les noms des tournois doivent être unique : ce nom est déja utilisé.";
 
 	/* admin */
 	$admin["generalAccountType"] = "vous êtes connecté en tant que";
@@ -97,6 +102,7 @@
 	$general["users"] = "utilisateurs";
 	$general["pages"] = "pages";
 	$general["games"] = "jeux";
+	$general["tournaments"] = "tournois";
 	$general["fastNavigation"] = "Navigation";
 	$general["lastUpdateThe"] = "Mise à jour le";
 	$general["by"] = "Par";

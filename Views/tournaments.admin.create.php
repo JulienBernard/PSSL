@@ -13,7 +13,7 @@
 				<form action="tournaments.php?create" method="POST" class="custom">
 					<div class="row collapse">
 						<div class="small-4 large-4 columns">
-							<span class="prefix radius"><label for="title">Titre du jeu</label></span>
+							<span class="prefix radius"><label for="title">Nom du tournoi</label></span>
 						</div>
 						<div class="small-8 large-8 columns">
 							<input type="text" name="title" id="title" placeholder="(Required) Enter the name of your game ..." <?php if( isset($title) ) echo 'value="'.$title.'"'; ?>>

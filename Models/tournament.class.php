@@ -2,6 +2,7 @@
 
 class Tournament
 {
+	private $_id;
 	private $_gameId;
 	private $_name;
 	private $_valide;
@@ -15,11 +16,16 @@ class Tournament
 			throw new Exception('You must provide an integer value!');
 		}
 		$sqlData = $this->getTournamentData( $id );
+		$this->_id = $sqlData['id'];
 		$this->_gameId = $sqlData['gameId'];
-		$this->_name = $sqlData['name'];
+		$this->_name = $sqlData['title'];
 		$this->_valide = $sqlData['valide'];
 	}
 	
+	public function getId()
+	{
+		return $this->_id;
+	}
 	public function getGameId()
 	{
 		return $this->_gameId;
@@ -38,16 +44,16 @@ class Tournament
 	 * @param int gameId	:	id du jeu du tournois
 	 * @return array or 0 (error)
 	 */
-	private function getTournamentData( $gameId ) {
+	private function getTournamentData( $id ) {
 		
 		/* Validation des paramètres */
-		if( !is_numeric($gameId) || $gameId < 0 )
+		if( !is_numeric($id) || $id < 0 )
 			return false;
 		
 		$sql = MyPDO::get();
 
-		$rq = $sql->prepare('SELECT * FROM mod_tournaments WHERE gameId=:gameId');
-        $data = array(':gameId' => $gameId );
+		$rq = $sql->prepare('SELECT * FROM mod_tournaments WHERE id=:id');
+        $data = array(':id' => $id );
 		$rq->execute($data);
 		
 		if( $rq->rowCount() == 0 ) throw new Exception('An hugh error was catch: impossible to get data from this tournament!');
@@ -72,7 +78,7 @@ class Tournament
 				JOIN user_to_tournament ON user_to_tournament.userId=:userId
 				WHERE valide=:true
 				AND user_to_tournament.tournamentId=mod_tournaments.gameId
-				ORDER BY mod_tournaments.gameId DESC
+				ORDER BY mod_tournaments.id DESC
 			');
 			$rq->bindValue('userId', (int)$userId, PDO::PARAM_INT);
 			$rq->bindValue('true', (int)1, PDO::PARAM_INT);
@@ -83,9 +89,10 @@ class Tournament
 		}
 		else if( $list == true && $userId == 0 ) {
 			$rq = $sql->prepare('
-				SELECT *
+				SELECT mod_games.name, mod_games.pageId, mod_tournaments.id, mod_tournaments.gameId, mod_tournaments.title, mod_tournaments.valide
 				FROM mod_tournaments
-				ORDER BY mod_tournaments.gameId DESC
+				JOIN mod_games ON mod_games.id=mod_tournaments.gameId
+				ORDER BY mod_tournaments.id DESC
 			');
 			$rq->execute() or die(print_r($rq->errorInfo()));
 			
@@ -100,7 +107,7 @@ class Tournament
 				FROM mod_tournaments
 				WHERE valide=:true
 				AND mod_tournaments.gameId > (SELECT AVG(id) FROM mod_tournaments JOIN user_to_tournament ON user_to_tournament.tournamentId=mod_tournaments.gameId)
-				ORDER BY mod_tournaments.gameId DESC
+				ORDER BY mod_tournaments.id DESC
 				LIMIT :startPosition, :size
 			');
 			$rq->bindValue('startPosition', (int)$startPosition, PDO::PARAM_INT);
@@ -123,7 +130,7 @@ class Tournament
 					FROM mod_tournaments
 					WHERE valide=:true
 					AND mod_tournaments.gameId!=(SELECT TournamentId FROM user_to_tournament WHERE user_to_tournament.tournamentId=mod_tournaments.gameId)
-					ORDER BY mod_tournaments.gameId DESC
+					ORDER BY mod_tournaments.id DESC
 					LIMIT :startPosition, :size
 				');
 				$rq->bindValue('startPosition', (int)$startPosition, PDO::PARAM_INT);
@@ -142,7 +149,7 @@ class Tournament
 					JOIN user_to_tournament ON user_to_tournament.userId=:userId
 					WHERE valide=:true
 					AND user_to_tournament.tournamentId!=mod_tournaments.gameId
-					ORDER BY mod_tournaments.gameId DESC
+					ORDER BY mod_tournaments.id DESC
 					LIMIT :startPosition, :size
 			');
 			$rq->bindValue('userId', (int)$userId, PDO::PARAM_INT);
@@ -189,7 +196,7 @@ class Tournament
 			return false;
 			
 		$sql = MyPDO::get();
-		$req = $sql->prepare('INSERT INTO mod_tournaments VALUES(:gameId, :name, :valide)');
+		$req = $sql->prepare('INSERT INTO mod_tournaments VALUES("", :gameId, :name, :valide)');
 		$result = $req->execute( array(
 			':gameId' => (int)$gameId,
 			':name' => (String)$name,
@@ -215,7 +222,7 @@ class Tournament
 			return false;
 			
 		$sql = MyPDO::get();
-		$req = $sql->prepare('INSERT INTO user_to_tournament VALUES(:userId, :gameId, :team)');
+		$req = $sql->prepare('INSERT INTO user_to_tournament VALUES("", :userId, :gameId, :team)');
 		$result = $req->execute( array(
 			':userId' => (int)$userId,
 			':gameId' => (int)$gameId,
@@ -228,20 +235,17 @@ class Tournament
 			return 1;
 	}
 	
-	/** Fonction qui modifie un jeu dans la base de données.
-		*@param int $id			:	id du jeu
-		*@param int $pageId		:	id de la fiche du jeu
-		*@param String $name	:	nom du jeu
-		*@param String $pitch	:	courte description
-		*@param String $players	:	1v1, 2v2, 3v3 etc.
-		*@param String $image	:	nom de l'image dans le dossier /img
+	/** Fonction qui modifie un tournoi dans la base de données.
+		*@param int $id			:	id du tournois
+		*@param int $gameId		:	id du jeu du tournoi
+		*@param String $name	:	nom du tournoi
 		*@param int $valide		:	si tout est remplis, fiche valide !
 		Retourne 1 si valide, 0 si non
 	*/
-	public static function updateTournament( $id, $pageId, $name, $pitch, $players, $image, $valide )
+	public static function updateTournament( $id, $gameId, $name, $valide )
 	{
 		/* Validation des paramètres */
-		if( !is_numeric($id) || !is_numeric($pageId) || !is_string($name) || !is_string($pitch) || !is_string($players) || !is_string($image) )
+		if( !is_numeric($gameId) || !is_string($name) )
 			return false;
 			
 		if( $valide == "true" )
@@ -250,15 +254,12 @@ class Tournament
 			$valide = 0;
 			
 		$sql = MyPDO::get();
-		$req = $sql->prepare('UPDATE mod_tournaments SET pageId=:pageId, name=:name, pitch=:pitch, players=:players, image=:image, valide=:valide WHERE id=:id');
+		$req = $sql->prepare('UPDATE mod_tournaments SET gameId=:gameId, title=:name, valide=:valide WHERE id=:id');
 		$result = $req->execute( array(
-			':pageId' => (int)$pageId,
+			':id' => (int)$id,
+			':gameId' => (int)$gameId,
 			':name' => (String)$name,
-			':pitch' => (String)$pitch,
-			':players' => (String)$players,
-			':image' => (String)$image,
-			':valide' => (string)$valide,
-			':id' => (int)$id
+			':valide' => (string)$valide
 			));
 		// Si PDO renvoie une erreur
 		if( !$result )

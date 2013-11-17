@@ -19,8 +19,8 @@
 								if( $User->getRank() == 3 ) {
 							?>
 								<tr>
-									<td class="center large-2 columns"><?php echo (int)$tournamentsList[$i]['gameId']; ?></td>
-									<td class="center large-5 columns"><a href="tournaments.php?update=<?php echo (int)$tournamentsList[$i]['gameId']; ?>"><?php echo (String)ucfirst($tournamentsList[$i]['name']); ?></a></td>
+									<td class="center large-2 columns"><acronym title="Have a look!"><a href="pages.php?id=<?php echo (int)$tournamentsList[$i]['pageId']; ?>&&visitor"><img src="./img/gallery.png" style="height: 20px;" alt="See" /></a></acronym></td>
+									<td class="center large-5 columns"><a href="tournaments.php?update=<?php echo (int)$tournamentsList[$i]['id']; ?>"><?php echo (String)ucfirst($tournamentsList[$i]['title']); ?></a></td>
 									<td class="smaller center large-3 columns"><?php if( (String)$tournamentsList[$i]['valide'] == 1 ) echo $Lang->getAdminText('visible'); else echo $Lang->getAdminText('hidden'); ?></td>
 									<td class="smaller center large-2 columns"><a href="#" data-dropdown="dropFeature2">Delete!</a></td>
 								</tr>
@@ -28,8 +28,8 @@
 								} else {
 							?>
 								<tr>
-									<td class="center large-3 columns"><?php echo (int)$tournamentsList[$i]['gameId']; ?></td>
-									<td class="center large-6 columns"><a href="tournaments.php?update=<?php echo (int)$tournamentsList[$i]['gameId']; ?>"><?php echo (String)ucfirst($tournamentsList[$i]['name']); ?></a></td>
+									<td class="center large-3 columns"><acronym title="Have a look!"><a href="pages.php?id=<?php echo (int)$tournamentsList[$i]['pageId']; ?>&&visitor"><img src="./img/gallery.png" style="height: 20px;" alt="See" /></a></acronym></td>
+									<td class="center large-6 columns"><a href="tournaments.php?update=<?php echo (int)$tournamentsList[$i]['id']; ?>"><?php echo (String)ucfirst($tournamentsList[$i]['title']); ?></a></td>
 									<td class="smaller center large-3 columns"><?php if( (String)$tournamentsList[$i]['valide'] == 1 ) echo $Lang->getAdminText('visible'); else echo $Lang->getAdminText('hidden'); ?></td>
 								</tr>
 							<?php
@@ -47,7 +47,7 @@
 						if( $User->getRank() == 3 ) {
 						?>
 						<tr>
-							<th class="center large-2 columns">ID</th>
+							<th class="center large-2 columns">Page du jeu</th>
 							<th class="center large-5 columns">Title</th>
 							<th class="smaller center large-3 columns">Visibility</th>
 							<th class="smaller center large-2 columns">Option</th>
@@ -56,7 +56,7 @@
 							} else {
 						?>
 						<tr>
-							<th class="center large-3 columns">ID</th>
+							<th class="center large-3 columns">Page du jeu</th>
 							<th class="center large-6 columns">Title</th>
 							<th class="smaller center large-3 columns">Visibility</th>
 						</tr>
@@ -100,7 +100,7 @@
 				
 				<div class="large-12">
 					<p class="center">
-						<?php echo Tournament::countTournaments(); ?> <?php echo $Lang->getGeneralText('games'); ?>
+						<?php echo Tournament::countTournaments(); ?> <?php echo $Lang->getGeneralText('tournaments'); ?>
 					</p>
 				</div>
 				<div class="large-4 small-4 columns">
