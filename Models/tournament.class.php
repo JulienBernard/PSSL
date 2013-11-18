@@ -61,7 +61,7 @@ class Tournament
 		return $row;
 	}
 	
-	/** Récupère une liste des jeux (selon $size [DEFAUT : 10])
+	/** Récupère une liste des tournois (selon $size [DEFAUT : 10])
 	 * @param int $size				:	taille de la liste (plus elle est grande, plus la requête sera longue à effectuer !)
 	 * @param int $startPosition	:	position de départ
 	 * @param int $userId			:	id de l'utilisateur
@@ -70,14 +70,14 @@ class Tournament
 	public static function getTournamentsList( $startPosition = 0, $size = 10, $userId, $list = false ) {
 		$sql = MyPDO::get();
 
-		/* On selectionne les jeux valides et appartenant au joueur. */
+		/* On selectionne les tournois valides et appartenant au joueur. */
 		if( $list == true && $userId != 0 ) {
 			$rq = $sql->prepare('
 				SELECT *
 				FROM mod_tournaments
 				JOIN user_to_tournament ON user_to_tournament.userId=:userId
 				WHERE valide=:true
-				AND user_to_tournament.tournamentId=mod_tournaments.gameId
+				AND user_to_tournament.tournamentId=mod_tournaments.id
 				ORDER BY mod_tournaments.id DESC
 			');
 			$rq->bindValue('userId', (int)$userId, PDO::PARAM_INT);
@@ -99,14 +99,13 @@ class Tournament
 			while( $row = $rq->fetch() )
 				$array[] = $row;
 		}
-		/* On selectionne les jeux valides et qui n'appartiennent pas au joueur. */
+		/* On selectionne les tournois valides et qui n'appartiennent pas au joueur. */
 		else if( $startPosition == 0 )
 		{
 			$rq = $sql->prepare('
 				SELECT *
 				FROM mod_tournaments
 				WHERE valide=:true
-				AND mod_tournaments.gameId > (SELECT AVG(id) FROM mod_tournaments JOIN user_to_tournament ON user_to_tournament.tournamentId=mod_tournaments.gameId)
 				ORDER BY mod_tournaments.id DESC
 				LIMIT :startPosition, :size
 			');
@@ -129,7 +128,6 @@ class Tournament
 					SELECT *
 					FROM mod_tournaments
 					WHERE valide=:true
-					AND mod_tournaments.gameId!=(SELECT TournamentId FROM user_to_tournament WHERE user_to_tournament.tournamentId=mod_tournaments.gameId)
 					ORDER BY mod_tournaments.id DESC
 					LIMIT :startPosition, :size
 				');
@@ -138,6 +136,7 @@ class Tournament
 				$rq->bindValue('true', (int)1, PDO::PARAM_INT);
 				$rq->execute() or die(print_r($rq->errorInfo()));
 				
+				$array = array();
 				while( $row = $rq->fetch() )
 					$array[] = $row;
 			}
@@ -148,7 +147,7 @@ class Tournament
 					FROM mod_tournaments
 					JOIN user_to_tournament ON user_to_tournament.userId=:userId
 					WHERE valide=:true
-					AND user_to_tournament.tournamentId!=mod_tournaments.gameId
+					AND user_to_tournament.tournamentId!=mod_tournaments.id
 					ORDER BY mod_tournaments.id DESC
 					LIMIT :startPosition, :size
 			');
@@ -166,6 +165,29 @@ class Tournament
 			return $array;
 		else
 			return 0;
+	}
+	
+	/**
+	 * Vérifie si l'utilisateur participe déjà à un tournois
+	 * @param int userId
+	 */
+	public static function checkUserTournamentExist( $userId ) {
+		
+		/* Validation des paramètres */
+		if( !is_numeric($userId) || empty($userId) )
+			return false;
+			
+		$sql = MyPDO::get();
+		$rq = $sql->prepare('SELECT id FROM user_to_tournament WHERE userId=:userId');
+		$data = array(':userId' => (int)$userId);
+		$rq->execute($data);
+		
+		if( $rq->rowCount() != 0)
+		{
+			$row = $rq->fetch();
+			return (int)$row['id'];
+		}
+		return false;
 	}
 	
 	/**
@@ -210,22 +232,54 @@ class Tournament
 	}
 	
 	/** Fonction qui lie un joueur à un tournoi.
+		*@param int $tournamentId	:	id du tournoi (table mod_tournaments)
+		*@param int $team	:	equipe du joueur s'il en a une
+		*@param int $userId	:	id de l'utilisateur
+		Retourne 1 si valide, 0 si non
+	*/
+	public static function addTournamentToUserList( $tournamentId, $team, $userId )
+	{
+		/* Validation des paramètres */
+		if( !is_numeric($tournamentId) || !is_string($team) || !is_numeric($userId) )
+			return false;
+			
+		if( empty($team) )
+			$team = "aucune";
+			
+		$sql = MyPDO::get();
+		$req = $sql->prepare('INSERT INTO user_to_tournament VALUES("", :userId, :tournamentId, :team)');
+		$result = $req->execute( array(
+			':userId' => (int)$userId,
+			':tournamentId' => (int)$tournamentId,
+			':team' => (String)$team
+			));
+		// Si PDO renvoie une erreur
+		if( !$result )
+			return 0;
+		else
+			return 1;
+	}
+	
+	/** Fonction qui modifie le tournoi d'un joueur
 		*@param int $gameId	:	id du jeu (table mod_tournaments)
 		*@param int $team	:	equipe du joueur s'il en a une
 		*@param int $userId	:	id de l'utilisateur
 		Retourne 1 si valide, 0 si non
 	*/
-	public static function addTournamentToUserList( $gameId, $team, $userId )
+	public static function changeTournamentToUserList( $tournamentId, $team, $userId )
 	{
 		/* Validation des paramètres */
-		if( !is_numeric($gameId) || !is_numeric($level) || !is_numeric($userId) )
+		if( !is_numeric($tournamentId) || !is_string($team) || !is_numeric($userId) )
 			return false;
 			
+		if( empty($team) )
+			$team = "aucune";
+			
 		$sql = MyPDO::get();
-		$req = $sql->prepare('INSERT INTO user_to_tournament VALUES("", :userId, :gameId, :team)');
+		$req = $sql->prepare('UPDATE user_to_tournament SET tournamentId=:tournamentId, team=:team WHERE userId=:userId');
 		$result = $req->execute( array(
 			':userId' => (int)$userId,
-			':gameId' => (int)$gameId,
+			':tournamentId' => (int)$tournamentId,
 			':team' => (String)$team
 			));
 		// Si PDO renvoie une erreur

@@ -5,8 +5,8 @@
 			include_once(PATH_MODELS."user.class.php");
 			include_once(PATH_MODELS."game.class.php");
 			$User = new User( $_SESSION['SpaceEngineConnected'] );
-			$gamesList = Game::getGamesList( 0, 999, $User->getId(), false );
-			$userGamesList = Game::getGamesList( 0, 999, $User->getId(), true );
+			$gamesList = Game::getGamesList( 0, 999, (int)$User->getId(), false );
+			$userGamesList = Game::getGamesList( 0, 999, (int)$User->getId(), true );
 		?>
 		<h2><?php echo $Lang->getHeaderText('account'); ?></h2>
 		<p class="lead center"><?php echo $Lang->getGeneralText('DataPrivate'); ?></p>
@@ -33,21 +33,25 @@
 		<table style="margin:auto; width: 50%;">
 			<tbody>
 				<?php
-					for( $i = 0 ; $i < count($userGamesList) ; $i++ )
+					if( $userGamesList != 0 ) 
 					{
-						if( $userGamesList[$i]['level'] == 1 )
-							$level = 'newbie';
-						elseif( $userGamesList[$i]['level'] == 2 )
-							$level = 'low';
-						elseif( $userGamesList[$i]['level'] == 3 )
-							$level = 'medium';
-						elseif( $userGamesList[$i]['level'] == 4 )
-							$level = 'high';
-						elseif( $userGamesList[$i]['level'] == 5 )
-							$level = 'pro';
-
-						echo "<tr>\n<td style='text-align: center;'>".ucfirst($userGamesList[$i]['name'])."</td><td style='text-align: center;'>".ucfirst($Lang->getGeneralText($level))."</td></tr>\n";
+						for( $i = 0 ; $i < count($userGamesList) ; $i++ )
+						{
+							if( $userGamesList[$i]['level'] == 1 )
+								$level = 'newbie';
+							elseif( $userGamesList[$i]['level'] == 2 )
+								$level = 'low';
+							elseif( $userGamesList[$i]['level'] == 3 )
+								$level = 'medium';
+							elseif( $userGamesList[$i]['level'] == 4 )
+								$level = 'high';
+							elseif( $userGamesList[$i]['level'] == 5 )
+								$level = 'pro';
+							echo "<tr>\n<td style='text-align: center;'>".ucfirst($userGamesList[$i]['name'])."</td><td style='text-align: center;'>".ucfirst($Lang->getGeneralText($level))."</td></tr>\n";
+						}
 					}
+					else
+						echo "<tr>\n<td style='text-align: center;' collapse='2'>Veuillez ajouter un jeu à votre liste.</td></tr>\n";
 				?>
 			</tbody>
 			<tfoot>
@@ -111,13 +115,92 @@
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
 
-	<div id="notYetModal" class="reveal-modal">
-		<h3>Not implemented yet!</h3>
-		<p class="lead">
-			Please, retry later.
-		</p>
+	<div id="tournamentModal" class="reveal-modal">
+		<?php
+			// Not really MVC, but necessary here because the account feature is just accessible by a modal on all pages!
+			include_once(PATH_MODELS."user.class.php");
+			include_once(PATH_MODELS."tournament.class.php");
+			$User = new User( $_SESSION['SpaceEngineConnected'] );
+			$tournamentList = Tournament::getTournamentsList( 0, 999, (int)$User->getId(), false );
+			$userTournamentList = Tournament::getTournamentsList( 0, 999, (int)$User->getId(), true );
+		?>
+		<h2><?php echo $Lang->getHeaderText('tournament'); ?></h2>
+		<p class="lead center">Je participe à ...</p>
+		<br />
+		<table style="margin:auto; width: 50%;">
+			<tbody>
+				<?php
+					if( $userTournamentList != 0 ) 
+					{
+						for( $i = 0 ; $i < count($userTournamentList) ; $i++ )
+						{
+							echo "<tr>\n<td style='text-align: center;'>".ucfirst($userTournamentList[$i]['title'])."</td><td style='text-align: center;'>".ucfirst($userTournamentList[$i]['team'])."</td></tr>\n";
+						}
+					}
+					else
+						echo "<tr>\n<td style='text-align: center;' collapse='2'>Vous ne participez à aucun tournoi.</td></tr>\n";
+				?>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th style="text-align: center;">Nom du tournoi</th>
+					<th style="text-align: center;">Je suis dans l'équipe</th>
+				</tr>
+			</tfoot>
+		</table>
+		<br /><hr /><br />
+		<p class="lead center">Rejoindre un tournoi / Changer de tournoi</p>
+		<br />
+		<form action="index.php" method="POST" class="custom" style="width:60%; margin:auto;">
+			<div class="row columns">
+				<div class="large-2 columns">&nbsp;</div>
+				<div class="large-8 columns">
+					<?php 
+					if( $tournamentList == 0 ) {
+						echo '<br /><p>Vous participez déjà à un tournoi</p>';
+					}
+					else {
+					?>
+					<div class="large-12">
+						<p class="center">Vous ne pouvez participez que à un seul tournoi.</p>
+					</div>
+					<div class="large-12">
+						<select id="customDropdown1" name="tournament">
+							<option DISABLED>Tournois disponibles</option>
+							<?php
+								for( $i = 0 ; $i < count($tournamentList) ; $i++ )
+								{
+									echo "<option value='".$tournamentList[$i]['id']."'>".ucfirst($tournamentList[$i]['title'])."</option>\n";
+								}
+							?>
+						</select>
+					</div>
+					<div class="row collapse ">
+						<div class="large-11 columns">
+							<input type="text" id="team" name="team" placeholder="J'ai une équipe : voici son nom ..." />
+						</div>
+						<div class="large-1 columns">
+							<span class="postfix radius"><label data-dropdown="dropFeature1">?</label></span>
+						</div>
+					</div>
+					<div class="large-12 center">
+						<input type="submit" value="Je veux participer à ce tournoi" name="change" class="small button secondary" />
+					</div>
+					<?php
+					}
+					?>
+				</div>
+				<div class="large-2 columns">&nbsp;</div>
+			</div>
+		</form>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
+	
+	<ul id="dropFeature1" class="f-dropdown content small" data-dropdown-content>
+		<p style="color: black;"><span class="bold">J'ai une équipe :</span><br />Tous les membres de votre équipe doivent renseignez le même nom.</p>
+		<p style="color: black;"><span class="bold">Je souhaite créer une équipe :</span><br />Imaginez simplement le nom de votre équipe et renseignez là dans le champ.</p>
+		<p><span class="italic">La casse n'est pas prise en compte.</span></p>
+	</ul>
 	
 	<div class="Modal" id="modalContent">
 		<div class="popup_block">

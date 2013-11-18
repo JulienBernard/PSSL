@@ -92,13 +92,6 @@
 				</dl>
 			</div>
 			
-			<ul id="dropFeature1" class="f-dropdown content" data-dropdown-content>
-				<p><span class="bold">Game update</span><br /><br />Feature to come<br /><span class="italic">High priority</span></p>
-			</ul>
-			<ul id="dropFeature2" class="f-dropdown content" data-dropdown-content>
-				<p><span class="bold">Game delete</span><br /><br />Feature to come<br /><span class="italic">Low priority</span></p>
-			</ul>
-
 			<div class="large-3 small-3 columns">
 				<h4><?php echo $Lang->getAdminText('usersBodyTitle23'); ?></h4>
 				
