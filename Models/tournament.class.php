@@ -99,6 +99,19 @@ class Tournament
 			while( $row = $rq->fetch() )
 				$array[] = $row;
 		}
+		else if( $list == false && $userId == 0 )
+		{
+			$rq = $sql->prepare('
+				SELECT mod_games.name, mod_games.pageId, mod_tournaments.id, mod_tournaments.gameId, mod_tournaments.title, mod_tournaments.valide
+				FROM mod_tournaments
+				JOIN mod_games ON mod_games.id=mod_tournaments.gameId
+				ORDER BY mod_tournaments.id DESC
+			');
+			$rq->execute() or die(print_r($rq->errorInfo()));
+			
+			while( $row = $rq->fetch() )
+				$array[] = $row;
+		}
 		/* On selectionne les jeux valides et qui n'appartiennent pas au joueur. */
 		else if( $startPosition == 0 )
 		{
@@ -268,7 +281,7 @@ class Tournament
 			return 1;
 	}
 	
-	/** Retourne le nombre de jeux
+	/** Retourne le nombre de tournoi
 	 * @param int $valide	:	le jeu est a t'il été validé ?
 	 */
 	public static function countTournaments( $valide = null ) {
@@ -287,5 +300,16 @@ class Tournament
 			return $req->rowCount();
 		}
 		return 0;
+	}
+	
+	/** Retourne le nombre de partticipant à un tournoi
+	 * @param int $id	:	id du tournoi
+	 */
+	public static function countPlayersByTournament( $id ) {
+		$sql = MyPDO::get();
+		$req = $sql->prepare('SELECT id FROM user_to_tournament WHERE tournamentId=:id');
+		$req->execute(array(':id' => $id));
+		$req->execute();
+		return $req->rowCount();
 	}
 }
