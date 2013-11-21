@@ -84,8 +84,19 @@
 					<h4>Tournois</h4>
 					<hr />
 					<p class="subheader">
-						<a href="#">League Of Legend</a><br />
-						<a href="#">Starcraft II</a>
+						<?php
+						for( $i = 0 ; $i < count($tournamentsList) ; $i++ )
+						{
+							if( count($tournamentsList) == 0 || $tournamentsList != 0 )
+							{
+								echo '<a href="tournaments.php">'.ucfirst($tournamentsList[$i]['name']).'</a><br />';
+							}
+						}
+						if( count($tournamentsList) == 0 OR $tournamentsList == 0 )
+						{
+							echo "Aucun tournoi.";
+						}
+						?>
 					</p>
 				</div>
 				<div class="panel radius">

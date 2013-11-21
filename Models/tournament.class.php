@@ -105,8 +105,10 @@ class Tournament
 				SELECT mod_games.name, mod_games.pageId, mod_tournaments.id, mod_tournaments.gameId, mod_tournaments.title, mod_tournaments.valide
 				FROM mod_tournaments
 				JOIN mod_games ON mod_games.id=mod_tournaments.gameId
+				WHERE mod_tournaments.valide=:valide
 				ORDER BY mod_tournaments.id DESC
 			');
+			$rq->bindValue('valide', (int)1, PDO::PARAM_INT);
 			$rq->execute() or die(print_r($rq->errorInfo()));
 			
 			while( $row = $rq->fetch() )
@@ -181,6 +183,24 @@ class Tournament
 			return 0;
 	}
 	
+	public static function getTournamentUser( $id ) {
+		
+		/* Validation des paramètres */
+		if( !is_numeric($id) || $id < 0 )
+			return false;
+		
+		$sql = MyPDO::get();
+
+		$rq = $sql->prepare('SELECT users.username, user_to_tournament.userId, user_to_tournament.team FROM user_to_tournament JOIN users ON users.id=userId WHERE tournamentId=:id ORDER BY user_to_tournament.team');
+        $data = array(':id' => $id );
+		$rq->execute($data);
+		
+		if( $rq->rowCount() == 0 ) throw new Exception('An hugh error was catch: impossible to get data from this tournament!');
+		while( $row = $rq->fetch() )
+			$array[] = $row;
+		return $array;
+	}
+	
 	/**
 	 * Vérifie si l'utilisateur participe déjà à un tournois
 	 * @param int userId
@@ -192,14 +212,14 @@ class Tournament
 			return false;
 			
 		$sql = MyPDO::get();
-		$rq = $sql->prepare('SELECT id FROM user_to_tournament WHERE userId=:userId');
+		$rq = $sql->prepare('SELECT userId FROM user_to_tournament WHERE userId=:userId');
 		$data = array(':userId' => (int)$userId);
 		$rq->execute($data);
 		
 		if( $rq->rowCount() != 0)
 		{
 			$row = $rq->fetch();
-			return (int)$row['id'];
+			return (int)$row['userId'];
 		}
 		return false;
 	}
@@ -261,7 +281,7 @@ class Tournament
 			$team = "aucune";
 			
 		$sql = MyPDO::get();
-		$req = $sql->prepare('INSERT INTO user_to_tournament VALUES("", :userId, :tournamentId, :team)');
+		$req = $sql->prepare('INSERT INTO user_to_tournament VALUES(:userId, :tournamentId, :team)');
 		$result = $req->execute( array(
 			':userId' => (int)$userId,
 			':tournamentId' => (int)$tournamentId,
@@ -362,9 +382,8 @@ class Tournament
 	 */
 	public static function countPlayersByTournament( $id ) {
 		$sql = MyPDO::get();
-		$req = $sql->prepare('SELECT id FROM user_to_tournament WHERE tournamentId=:id');
-		$req->execute(array(':id' => $id));
-		$req->execute();
+		$req = $sql->prepare('SELECT userId FROM user_to_tournament WHERE tournamentId=:id');
+		$req->execute(array(':id' => (int)$id));
 		return $req->rowCount();
 	}
 }

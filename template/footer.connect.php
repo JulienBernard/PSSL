@@ -134,8 +134,10 @@
 					{
 						for( $i = 0 ; $i < count($userTournamentList) ; $i++ )
 						{
-							echo "<tr>\n<td style='text-align: center;'>".ucfirst($userTournamentList[$i]['title'])."</td><td style='text-align: center;'>".ucfirst($userTournamentList[$i]['team'])."</td></tr>\n";
+							echo "<tr>\n<td style='text-align: center;'><a href='pages.php?id=".$userTournamentList[$i]['gameId']."'>".ucfirst($userTournamentList[$i]['title'])."</a></td><td style='text-align: center;'>".strtoupper($userTournamentList[$i]['team'])."</td></tr>\n";
 						}
+						$tournamentUserList = Tournament::getTournamentUser( (int)$userTournamentList[0]['tournamentId'] );
+						$countPlayers = Tournament::countPlayersByTournament( (int)$userTournamentList[0]['tournamentId'] );
 					}
 					else
 						echo "<tr>\n<td style='text-align: center;' collapse='2'>Vous ne participez à aucun tournoi.</td></tr>\n";
@@ -144,10 +146,31 @@
 			<tfoot>
 				<tr>
 					<th style="text-align: center;">Nom du tournoi</th>
-					<th style="text-align: center;">Je suis dans l'équipe</th>
+					<th style="text-align: center;">Mon équipe</th>
 				</tr>
 			</tfoot>
 		</table>
+		<br /><br />
+		<p class="lead center">Équipes présentes et participants à ce tournoi (<?php echo $countPlayers; ?> joueur<?php if( $countPlayers > 1 ) echo 's'; ?>)</p>
+		<br />
+		<div class="row" style="margin:auto; width: 50%;">
+			<?php
+			if( $tournamentUserList != 0 ) 
+			{
+				echo '<div class="panel large-3 columns">';
+				for( $i = 0 ; $i < count($tournamentUserList) ; $i++ )
+				{
+					if( $i == 0 )
+						echo ''.strtoupper($tournamentUserList[$i]['team']).'<br /><a data-dropdown="dropFeature2">'.ucfirst($tournamentUserList[$i]['username']).'</a><br />';
+					else if( $i != 0 && $tournamentUserList[$i]['team'] == $tournamentUserList[$i-1]['team'] )
+						echo '<a data-dropdown="dropFeature2">'.ucfirst($tournamentUserList[$i]['username']).'</a><br />';
+					else
+						echo '</div><div class="panel large-3 columns">'.strtoupper($tournamentUserList[$i]['team']).'<br /><a data-dropdown="dropFeature2">'.ucfirst($tournamentUserList[$i]['username']).'</a><br />';
+				}
+				echo '</div>';
+			}
+			?>
+		</div>
 		<br /><hr /><br />
 		<p class="lead center">Rejoindre un tournoi / Changer de tournoi</p>
 		<br />
@@ -200,6 +223,11 @@
 		<p style="color: black;"><span class="bold">J'ai une équipe :</span><br />Tous les membres de votre équipe doivent renseignez le même nom.</p>
 		<p style="color: black;"><span class="bold">Je souhaite créer une équipe :</span><br />Imaginez simplement le nom de votre équipe et renseignez là dans le champ.</p>
 		<p><span class="italic">La casse n'est pas prise en compte.</span></p>
+	</ul>
+	
+	<ul id="dropFeature2" class="f-dropdown content small" data-dropdown-content>
+		<p style="color: black;"><span class="bold">Fonctionnalité à venir</span><br />Accès au profil d'un utilisateur.</p>
+		<p><span class="italic">Priorité haute</span></p>
 	</ul>
 	
 	<div class="Modal" id="modalContent">

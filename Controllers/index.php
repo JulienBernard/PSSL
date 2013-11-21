@@ -2,9 +2,12 @@
 
 	include_once(PATH_MODELS."myPDO.class.php");
 	include_once(PATH_MODELS."game.class.php");
+	include_once(PATH_MODELS."tournament.class.php");
 	for( $i = 0; $i < 4 ; $i++ )
 		$games[] = new Game( rand(1, Game::countGames(1)) );
 	$specialGame = new Game( rand(1, Game::countGames(1)) );
+	
+	$tournamentsList = Tournament::getTournamentsList( 0, 999, null, false);
 
 	/* Une action sur un formulaire (envoie par POST) a été effectuée.  */
 	if( isset($_POST) ) {

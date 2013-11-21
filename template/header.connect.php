@@ -88,5 +88,6 @@
 	</header>
 
 	<ul id="dropFeatureMedium" class="small f-dropdown content" data-dropdown-content>
-		<p><span class="bold">Fonctionnalité à venir</span><br />Priorité <span class="italic">Moyenne</span></p>
+		<p style="color: black;"><span class="bold">Fonctionnalité à venir</span><br />Accès aux pages informatives.</p>
+		<p><span class="italic">Priorité haute</span></p>
 	</ul>

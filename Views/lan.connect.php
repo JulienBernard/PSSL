@@ -59,8 +59,8 @@
 									</div>
 									<div class="center">
 										<br />
-										<p class="lead"><?php echo $Lang->getGeneralText('emailValid'); ?></p>
-										<p class="smaller" style="margin-top: -25px;"><?php echo $Lang->getGeneralText('emailUse'); ?></p>
+										<!--<p class="lead"><?php echo $Lang->getGeneralText('emailValid'); ?></p>
+										<p class="smaller" style="margin-top: -25px;"><?php echo $Lang->getGeneralText('emailUse'); ?></p>-->
 									</div>
 								<?php
 								}
