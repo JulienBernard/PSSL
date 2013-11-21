@@ -7,7 +7,7 @@
 		$games[] = new Game( rand(1, Game::countGames(1)) );
 	$specialGame = new Game( rand(1, Game::countGames(1)) );
 	
-	$tournamentsList = Tournament::getTournamentsList( 0, 999, null, false);
+	$tournamentsList = Tournament::getTournamentsList( 0, 999, null, false );
 
 	/* Une action sur un formulaire (envoie par POST) a été effectuée.  */
 	if( isset($_POST) ) {

@@ -66,6 +66,7 @@
 		include_once(PATH_MODELS."game.class.php");
 		$gamesList = Game::getGamesList( 0, 999, 0, false );
 		$Tournament = new Tournament($id);
+		$tournamentUserList = Tournament::getTournamentUser( $id );
 		
 		$id = $Tournament->getId();
 		$gameId = $Tournament->getGameId();

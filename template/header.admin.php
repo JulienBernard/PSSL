@@ -66,6 +66,8 @@
 			<li><a href="pages.php">Pages</a></li>
 			<li class="divider"></li>
 			<li><a href="games.php">Games</a></li>
+			<li class="divider"></li>
+			<li><a href="tournaments.php">Tournaments</a></li>
 		</ul>
 
 		<!-- Right Nav Section -->
