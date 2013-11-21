@@ -105,6 +105,7 @@ class Game
 			while( $row = $rq->fetch() )
 				$array[] = $row;
 		}
+		/* admin */
 		else if( $list == true && $userId == 0 ) {
 			$rq = $sql->prepare('
 				SELECT *
@@ -136,7 +137,7 @@ class Game
 				SELECT *
 				FROM mod_games
 				WHERE valide=:true
-				AND mod_games.id > (SELECT AVG(id) FROM mod_games JOIN user_to_game ON user_to_game.gameId=mod_games.id)
+				AND mod_games.id > (SELECT AVG(id) FROM mod_games JOIN user_to_game ON user_to_game.gameId!=mod_games.id)
 				ORDER BY mod_games.id DESC
 				LIMIT :startPosition, :size
 			');
@@ -159,7 +160,7 @@ class Game
 					SELECT *
 					FROM mod_games
 					WHERE valide=:true
-					AND mod_games.id!=(SELECT gameId FROM user_to_game WHERE user_to_game.gameId=mod_games.id)
+					AND mod_games.id!=(SELECT gameId FROM user_to_game WHERE user_to_game.gameId!=mod_games.id)
 					ORDER BY mod_games.id DESC
 					LIMIT :startPosition, :size
 				');

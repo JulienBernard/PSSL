@@ -50,6 +50,45 @@
 		else
 			$Engine->setInfo("Un des champs est vide.");
 	}
+	else if( isset($_POST['change']) ) {
+		$fields = array('tournament' => $_POST['tournament']);
+		$return = $Engine->checkParams($fields);
+		
+		if( $return == 1 ) {
+			include_once(PATH_MODELS."myPDO.class.php");
+			include_once(PATH_MODELS."tournament.class.php");
+		
+			$tournamentId = (int)htmlspecialchars($_POST['tournament']);
+			if( isset($_POST['team']) )
+				$team = (String)htmlspecialchars(strtolower($_POST['team']));
+			else
+				$team = null;
+				
+			if( !Tournament::checkUserTournamentExist( $User->getId() ) )
+			{
+				$tournament = Tournament::addTournamentToUserList( $tournamentId, $team, $User->getId() );
+				
+				if( $tournament == 1 ) {
+					$Engine->setSuccess($Lang->getErrorText('tournamentUserSuccess'));
+					?><script type="text/javascript">redirection(3, 'index.php');</script><?php
+				}
+				else if( $tournament == 0 )
+					$Engine->setError($Lang->getErrorText('tournamentUserError'));
+			}
+			else
+			{
+				$tournament = Tournament::changeTournamentToUserList( $tournamentId, $team, $User->getId() );
+				if( $tournament == 1 ) {
+					$Engine->setSuccess($Lang->getErrorText('tournamentUserSuccess'));
+					?><script type="text/javascript">redirection(3, 'index.php');</script><?php
+				}
+				else if( $tournament == 0 )
+					$Engine->setError($Lang->getErrorText('tournamentUserSuccess'));
+			}
+		}
+		else
+			$Engine->setInfo("Un des champs est vide.");
+	}
 
 		
 	if( $Engine->getError() != null || $Engine->getSuccess() != null || $Engine->getInfo() != null )
