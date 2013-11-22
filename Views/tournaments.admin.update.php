@@ -57,7 +57,7 @@
 				<br />
 				<div class="row">
 					<?php
-					if( $tournamentUserList != 0 ) 
+					if( count($tournamentUserList) != 0 ) 
 					{
 						echo '<div class="panel large-3 columns">';
 						for( $i = 0 ; $i < count($tournamentUserList) ; $i++ )
@@ -69,6 +69,11 @@
 							else
 								echo '</div><div class="panel large-3 columns">'.strtoupper($tournamentUserList[$i]['team']).'<br /><a data-dropdown="dropFeature2">'.ucfirst($tournamentUserList[$i]['username']).'</a><br />';
 						}
+						echo '</div>';
+					}
+					else {
+						echo '<div class="panel large-12 columns">';
+						echo '<p>Aucun participant pour le moment.</p>';
 						echo '</div>';
 					}
 					?>

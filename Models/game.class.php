@@ -105,6 +105,22 @@ class Game
 			while( $row = $rq->fetch() )
 				$array[] = $row;
 		}
+		else if( $list == false && $userId != 0 ) {
+			$rq = $sql->prepare('
+				SELECT *
+				FROM mod_games
+				JOIN user_to_game ON user_to_game.userId=:userId
+				WHERE valide=:true
+				AND user_to_game.gameId!=mod_games.id
+				ORDER BY mod_games.id DESC
+			');
+			$rq->bindValue('userId', (int)$userId, PDO::PARAM_INT);
+			$rq->bindValue('true', (int)1, PDO::PARAM_INT);
+			$rq->execute() or die(print_r($rq->errorInfo()));
+			
+			while( $row = $rq->fetch() )
+				$array[] = $row;
+		}
 		/* admin */
 		else if( $list == true && $userId == 0 ) {
 			$rq = $sql->prepare('
@@ -160,7 +176,6 @@ class Game
 					SELECT *
 					FROM mod_games
 					WHERE valide=:true
-					AND mod_games.id!=(SELECT gameId FROM user_to_game WHERE user_to_game.gameId!=mod_games.id)
 					ORDER BY mod_games.id DESC
 					LIMIT :startPosition, :size
 				');
@@ -169,6 +184,7 @@ class Game
 				$rq->bindValue('true', (int)1, PDO::PARAM_INT);
 				$rq->execute() or die(print_r($rq->errorInfo()));
 				
+				$array = array();
 				while( $row = $rq->fetch() )
 					$array[] = $row;
 			}

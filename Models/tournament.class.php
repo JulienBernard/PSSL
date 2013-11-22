@@ -191,11 +191,11 @@ class Tournament
 		
 		$sql = MyPDO::get();
 
-		$rq = $sql->prepare('SELECT users.username, user_to_tournament.userId, user_to_tournament.team FROM user_to_tournament JOIN users ON users.id=userId WHERE tournamentId=:id ORDER BY user_to_tournament.team');
+		$rq = $sql->prepare('SELECT users.username, user_to_tournament.userId, user_to_tournament.team FROM user_to_tournament JOIN users ON users.id=userId WHERE tournamentId=:id');
         $data = array(':id' => $id );
 		$rq->execute($data);
 		
-		if( $rq->rowCount() == 0 ) throw new Exception('An hugh error was catch: impossible to get data from this tournament!');
+		$array = array();
 		while( $row = $rq->fetch() )
 			$array[] = $row;
 		return $array;
