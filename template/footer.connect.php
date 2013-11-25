@@ -130,6 +130,8 @@
 		<table style="margin:auto; width: 50%;">
 			<tbody>
 				<?php
+					$countPlayers = 0;
+					$tournamentUserList = 0;
 					if( $userTournamentList != 0 ) 
 					{
 						for( $i = 0 ; $i < count($userTournamentList) ; $i++ )
