@@ -125,7 +125,7 @@
 			$userTournamentList = Tournament::getTournamentsList( 0, 999, (int)$User->getId(), true );
 		?>
 		<h2><?php echo $Lang->getHeaderText('tournament'); ?></h2>
-		<p class="lead center">Je participe à ...</p>
+		<p class="lead center"><?php echo $Lang->getGeneralText('IParticipateTo'); ?></p>
 		<br />
 		<table style="margin:auto; width: 50%;">
 			<tbody>
@@ -145,13 +145,13 @@
 			</tbody>
 			<tfoot>
 				<tr>
-					<th style="text-align: center;">Nom du tournoi</th>
-					<th style="text-align: center;">Mon équipe</th>
+					<th style="text-align: center;"><?php echo $Lang->getGeneralText('tournamentName'); ?></th>
+					<th style="text-align: center;"><?php echo $Lang->getGeneralText('tournamentTeam'); ?></th>
 				</tr>
 			</tfoot>
 		</table>
 		<br /><br />
-		<p class="lead center">Équipes présentes et participants à ce tournoi (<?php echo $countPlayers; ?> joueur<?php if( $countPlayers > 1 ) echo 's'; ?>)</p>
+		<p class="lead center"><?php echo $Lang->getGeneralText('tournamentTeamsAndGamers'); ?> (<?php echo $countPlayers; ?> <?php echo $Lang->getGeneralText('gamer'); ?><?php if( $countPlayers > 1 ) echo 's'; ?>)</p>
 		<br />
 		<div class="row" style="margin:auto; width: 50%;">
 			<?php
@@ -172,7 +172,7 @@
 			?>
 		</div>
 		<br /><hr /><br />
-		<p class="lead center">Rejoindre un tournoi / Changer de tournoi</p>
+		<p class="lead center"><?php echo $Lang->getGeneralText('tournamentChangeTournament'); ?></p>
 		<br />
 		<form action="index.php" method="POST" class="custom" style="width:60%; margin:auto;">
 			<div class="row columns">
@@ -273,7 +273,7 @@
 							<li><a href="pages.php"><?php echo $Lang->getHeaderText('team'); ?></a></li>
 							<li><a href="logout.php"><strong><?php echo $Lang->getHeaderText('logout'); ?></strong></a></li>
 						</ul>
-						<span class="right smaller"><a href="https://github.com/JulienBernard/PSSL/">Organisateurs ? Site sous licence GNU !</a></span>
+						<span class="right smaller"><a href="https://github.com/JulienBernard/PSSL/">Site sous licence GNU !</a></span>
 					</div>
 				</div>
 			</div>

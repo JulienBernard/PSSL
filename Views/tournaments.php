@@ -1,15 +1,10 @@
 	<main id="main">
 		<div class="row panel">
 			<div class="large-12 small-12">
-				<h3>Liste des tournois</h3>
+				<h3><?php echo $Lang->getHeaderText('tournament'); ?></h3>
 				<br />
-				<p class="lead">Comment ça marche ?</p>
-				<p>
-					Les tournois sont imaginés et proposés par les organisateurs selon la liste des jeux possèdés par les joueurs : <span class="bold">si vous souhaitez un tournoi portant sur votre jeu préféré</span>, signalez que vous le possèdez via la page <a href="#" data-reveal-id="loginModal">mon compte</a>.
-				</p>
-				<p>
-					Attention : vous ne pouvez vous inscrire qu'à un seul tournoi par soirée !
-				</p>
+				<p class="lead"><?php echo $Lang->getGeneralText('tournamentHowWork'); ?></p>
+				<?php echo $Lang->getGeneralText('tournamentTextVisitor'); ?>
 			</div>
 			<br />
 			<div class="large-12 small-12">
@@ -36,11 +31,11 @@
 						}
 						?>
 					</tbody>
-					<tfoot>
+										<tfoot>
 						<tr>
 							<th class="center large-3 columns"></th>
-							<th class="center large-6 columns">Nom du tournoi</th>
-							<th class="smaller center large-3 columns">Participants</th>
+							<th class="center large-6 columns"><?php echo $Lang->getGeneralText('tournamentName'); ?></th>
+							<th class="smaller center large-3 columns"><?php echo ucfirst($Lang->getGeneralText('event')); ?></th>
 						</tr>
 					</tfoot>
 				</table>

@@ -19,13 +19,13 @@
 	/* login */
 	$login["title1"] = "Connexion";
 	$login["subtitle1"] = "J'ai déjà un compte";
-	$login["text1"] = "Merci de renseigner les champs ci-dessous.";
+	$login["text1"] = "Merci de renseigner les champs ci-dessous. Pas de compte, <a data-reveal-id='registerModal'>inscrivez-vous</a>.";
 	$login["title2"] = "Inscription";
 	$login["subtitle2"] = "Je n'ai pas de compte";
-	$login["text2"] = "L'inscription au site vous permettra de vous inscrire aux tournois et de renseigner les jeux que vous possédez. Vous aurez également accès à la messagere interne pour communiquer entre participants. Merci de renseigner les champs ci-dessous.<br /><br /><span class='center italic smaller'>Nous garantissons un accès protégé et chiffré de toutes les informations personnelles stockées dans notre base de données.</span>";
+	$login["text2"] = "L'inscription au site vous permettra de vous inscrire aux tournois et de renseigner les jeux que vous possédez.<br />Merci de renseigner les champs ci-dessous.<br /><br /><span class='center italic smaller'>Nous garantissons un accès protégé et chiffré de toutes les informations personnelles stockées dans notre base de données.</span>";
 	$login["title3"] = "S'inscrire à la prochaine LAN";
-	$login["subtitle3"] = "Date : 8 novembre 2013<br />Lieu : IN'TECH INFO, 74 bis avenue Maurice Thorez 94200 Ivry-sur-Seine (M7 Pierre et Marie Curie)";
-	$login["text3"] = "En vous inscrivant, vous vous engagez sur l'honneur à être présent. Si un contre-temps vous empêche de venir, vous pourrez vous désinscrire sur cette même page plus tard. Le coût d'entrée ne sera que de 1€ si vous vous inscrivez et de 2€ sur place.<br /><br />Nous basons notre budget et nos achats selon ces inscriptions, merci de vérifier vos dispositions avant de valider !";
+	$login["subtitle3"] = "Date : 29 novembre 2013<br />Lieu : IN'TECH INFO, 74 bis avenue Maurice Thorez 94200 Ivry-sur-Seine (M7 Pierre et Marie Curie)";
+	$login["text3"] = "En vous inscrivant, vous vous engagez sur l'honneur à être présent. Si un contre-temps vous empêche de venir, vous pourrez vous désinscrire sur cette même page plus tard. Le coût d'entrée est de 1€ symbolique.<br /><br />Nous basons notre budget et nos achats selon ces inscriptions, merci de vérifier vos dispositions avant de valider !";
 	$login["name"] = "Votre nom";
 	$login["firstname"] = "Votre prénom";
 	$login["username"] = "Votre pseudonyme";
@@ -35,7 +35,7 @@
 	$login["unsubscribe"] = "Se désincrire";
 	$login["IParticipate"] = "Je participe";
 	$login["INotParticipate"] = "Je suis spectateur";
-	$login["UoT"] = "Je certifie avoir lu et approuvé les <a href='CGU.htm'>conditions générales d'utilisation</a>.";
+	$login["UoT"] = "Je certifie avoir lu et approuvé la <a href='charte.docx'>charte régissant la soirée</a>.";
 	
 	/* Header */
 	$header["project"] = "Le projet";
@@ -44,7 +44,7 @@
 	$header["account"] = "Mon compte";
 	$header["tournament"] = "Liste des tournois";
 	$header["logout"] = "Déconnexion";
-	$header["subscribe"] = "S'inscrire à la prochaine LAN du 8 novembre 2013";
+	$header["subscribe"] = "S'inscrire à la prochaine LAN du 29 novembre 2013";
 
 	/* error */
 	$error["loginSuccess"] = "Connexion réussie. <a style='color: black;' href='index.php'>Si la redirection ne se fait pas, cliquez ici</a> !";
@@ -53,10 +53,12 @@
 	$error["loginError2"] = "Votre PSEUDONYME doit être supérieur à 3 caractères et être inférieur à 20 caractères.<br />Votre MOT DE PASSE doit être supérieur à 3 caractères.";
 	$error["loginError3"] = "Votre PSEUDONYME ou votre MOT DE PASSE ne correspondent pas.";
 	$error["loginError4"] = "Une importante erreur est survenue : impossible de générer un token sécurisé !";
+	$error["loginError5"] = "Les caractères spéciaux autre que les lettres et les chiffres ne sont pas autorisés.";
 	$error["subscribeSuccess"] = "Inscription réussie. <a style='color: black;' href='index.php'>Si la redirection ne se fait pas, cliquez ici</a> !";
 	$error["subscribeError"] = "Une erreur important est survenu, merci de contacter l'administrateur du site.";
 	$error["subscribeError1"] = "Ce PSEUDONYME existe déjà dans notre base de données. Veuillez en choisir un autre.";
 	$error["subscribeError2"] = "Votre PSEUDONYME doit être supérieur à 3 caractères et être inférieur à 20 caractères.<br />Votre MOT DE PASSE doit être supérieur à 3 caractères et inférieur à 100 caractères.";
+	$error["subscribeError3"] = "Les caractères spéciaux autre que les lettres et les chiffres ne sont pas autorisés.";
 	$error["addSuccess"] = "Inscription validée. <a style='color: black;' href='subscribe.php'>Si la redirection ne se fait pas, cliquez ici</a> !";
 	$error["delSuccess"] = "Désinscription validée. <a style='color: black;' href='subscribe.php'>Si la redirection ne se fait pas, cliquez ici</a> !";
 	$error["addError1"] = "Un des champs est vide.";
@@ -83,11 +85,20 @@
 	$admin["usersBodyTitle23"] = "Données";
 	$admin["usersBodyTitle14"] = "Liste des tournois";
 	$admin["usersBodyTitle24"] = "Données";
+	$admin["usersBodyTitle15"] = "Liste des participants";
+	$admin["usersBodyTitle25"] = "Données";
+	$admin["usersBodyTitle16"] = "Liste des actualités";
+	$admin["usersBodyTitle26"] = "Données";
+	$admin["newsLinkCreate"] = "Publier une actualité";
 	$admin["pagesLinkCreate"] = "Créer une nouvelle page";
 	$admin["gamesLinkCreate"] = "Ajouter un jeu à la liste";
+	$admin["eventLinkCreate"] = "Ajouter un participant";
 	$admin["tournamentsLinkCreate"] = "Ajouter un tournoi à la liste";
 	$admin["visible"] = "Visible";
 	$admin["hidden"] = "Caché";
+	$admin["navLinkReturnTournament"] = "Revenir à la liste des tournois";	
+	$admin["navLinkReturnEvent"] = "Revenir à la liste des participants";	
+	$admin["navLinkReturnNew"] = "Revenir à la liste des actus";	
 	$admin["navLinkReturnPage"] = "Revenir à la liste des pages";	
 	$admin["navLinkReturnGame"] = "Revenir à la liste des jeux";	
 	$admin["navLinkReturnMain"] = "Revenir à l'index";	
@@ -101,13 +112,31 @@
 	$admin["IndexTournamentText"] = "Composante phare des vos LANs, vous pouvez créer et lister les joueurs présents à vos tournois pour une gestion simplifiée des différentes parties à organiser.";
 
 	/* General */
+	$general["tournamentHowWork"] = "Comment ça marche ?";
+	$general["tournamentName"] = "Nom du tournoi";
+	$general["tournamentTeam"] = "Mon équipe";
+	$general["tournamentTeamsAndGamers"] = "Équipes présentes et participants à ce tournoi";
+	$general["tournamentChangeTournament"] = "Rejoindre un tournoi / Changer de tournoi";
+	$general["tournamentTextVisitor"] = "<p>Les tournois sont imaginés et proposés par les organisateurs selon la liste des jeux possèdés par les joueurs : <span class=\"bold\">si vous souhaitez un tournoi portant sur votre jeu préféré</span>, signalez que vous le possèdez via la page <a href=\"#\" data-reveal-id=\"loginModal\">mon compte</a>.</p><p>Attention : vous ne pouvez vous inscrire qu'à un seul tournoi par soirée !</p>";
+	$general["tournamentTextUser"] = "<p>Les tournois sont imaginés et proposés par les organisateurs selon la liste des jeux possèdés par les joueurs : <span class=\"bold\">si vous souhaitez un tournoi portant sur votre jeu préféré</span>, signalez que vous le possèdez via la page <a href=\"#\" data-reveal-id=\"accountModal\">mon compte</a>.</p><p>Attention : vous ne pouvez vous inscrire qu'à un seul tournoi par soirée !</p>";
+	$general["IParticipateTo"] = "Je participe à ...";
+	$general["IParticipateTo"] = "Je participe à ...";
 	$general["deconnection"] = "Vous avez été correctement déconnecté du site.";
+	$general["gamer"] = "joueur";
+	$general["spectator"] = "spectateur";
 	$general["users"] = "utilisateurs";
 	$general["pages"] = "pages";
+	$general["tournament"] = "Tournois";
 	$general["games"] = "jeux";
+	$general["event"] = "participants";
+	$general["name"] = "Nom";
+	$general["mail"] = "Mail";
+	$general["price"] = "Prix (a payé)";
+	$general["status"] = "Statut";
 	$general["tournaments"] = "tournois";
 	$general["fastNavigation"] = "Navigation";
 	$general["lastUpdateThe"] = "Mise à jour le";
+	$general["publishedThe"] = "Publiée le";
 	$general["by"] = "Par";
 	$general["oupsTitle"] = "Vous ne devriez pas être là ...";
 	$general["oupsText"] = " Vous n'avez pas les droits nécessaires pour accèder à cette page.<br />Merci de <a href='index.php'>retourner à la page d'accueil</a>. ";
@@ -129,6 +158,8 @@
 	$general["SuggestGame"] = "Suggérer ce jeu";
 	$general["DataPrivate"] = "Données privées";
 	$general["DataPublic"] = "Données publiques";
+	$general["createAccount"] = "Je crée un compte";
+	$general["iLogin"] = "Je me connecte";
 	$general["AllGames"] = "Vous possèdez tous les jeux présents à nos LANs.<br />Vous pouvez en proposer via le formulaire sur la droite de ce paragraphe.";
 
 	/* Index */
@@ -137,7 +168,7 @@
 	$index["facebook"] = "Page Facebook";
 	$index["twitter"] = "Page Twitter";
 	$index["more"] = "En savoir plus";
-	$index["new1"] = "La prochaine LAN aura lieu le vendredi 8 novembre 2013 à IN'TECH INFO : inscrivez-vous !";
+	$index["new1"] = "La prochaine LAN aura lieu le vendredi 29 novembre 2013 à IN'TECH INFO : inscrivez-vous !";
 	$index["new2"] = "Site en cours de construction. Retrouvez prochainement le site de l'événement de l'année PSSL entièrement fonctionnel.";
 	$index["title"] = "Rejoignez un évenement unique en son genre";
 	$index["subtitle"] = "Propulsé par un groupe d'étudiant passionné d'IN'TECH INFO, notre projet vous entraînera vers des sensations fortes à bout de claviers et de jeux en réseau à tout va !";

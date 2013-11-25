@@ -3,11 +3,16 @@
 	include_once(PATH_MODELS."myPDO.class.php");
 	include_once(PATH_MODELS."game.class.php");
 	include_once(PATH_MODELS."tournament.class.php");
-	for( $i = 0; $i < 4 ; $i++ )
-		$games[] = new Game( rand(1, Game::countGames(1)) );
-	$specialGame = new Game( rand(1, Game::countGames(1)) );
+	include_once(PATH_MODELS."news.class.php");
+		
+	if( Game::countGames() != 0 ) {
+		for( $i = 0; $i < 4 ; $i++ )
+			$games[] = new Game( rand(1, Game::countGames(1)) );
+		$specialGame = new Game( rand(1, Game::countGames(1)) );
+	}
 	
 	$tournamentsList = Tournament::getTournamentsList( 0, 999, null, false );
+	$newsList = News::getPagesList( 0, 2, false );
 
 	/* Une action sur un formulaire (envoie par POST) a été effectuée.  */
 	if( isset($_POST) ) {
@@ -36,6 +41,8 @@
 					$Engine->setError($Lang->getErrorText('loginError3'));
 				else if( $login == -4 )
 					$Engine->setError($Lang->getErrorText('loginError4'));
+				else if( $login == -5 )
+					$Engine->setError($Lang->getErrorText('loginError5'));
 			}
 			else
 				$Engine->setInfo("Un des champs est vide.");
@@ -63,6 +70,8 @@
 					$Engine->setError($Lang->getErrorText('subscribeError1'));
 				else if( $subscribe == -2 )
 					$Engine->setError($Lang->getErrorText('subscribeError2'));
+				else if( $subscribe == -3 )
+					$Engine->setError($Lang->getErrorText('subscribeError3'));
 			}
 			else
 				$Engine->setInfo("Un des champs est vide.");

@@ -1,13 +1,13 @@
 <?php
 
-class User
+class Event
 {
 	private $_id;
+	private $_userId;
 	private $_name;
-	private $_username;
-	private $_rank;
-	private $_rankText;
-	private $_activity;
+	private $_mail;
+	private $_price;
+	private $_participate;
 	
 	/* Constructeur de la classe */
 	public function __construct( $id )
@@ -15,18 +15,13 @@ class User
 		if( !filter_var($id, FILTER_VALIDATE_INT) ) {
 			throw new Exception('You must provide an integer value!');
 		}
-		$sqlData = $this->getUserData( $id );
+		$sqlData = $this->getEventData( $id );
 		$this->_id = $sqlData['id'];
 		$this->_name = $sqlData['name'];
-		$this->_username = $sqlData['username'];
-		$this->_rank = $sqlData['rank'];
-		if( $this->_rank == 3 )
-			$this->_rankText = "super admin";
-		else if( $this->_rank == 2 )
-			$this->_rankText = "admin";
-		else
-			$this->_rankText = "member";
-		$this->_activity = $sqlData['activity'];
+		$this->_mail = $sqlData['mail'];
+		$this->_userId = $sqlData['userId'];
+		$this->_price = $sqlData['price'];
+		$this->_participate = $sqlData['participate'];
 	}
 	
 	public function getId()
@@ -37,21 +32,21 @@ class User
 	{
 		return $this->_name;
 	}
-	public function getUsername()
+	public function getUserId()
 	{
-		return $this->_username;
+		return $this->_userId;
 	}
-	public function getRank()
+	public function getMail()
 	{
-		return $this->_rank;
+		return $this->_mail;
 	}
-	public function getRankText()
+	public function getPrice()
 	{
-		return $this->_rankText;
+		return $this->_price;
 	}
-	public function getActivity()
+	public function getParticipate()
 	{
-		return $this->_activity;
+		return $this->_participate;
 	}
 	
 	/**
@@ -59,16 +54,16 @@ class User
 	 * @param int userId
 	 * @return array or 0 (error)
 	 */
-	private function getUserData( $userId ) {
+	private function getEventData( $eventId ) {
 		
 		/* Validation des paramètres */
-		if( !is_numeric($userId) || $userId < 0 )
+		if( !is_numeric($eventId) || $eventId < 0 )
 			return false;
 		
 		$sql = MyPDO::get();
 
-		$rq = $sql->prepare('SELECT * FROM users WHERE id=:idUser');
-        $data = array(':idUser' => $userId );
+		$rq = $sql->prepare('SELECT * FROM next_event WHERE id=:eventId');
+        $data = array(':eventId' => $eventId );
 		$rq->execute($data);
 		
 		if( $rq->rowCount() == 0 ) throw new Exception('Une importante erreur est survenue : Impossible de récupérer les données de cet utilisateur !');
@@ -80,7 +75,7 @@ class User
 	 * @param int $size				:	taille de la liste (plus elle est grande, plus la requête sera longue à effectuer !)
 	 * @param int $startPosition	:	position de départ
 	 */
-	public function getUsersList( $startPosition = 0, $size = 10 ) {
+	public function getEventList( $startPosition = 0, $size = 10 ) {
 		$sql = MyPDO::get();
 
 		/* Si on arrive sur la page de classement "principale",
@@ -89,10 +84,10 @@ class User
 		if( $startPosition == 0 )
 		{
 			$rq = $sql->prepare('
-				SELECT id, name, username, rank, token, activity
-				FROM users
-				WHERE users.id > (SELECT AVG(id) FROM users)
-				ORDER BY users.id DESC
+				SELECT *
+				FROM next_event
+				WHERE next_event.id > (SELECT AVG(id) FROM next_event)
+				ORDER BY next_event.id DESC
 				LIMIT :startPosition, :size
 			');
 			$rq->bindValue('startPosition', (int)$startPosition, PDO::PARAM_INT);
@@ -110,9 +105,9 @@ class User
 			{
 				unset($array);
 				$rq = $sql->prepare('
-					SELECT id, name, username, rank, token, activity
-					FROM users
-					ORDER BY users.id DESC
+					SELECT *
+					FROM next_event
+					ORDER BY next_event.id DESC
 					LIMIT :startPosition, :size
 				');
 				$rq->bindValue('startPosition', (int)$startPosition, PDO::PARAM_INT);
@@ -125,9 +120,9 @@ class User
 		}
 		else {
 			$rq = $sql->prepare('
-				SELECT id, name, username, rank, token, activity
-				FROM users
-				ORDER BY users.id DESC
+				SELECT *
+				FROM next_event
+				ORDER BY next_event.id DESC
 				LIMIT :startPosition, :size
 			');
 			$rq->bindValue('startPosition', (int)$startPosition, PDO::PARAM_INT);
@@ -162,27 +157,47 @@ class User
 	 * @param int $activity		:	durée après laquelle l'utilisateur est déclaré inactif (défaut 3 jours)
 	 * @param int $do			:	prendre en compte le tps ou juste sortir la liste
 	 */
-	public static function countUsers( $activity = 259200, $rank = null ) {
+	public static function countPlayers( $activity = 259200, $rank = null ) {
 		$currentActivityTime = time() - $activity;
 		
 		$sql = MyPDO::get();
 		if( (int)$activity != 0 )
 		{
-			$req = $sql->prepare('SELECT id, activity FROM users WHERE activity >= :activityTime');
+			$req = $sql->prepare('SELECT id, activity FROM next_event WHERE activity >= :activityTime');
 			$req->execute(array(':activityTime' => $currentActivityTime));
 		}
 		else
 		{
-			if( (int)$rank != null ) {
-				$req = $sql->prepare('SELECT id FROM users WHERE rank = :rank');
-				$req->execute(array(':rank' => $rank));
-			}
-			else {
-				$req = $sql->prepare('SELECT id FROM users');
-				$req->execute();
-			}
+			$req = $sql->prepare('SELECT id FROM next_event');
+			$req->execute();
 		}
 		return $req->rowCount();
+	}
+	
+	public static function updateEvent( $id, $mail, $price, $participate )
+	{
+		/* Validation des paramètres */
+		if( !is_numeric($id) || !is_string($mail) || !is_string($participate) )
+			return false;
+			
+		if( $participate == "true" )
+			$participate = 1;
+		else
+			$participate = 0;
+			
+		$sql = MyPDO::get();
+		$req = $sql->prepare('UPDATE next_event SET mail=:mail, price=:price, participate=:participate WHERE id=:id');
+		$result = $req->execute( array(
+			':mail' => (String)$mail,
+			':price' => (String)$price,
+			':participate' => (int)$participate,
+			':id' => (int)$id
+			));
+		// Si PDO renvoie une erreur
+		if( !$result )
+			return 0;
+		else
+			return 1;
 	}
 	
 	/**
@@ -204,33 +219,30 @@ class User
 			return 0;
 			
 		if( self::checkUsernameExist($username) ) {
-			if( preg_match ( "/^[a-zA-Z0-9_]{3,16}$/ " , $username ) AND preg_match ( " /^[a-zA-Z0-9_]{3,16}$/ " , $password ) ) {
-				if( self::checkStringLength($username, 2, 20) && self::checkStringLength($password, 2, 100) ) {
-					if( $userId = self::checkUserAccountMatch($username, $password) ) {
-						/* Destruction de la session au cas où ! */
-						$Engine->destroySession("SpaceEngineConnected");
-						$Engine->destroySession("SpaceEngineToken");
-						/* Création du token unique pour la session de l'utilisateur */
-						$token = self::generateUniqueToken(2);
-						if( $token != false ) {
-							if( self::updateToken( $token, $userId ) ) 
-							{
-								$Engine->createSession("SpaceEngineConnected", (int)$userId);
-								$Engine->createSession("SpaceEngineToken", $token );
-								return 1; // Succès !
-							}
-							else 
-								return 0; // Impossible de mettre à jour le token ! (plus de token de libre, problème de création du token ?)
-						} else 
-							return -4;
-					} else
-						return -3;
+			if( self::checkStringLength($username, 2, 20) && self::checkStringLength($password, 2, 100) ) {
+				if( $userId = self::checkUserAccountMatch($username, $password) ) {
+					/* Destruction de la session au cas où ! */
+					$Engine->destroySession("SpaceEngineConnected");
+					$Engine->destroySession("SpaceEngineToken");
+					/* Création du token unique pour la session de l'utilisateur */
+					$token = self::generateUniqueToken(2);
+					if( $token != false ) {
+						if( self::updateToken( $token, $userId ) ) 
+						{
+							$Engine->createSession("SpaceEngineConnected", (int)$userId);
+							$Engine->createSession("SpaceEngineToken", $token );
+							return 1; // Succès !
+						}
+						else 
+							return 0; // Impossible de mettre à jour le token ! (plus de token de libre, problème de création du token ?)
+					} else 
+						return -4;
 				} else
-					return -2;
+					return -3;
 			} else
-				return -5;
+				return -2;
 		} else
-		return -1;
+			return -1;
 	}
 	
 	/**
@@ -251,45 +263,38 @@ class User
 			return 0;
 			
 		if( !self::checkUsernameExist($username) ) {
-			if( preg_match ( "/^[a-zA-Z0-9_]{3,16}$/ " , $username ) AND preg_match ( " /^[a-zA-Z0-9_]{3,16}$/ " , $password ) ) {
-				if( self::checkStringLength($name, 2, 20) && self::checkStringLength($password, 2, 100) ) {
-					/* Destruction de la session au cas où ! */
-					$Engine->destroySession("SpaceEngineConnected");
-					$Engine->destroySession("SpaceEngineToken");
-					if( self::addUser( $name, $username, $password ) )
-						return 1; // Succès !
-					else
-						return 0;
-				} else
-					return -2;
+			if( self::checkStringLength($name, 2, 20) && self::checkStringLength($password, 2, 100) ) {
+				/* Destruction de la session au cas où ! */
+				$Engine->destroySession("SpaceEngineConnected");
+				$Engine->destroySession("SpaceEngineToken");
+				if( self::addEvent( $name, $username, $password ) )
+					return 1; // Succès !
+				else
+					return 0;
 			} else
-				return -3;
+				return -2;
 		} else
 			return -1;
 	}
 	
 	/**
 	 * Enregistre le nouvel utilisateur dans la base de donnée.
-	 * @param String name
-	 * @param String username
-	 * @param String password
 	 * return int lastInsertId	Retourne le dernier ID inséré dans la bdd, ici l'user id !
 	 */
-	private static function addUser( $name, $username, $password ) {
+	public static function addEvent( $name, $mail, $price, $participate, $userId ) {
 		
 		/* Validation des paramètres */
-		if( !is_string($name) || !is_string($username) || !is_string($password) || empty($name) || empty($username) || empty($password) )
+		if( !is_string($name) || !is_string($mail) || empty($name) || empty($mail) )
 			return false;
 		
 		$sql = MyPDO::get();
-		$req = $sql->prepare('INSERT INTO users VALUES("", :name, :username, :password, :rank, :token, :activity)');
+		$req = $sql->prepare('INSERT INTO next_event VALUES("", :userId, :name, :mail, :price, :participate)');
 		$result = $req->execute( array(
-			':name' => $name,
-			':username' => $username,
-			':password' => crypt(md5($password), PASSWORD_SALT),
-			':rank' => 1,
-			':token' => time().$username,
-			':activity' => time(),
+			':userId' => (int)time(),
+			':name' => (String)$name,
+			':mail' => (String)$mail,
+			':price' => (float)$price,
+			':participate' => (int)$participate
 		));
 		
 		if( $result )

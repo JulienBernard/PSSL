@@ -50,38 +50,36 @@
 					</div>
 				</div>
 				<hr />
-				<div class="panel radius">
-					<h4>Actu #1</h4>
-					<hr />
-					<h5 class="subheader">
-						Préparez-vous, la première LAN va bientôt arriver !
-					</h5>
-					<p>Duis sodales arcu vitae accumsan condimentum. Morbi volutpat pellentesque viverra. Morbi rutrum, diam a ullamcorper lobortis, neque magna semper magna, et venenatis lorem lorem at urna. Ut sed tempus nulla.</p>
-				</div>
-				<div class="panel radius">
-					<h4>Actu #2</h4>
-					<hr />
-					<h5 class="subheader">
-						Préparez-vous, la première LAN va bientôt arriver !
-					</h5>
-					<p>Duis sodales arcu vitae accumsan condimentum. Morbi volutpat pellentesque viverra. Morbi rutrum, diam a ullamcorper lobortis, neque magna semper magna, et venenatis lorem lorem at urna. Ut sed tempus nulla.</p>
-				</div>
+				<?php
+				for( $i = 0 ; $i < count($newsList) ; $i++ )
+				{
+					echo '<div class="panel radius">';
+					echo '<p class="subheader right smaller">'.$Lang->getGeneralText('publishedThe').' '.date('d/m/y', $newsList[$i]['activity']).'</p>';
+					if( count($newsList) == 0 || $newsList != 0 )
+					{
+						echo '<h4>'.ucfirst($newsList[$i]['title']).'</h4>';
+						echo '<hr />';
+						echo '<p>'.html_entity_decode($newsList[$i]['text']).'</p>';
+					}
+					echo '</div>';
+				}
+				?>
 			</div>
 			<div class="large-3 small-12 columns">
 				<br />
 				<div class="panel radius">
 					<h4><?php echo $Lang->getLoginText('subscribe'); ?></h4>
 					<p class="subheader">
-						<a href="#" data-reveal-id="loginModal">Je crée un compte</a>
+						<a href="#" data-reveal-id="registerModal"><?php echo $Lang->getGeneralText('createAccount'); ?></a>
 					</p>
 					<hr />
 					<h4><?php echo $Lang->getLoginText('logme'); ?></h4>
 					<p class="subheader">
-						<a href="#" data-reveal-id="loginModal">Je me connecte</a>
+						<a href="#" data-reveal-id="loginModal"><?php echo $Lang->getGeneralText('iLogin'); ?></a>
 					</p>
 				</div>
 				<div class="panel radius">
-					<h4>Tournois</h4>
+					<h4><?php echo $Lang->getGeneralText('tournament'); ?></h4>
 					<hr />
 					<p class="subheader">
 						<?php
@@ -106,6 +104,12 @@
 						<img src="./img/esieaLogo.gif" alt="ESIEA" />
 						<img src="./img/intechinfoLogo.png" alt="IN'TECH INFO" />
 					</p>
+				</div>
+				<div class="panel radius">
+					<h5><?php echo $Lang->getIndexText('stay'); ?></h5><hr/>
+					<a href="http://www.youtube.com/user/PSSLOfficial">Notre chaine Youtube</a><br />
+					<a href="https://www.facebook.com/PSSLan">Notre Facebook</a><br />
+					<a href="https://twitter.com/PSSLan">Notre Twitter</a>
 				</div>
 			</div>
 		</div>

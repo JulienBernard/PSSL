@@ -7,7 +7,7 @@
 			{
 				echo '<p class="lead">An error has been detected!</p>';
 				echo '<p>'.$Engine->getError().'</p>';
-				echo '<br /><a data-reveal-id="loginModal" href="'.$_SERVER["PHP_SELF"].'?'.$_SERVER['QUERY_STRING'].'#noWhere" class="center">Click here to retry!</a>';
+				echo '<br /><a href="'.$_SERVER["PHP_SELF"].'?'.$_SERVER['QUERY_STRING'].'#noWhere" class="center">Click here to retry!</a>';
 			}
 			else if( $Engine->getSuccess() != null )
 			{
@@ -48,8 +48,8 @@
 				</div>
 			</div>
 		</form>
-		
-		<hr />
+	</div>
+	<div id="registerModal" class="large-12 small-6 reveal-modal">
 		<h2><?php echo $Lang->getLoginText('title2'); ?></h2>
 		<p class="lead"><?php echo $Lang->getLoginText('subtitle2'); ?></p>
 		<p>
@@ -101,7 +101,7 @@
 							<li><a href="pages.php"><?php echo $Lang->getHeaderText('team'); ?></a></li>
 							<li><a href="#" data-reveal-id="loginModal"><strong><?php echo $Lang->getHeaderText('participate'); ?></strong></a></li>
 						</ul>
-						<span class="right smaller"><a href="https://github.com/JulienBernard/PSSL/">Organisateurs ? Site sous licence GNU !</a></span>
+						<span class="right smaller"><a href="https://github.com/JulienBernard/PSSL/">Site sous licence GNU !</a></span>
 					</div>
 				</div>
 			</div>

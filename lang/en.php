@@ -35,7 +35,7 @@
 	$login["subscribe"] = "Subscribe";
 	$login["IParticipate"] = "I will be an entrant";
 	$login["INotParticipate"] = "I will be a viewer";
-	$login["UoT"] = "I have read and approved the <a href='CGU.htm'>terms of use</a>.";
+	$login["UoT"] = "I have read and approved the <a href='charte.docx'>terms of use</a>.";
 
 	/* Header */
 	$header["project"] = "Project";
