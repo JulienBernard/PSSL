@@ -74,7 +74,7 @@ class Game
         $data = array(':gameId' => $gameId );
 		$rq->execute($data);
 		
-		if( $rq->rowCount() == 0 ) throw new Exception('An hugh error was catch: impossible to get data from this game!');
+		if( $rq->rowCount() == 0 ) return 0;
 		$row = $rq->fetch();
 		return $row;
 	}

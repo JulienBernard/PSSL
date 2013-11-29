@@ -51,17 +51,20 @@
 				</div>
 				<hr />
 				<?php
-				for( $i = 0 ; $i < count($newsList) ; $i++ )
+				if( $newsList != 0 )
 				{
-					echo '<div class="panel radius">';
-					echo '<p class="subheader right smaller">'.$Lang->getGeneralText('publishedThe').' '.date('d/m/y', $newsList[$i]['activity']).'</p>';
-					if( count($newsList) == 0 || $newsList != 0 )
+					for( $i = 0 ; $i < count($newsList) ; $i++ )
 					{
-						echo '<h4>'.ucfirst($newsList[$i]['title']).'</h4>';
-						echo '<hr />';
-						echo '<p>'.html_entity_decode($newsList[$i]['text']).'</p>';
+						echo '<div class="panel radius">';
+						echo '<p class="subheader right smaller">'.$Lang->getGeneralText('publishedThe').' '.date('d/m/y', $newsList[$i]['activity']).'</p>';
+						if( count($newsList) == 0 || $newsList != 0 )
+						{
+							echo '<h4>'.ucfirst($newsList[$i]['title']).'</h4>';
+							echo '<hr />';
+							echo '<p>'.html_entity_decode($newsList[$i]['text']).'</p>';
+						}
+						echo '</div>';
 					}
-					echo '</div>';
 				}
 				?>
 			</div>

@@ -251,7 +251,7 @@ class User
 			return 0;
 			
 		if( !self::checkUsernameExist($username) ) {
-			if( preg_match ( "/^[a-zA-Z0-9_]{3,16}$/ " , $username ) AND preg_match ( " /^[a-zA-Z0-9_]{3,16}$/ " , $password ) ) {
+			if( preg_match ( "/^[a-zA-Z0-9_]$/ " , $username ) AND preg_match ( " /^[a-zA-Z0-9_]$/ " , $password ) ) {
 				if( self::checkStringLength($name, 2, 20) && self::checkStringLength($password, 2, 100) ) {
 					/* Destruction de la session au cas où ! */
 					$Engine->destroySession("SpaceEngineConnected");

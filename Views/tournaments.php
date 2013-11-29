@@ -14,7 +14,7 @@
 						<?php
 						for( $i = 0 ; $i < count($tournamentsList) ; $i++ )
 						{
-							if( count($tournamentsList) == 0 || $tournamentsList != 0 )
+							if( count($tournamentsList) != 0 || $tournamentsList != 0 )
 							{
 							?>
 								<tr>
