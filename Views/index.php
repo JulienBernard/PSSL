@@ -1,38 +1,5 @@
 	<main id="main">
 		<div class="row">
-			<div class="large-12 columns">
-				<!-- Desktop Slider -->
-				<div class="hide-for-small">
-					<ul data-orbit="" data-options="slide_number:false;bullets:false;timer_speed:4000;" class="orbit">
-						<li class="active">
-							<a href="pages.php?id=1">
-								<img src="./img/demo2.jpg" />
-							</a>
-						</li>
-						<li>
-						<a href="pages.php?id=3">
-							<img src="./img/demo.jpg" />
-						</a>
-						</li>
-					</ul>
-				</div>
-				<!-- End Desktop Slider -->
-
-				<!-- Mobile Header -->
-				<div class="show-for-small small-12 columns">
-					<ul data-orbit="" data-options="navigation_arrows:false;slide_number:false;bullets:false;timer_speed:3000;" class="orbit">
-						<li class="active">
-							<a href="subscribe.php">
-								<img src="./img/demo2.jpg" />
-							</a>
-						</li>
-						<li class="active">
-							<img src="./img/demo.jpg" />
-						</li>
-					</ul>
-				</div>
-				<!-- End Mobile Header -->
-			</div>
 			<div class="large-9 small-12 columns">
 				<br />
 				<div class="panel radius">

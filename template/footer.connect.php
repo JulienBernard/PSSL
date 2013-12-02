@@ -266,7 +266,7 @@
 					<div class="large-8 columns">
 						<p class="smaller">
 							&copy; 2013 - Le contenu présent sur ce site appartient à leur auteurs respectifs.<br />
-							Propulsé par une équipe de folie composée de Brice, Corentin, Johan, Julien, Ludovic, Lionel et Romain.
+							Équipe composée de Brice, Corentin, Johan, Julien, Ludovic, Lionel et Romain.
 						</p>
 					</div>
 					<div class="large-4 columns">
