@@ -67,7 +67,8 @@
 		$gamesList = Game::getGamesList( 0, 999, 0, false );
 		$Tournament = new Tournament($id);
 		$tournamentUserList = Tournament::getTournamentUser( $id );
-		
+		$countTeams = Tournament::countTeamsByTournament( $id );
+
 		$id = $Tournament->getId();
 		$gameId = $Tournament->getGameId();
 		$name = $Tournament->getName();

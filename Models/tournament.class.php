@@ -386,4 +386,18 @@ class Tournament
 		$req->execute(array(':id' => (int)$id));
 		return $req->rowCount();
 	}
+	/** Retourne le nombre de partticipant à un tournoi
+	 * @param int $id	:	id du tournoi
+	 */
+	public static function countTeamsByTournament( $id ) {
+		$sql = MyPDO::get();
+		$req = $sql->prepare('SELECT DISTINCT team FROM user_to_tournament WHERE tournamentId=:id');
+		$req->execute(array(':id' => (int)$id));
+		$array = array();
+		while( $row = $req->fetch() )
+			$array[] = $row;
+			
+		return $array;
+	}
+	
 }

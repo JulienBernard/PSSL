@@ -59,17 +59,17 @@
 					<?php
 					if( count($tournamentUserList) != 0 ) 
 					{
-						echo '<div class="panel large-3 columns">';
-						for( $i = 0 ; $i < count($tournamentUserList) ; $i++ )
+						for( $i = 0 ; $i < count($countTeams) ; $i++ )
 						{
-							if( $i == 0 )
-								echo ''.strtoupper($tournamentUserList[$i]['team']).'<br /><a data-dropdown="dropFeature2">'.ucfirst($tournamentUserList[$i]['username']).'</a><br />';
-							else if( $i != 0 && $tournamentUserList[$i]['team'] == $tournamentUserList[$i-1]['team'] )
-								echo '<a data-dropdown="dropFeature2">'.ucfirst($tournamentUserList[$i]['username']).'</a><br />';
-							else
-								echo '</div><div class="panel large-3 columns">'.strtoupper($tournamentUserList[$i]['team']).'<br /><a data-dropdown="dropFeature2">'.ucfirst($tournamentUserList[$i]['username']).'</a><br />';
+							echo '<div class="panel large-3 columns">';
+							echo strtoupper($countTeams[$i]['team']).'<br />';
+							for( $x = 0 ; $x < count($tournamentUserList) ; $x++ )
+							{
+								if( $tournamentUserList[$x]['team'] == $countTeams[$i]['team'] )
+									echo '<a data-dropdown="dropFeature2">'.ucfirst($tournamentUserList[$x]['username']).'</a><br />';
+							}
+							echo '</div>';
 						}
-						echo '</div>';
 					}
 					else {
 						echo '<div class="panel large-12 columns">';
