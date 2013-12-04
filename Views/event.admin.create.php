@@ -36,9 +36,9 @@
 						</div>
 					</div>
 					<div class="switch large-12 small-12 radius" style="height: 32px;">
-						<input id="hidden" value="false" name="switch-visible" type="radio" <?php if( (isset($participate) && $participate != "true") OR !isset($participate) ) echo 'checked'; ?>>
+						<input id="hidden" value="0" name="switch-visible" type="radio" <?php if( (isset($participate) && $participate != "true") OR !isset($participate) ) echo 'checked'; ?>>
 						<label for="hidden" onclick="">&nbsp;<?php echo ucfirst($Lang->getGeneralText('spectator')); ?></label>
-						<input id="visible" value="true" name="switch-visible" type="radio" <?php if( isset($participate) && $participate == "true" ) echo 'checked'; ?>>
+						<input id="visible" value="1" name="switch-visible" type="radio" <?php if( isset($participate) && $participate == "true" ) echo 'checked'; ?>>
 						<label for="visible" onclick=""><?php echo ucfirst($Lang->getGeneralText('gamer')); ?>&nbsp;</label>
 						<span></span>
 					</div>

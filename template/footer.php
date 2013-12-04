@@ -58,15 +58,6 @@
 		
 		<form action="index.php" method="POST">
 			<div class="row">
-				
-				<div class="large-2 columns">
-					<label for="firstname"><?php echo $Lang->getLoginText('firstname'); ?></label>
-					<input id="firstname" type="text" name="firstname" placeholder="Prénom" title="Votre prénom doit être supérieur à 3 caractères et être inférieur à 20 caractères." />
-				</div>
-				<div class="large-2 columns">
-					<label for="name"><?php echo $Lang->getLoginText('name'); ?></label>
-					<input id="name" type="text" name="name" placeholder="Name" title="Votre nom doit être supérieur à 3 caractères et être inférieur à 20 caractères." />
-				</div>
 				<div class="large-3 columns">
 					<label for="username"><?php echo $Lang->getLoginText('username'); ?></label>
 					<input id="username" type="text" name="username" placeholder="Username (Use for login)" title="Votre nom d'utilisateur doit être supérieur à 3 caractères et être inférieur à 100 caractères." />

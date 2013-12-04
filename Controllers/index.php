@@ -48,17 +48,17 @@
 				$Engine->setInfo("Un des champs est vide.");
 		}
 		else if( isset($_POST['subscribe']) ) {
-			$fields = array('firstname' => $_POST['firstname'], 'name' => $_POST['name'], 'username' => $_POST['username'], 'password' => $_POST['password']);
+			$fields = array('username' => $_POST['username'], 'password' => $_POST['password']);
 			$return = $Engine->checkParams($fields);
 			
 			if( $return == 1 ) {
 				include_once(PATH_MODELS."user.class.php");
 			
-				$firstname = (String)htmlspecialchars(strtolower($_POST['firstname']));
-				$name = (String)htmlspecialchars(strtolower($_POST['name']));
+				$firstname = null;
+				$name = null;
 				$username = (String)htmlspecialchars(strtolower($_POST['username']));
 				$password = (String)htmlspecialchars($_POST['password']);
-				$name = $firstname." ".$name;
+				$name = " ";
 				
 				$subscribe = User::checkSubscribe( $name, $username, $password );
 				if( $subscribe == 1 ) {

@@ -204,7 +204,7 @@ class User
 			return 0;
 			
 		if( self::checkUsernameExist($username) ) {
-			if( preg_match ( "/^[a-zA-Z0-9_]$/ " , $username ) AND preg_match ( " /^[a-zA-Z0-9_]$/ " , $password ) ) {
+			if( ctype_alnum($username) AND ctype_alnum($password) ) {
 				if( self::checkStringLength($username, 2, 20) && self::checkStringLength($password, 2, 100) ) {
 					if( $userId = self::checkUserAccountMatch($username, $password) ) {
 						/* Destruction de la session au cas où ! */
@@ -247,12 +247,12 @@ class User
 	public static function checkSubscribe( $name, $username, $password ) {
 		$Engine = new Engine( "mock" );
 		/* Validation des paramètres */
-		if( !is_string($name) || !is_string($username) || !is_string($password) || empty($name) || empty($username) || empty($password) )
+		if( !is_string($username) || !is_string($password) || empty($username) || empty($password) )
 			return 0;
 			
 		if( !self::checkUsernameExist($username) ) {
-			if( preg_match ( "/^[a-zA-Z0-9_]$/ " , $username ) AND preg_match ( " /^[a-zA-Z0-9_]$/ " , $password ) ) {
-				if( self::checkStringLength($name, 2, 20) && self::checkStringLength($password, 2, 100) ) {
+			if( ctype_alnum($username) AND ctype_alnum($password) ) {
+				if( self::checkStringLength($username, 2, 20) && self::checkStringLength($password, 2, 100) ) {
 					/* Destruction de la session au cas où ! */
 					$Engine->destroySession("SpaceEngineConnected");
 					$Engine->destroySession("SpaceEngineToken");
