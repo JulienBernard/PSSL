@@ -16,21 +16,30 @@
 						{
 							if( count($tournamentsList) == 0 || $tournamentsList != 0 )
 							{
+								$name = null;
+								if( $tournamentsList[$i]['gameId'] == 1 )
+									$name = 'LOL';
+								elseif( $tournamentsList[$i]['gameId'] == 2 )
+									$name = 'SC2';
+								elseif( $tournamentsList[$i]['gameId'] == 3 )
+									$name = 'BF4';
 								if( $User->getRank() == 3 ) {
 							?>
 								<tr>
 									<td class="center large-2 columns"><acronym title="Have a look!"><a href="pages.php?id=<?php echo (int)$tournamentsList[$i]['pageId']; ?>&&visitor"><img src="./img/gallery.png" style="height: 20px;" alt="See" /></a></acronym></td>
-									<td class="center large-5 columns"><a href="tournaments.php?update=<?php echo (int)$tournamentsList[$i]['id']; ?>"><?php echo (String)ucfirst($tournamentsList[$i]['title']); ?></a></td>
-									<td class="smaller center large-3 columns"><?php if( (String)$tournamentsList[$i]['valide'] == 1 ) echo $Lang->getAdminText('visible'); else echo $Lang->getAdminText('hidden'); ?></td>
+									<td class="center large-4 columns"><a href="tournaments.php?update=<?php echo (int)$tournamentsList[$i]['id']; ?>"><?php echo (String)ucfirst($tournamentsList[$i]['title']); ?></a></td>
+									<td class="smaller center large-2 columns"><?php if( (String)$tournamentsList[$i]['valide'] == 1 ) echo $Lang->getAdminText('visible'); else echo $Lang->getAdminText('hidden'); ?></td>
 									<td class="smaller center large-2 columns"><a href="#" data-dropdown="dropFeature2">Delete!</a></td>
+									<td class="smaller center large-2 columns"><a href="http://challonge.com/PSSLan<?php echo $name; ?>">Bracket</a> <a href="#" data-dropdown="dropFeature3">(?)</a></td>
 								</tr>
 							<?php
 								} else {
 							?>
 								<tr>
 									<td class="center large-3 columns"><acronym title="Have a look!"><a href="pages.php?id=<?php echo (int)$tournamentsList[$i]['pageId']; ?>&&visitor"><img src="./img/gallery.png" style="height: 20px;" alt="See" /></a></acronym></td>
-									<td class="center large-6 columns"><a href="tournaments.php?update=<?php echo (int)$tournamentsList[$i]['id']; ?>"><?php echo (String)ucfirst($tournamentsList[$i]['title']); ?></a></td>
-									<td class="smaller center large-3 columns"><?php if( (String)$tournamentsList[$i]['valide'] == 1 ) echo $Lang->getAdminText('visible'); else echo $Lang->getAdminText('hidden'); ?></td>
+									<td class="center large-5 columns"><a href="tournaments.php?update=<?php echo (int)$tournamentsList[$i]['id']; ?>"><?php echo (String)ucfirst($tournamentsList[$i]['title']); ?></a></td>
+									<td class="smaller center large-2 columns"><?php if( (String)$tournamentsList[$i]['valide'] == 1 ) echo $Lang->getAdminText('visible'); else echo $Lang->getAdminText('hidden'); ?></td>
+									<td class="smaller center large-2 columns"><a href="http://challonge.com/PSSLan<?php echo $name; ?>">Bracket</a></td>
 								</tr>
 							<?php
 								}
@@ -48,17 +57,19 @@
 						?>
 						<tr>
 							<th class="center large-2 columns">Page du jeu</th>
-							<th class="center large-5 columns">Title</th>
-							<th class="smaller center large-3 columns">Visibility</th>
+							<th class="center large-4 columns">Title</th>
+							<th class="smaller center large-2 columns">Visibility</th>
 							<th class="smaller center large-2 columns">Option</th>
+							<th class="smaller center large-2 columns"></th>
 						</tr>
 						<?php
 							} else {
 						?>
 						<tr>
 							<th class="center large-3 columns">Page du jeu</th>
-							<th class="center large-6 columns">Title</th>
-							<th class="smaller center large-3 columns">Visibility</th>
+							<th class="center large-5 columns">Title</th>
+							<th class="smaller center large-2 columns">Visibility</th>
+							<th class="smaller center large-2 columns"></th>
 						</tr>
 						<?php } ?>
 					</tfoot>
@@ -93,6 +104,9 @@
 			</ul>
 			<ul id="dropFeature2" class="f-dropdown content" data-dropdown-content>
 				<p><span class="bold">Tournament delete</span><br /><br />Feature to come<br /><span class="italic">Low priority</span></p>
+			</ul>
+			<ul id="dropFeature3" class="f-dropdown content" data-dropdown-content>
+				<p><span class="bold">Challonge</span><br /><br />Connexion requise :<br /><span class="smaller">Connectez-vous avec le compte Twitter <span class="bold">PSSLan</span></span></p>
 			</ul>
 
 			<div class="large-3 small-3 columns">

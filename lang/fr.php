@@ -174,5 +174,5 @@
 	$index["new2"] = "Site en cours de construction. Retrouvez prochainement le site de l'événement de l'année PSSL entièrement fonctionnel.";
 	$index["title"] = "Rejoignez un évenement unique en son genre";
 	$index["subtitle"] = "Propulsé par un groupe d'étudiant passionné d'IN'TECH INFO, notre projet vous entraînera vers des sensations fortes à bout de claviers et de jeux en réseau à tout va !";
-	$index["text"] = "<p>Projet de formation humaine inédit, notre équipe a pour mission d'organiser un évenement autour des <acronym title='Local Area Network'>LAN</acronym>.</p><p>Après quelques LAN amateurs dans nos locaux à Ivry-sur-Seine, nous organiserons un grand évenement E-Sport sur Paris !<br /><a href='#' class='right'>Lire la suite</a></p>";
+	$index["text"] = "<p>Projet de formation humaine inédit, notre équipe a pour mission d'organiser un évenement autour des <acronym title='Local Area Network'>LAN</acronym>.</p><p>Après quelques LAN amateurs dans nos locaux à Ivry-sur-Seine, nous organiserons un grand évenement E-Sport sur Paris !<br /><a href='pages.php?id=5' class='right'>Lire la suite</a></p>";
 ?>
