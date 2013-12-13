@@ -88,8 +88,8 @@
 					</div>
 					<div class="large-4 columns">
 						<ul class="inline-list right">
-							<li><a href="pages.php"><?php echo $Lang->getHeaderText('project'); ?></a></li>
-							<li><a href="pages.php"><?php echo $Lang->getHeaderText('team'); ?></a></li>
+							<li><a href="pages.php?id=5"><?php echo $Lang->getHeaderText('project'); ?></a></li>
+							<li><a href="pages.php?id=6"><?php echo $Lang->getHeaderText('team'); ?></a></li>
 							<li><a href="#" data-reveal-id="loginModal"><strong><?php echo $Lang->getHeaderText('participate'); ?></strong></a></li>
 						</ul>
 						<span class="right smaller"><a href="https://github.com/JulienBernard/PSSL/">Site sous licence GNU !</a></span>

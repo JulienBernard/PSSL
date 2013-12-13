@@ -20,8 +20,9 @@
 								<tr>
 									<td class="center large-3 columns"><a href="event.php?update=<?php echo $eventList[$i]['id']; ?>"><?php echo (String)ucwords($eventList[$i]['name']); ?></a></td>
 									<td class="center large-3 columns"><?php echo (String)ucwords($eventList[$i]['mail']); ?></td>
-									<td class="center large-3 columns"><?php echo (String)ucwords($eventList[$i]['price']); ?></td>
-									<td class="smaller center large-3 columns"><?php if( (String)$eventList[$i]['participate'] == 1 ) echo ucfirst($Lang->getGeneralText('gamer')); else echo ucfirst($Lang->getGeneralText('spectator')); ?></td>
+									<td class="center large-2 columns"><?php echo (String)ucwords($eventList[$i]['price']); ?></td>
+									<td class="center large-2 columns"><?php echo (String)ucwords($eventList[$i]['renting']); ?></td>
+									<td class="smaller center large-2 columns"><?php if( (String)$eventList[$i]['participate'] == 1 ) echo ucfirst($Lang->getGeneralText('gamer')); else echo ucfirst($Lang->getGeneralText('spectator')); ?></td>
 								</tr>
 							<?php
 							}
@@ -34,8 +35,9 @@
 						<tr>
 							<th class="center large-3 columns"><?php echo $Lang->getGeneralText('name'); ?></th>
 							<th class="center large-3 columns"><?php echo $Lang->getGeneralText('mail'); ?></th>
-							<th class="smaller center large-3 columns"><?php echo $Lang->getGeneralText('price'); ?></th>
-							<th class="smaller center large-3 columns"><?php echo $Lang->getGeneralText('status'); ?></th>
+							<th class="smaller center large-2 columns"><?php echo $Lang->getGeneralText('price'); ?> (€)</th>
+							<th class="smaller center large-2 columns"><?php echo $Lang->getGeneralText('renting'); ?> (€)</th>
+							<th class="smaller center large-2 columns"><?php echo $Lang->getGeneralText('status'); ?></th>
 						</tr>
 					</tfoot>
 				</table>
@@ -51,7 +53,7 @@
 								<dd <?php if( !isset($_GET['p']) ) echo 'class="active"'; ?>><a href="event.php">1</a></dd>
 							<?php
 							$countPage = ceil($countPlayer / $size);
-							for( $i = 1 ; $i <= $countPage ; $i++ )
+							for( $i = 1 ; $i <= $countPage-1 ; $i++ )
 							{
 								?>
 								<dd <?php if( isset($_GET['p']) && $_GET['p'] == $i ) echo 'class="active"'; ?>><a href="event.php?p=<?php echo $i; ?>"><?php echo $i+1; ?></a></dd>

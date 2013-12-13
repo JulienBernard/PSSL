@@ -61,6 +61,23 @@ class Tournament
 		return $row;
 	}
 	
+	public function getTournament( $id ) {
+		
+		/* Validation des paramètres */
+		if( !is_numeric($id) || $id < 0 )
+			return false;
+		
+		$sql = MyPDO::get();
+
+		$rq = $sql->prepare('SELECT * FROM mod_tournaments JOIN mod_games ON mod_games.id=mod_tournaments.gameId WHERE mod_tournaments.id=:id');
+        $data = array(':id' => $id );
+		$rq->execute($data);
+		
+		if( $rq->rowCount() == 0 ) throw new Exception('An hugh error was catch: impossible to get data from this tournament!');
+		$row = $rq->fetch();
+		return $row;
+	}
+	
 	/** Récupère une liste des tournois (selon $size [DEFAUT : 10])
 	 * @param int $size				:	taille de la liste (plus elle est grande, plus la requête sera longue à effectuer !)
 	 * @param int $startPosition	:	position de départ

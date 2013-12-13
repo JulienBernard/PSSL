@@ -79,7 +79,7 @@
 								<dd <?php if( !isset($_GET['p']) ) echo 'class="active"'; ?>><a href="games.php">1</a></dd>
 							<?php
 							$countPage = ceil($countGames / $size);
-							for( $i = 1 ; $i <= $countPage ; $i++ )
+							for( $i = 1 ; $i <= $countPage-1 ; $i++ )
 							{
 								?>
 								<dd <?php if( isset($_GET['p']) && $_GET['p'] == $i ) echo 'class="active"'; ?>><a href="games.php?p=<?php echo $i; ?>"><?php echo $i+1; ?></a></dd>

@@ -19,8 +19,9 @@
 							?>
 								<tr>
 									<td class="center large-3 columns"><acronym title="Have a look!"><a href="pages.php?id=<?php echo (int)$tournamentsList[$i]['pageId']; ?>&&visitor"><img src="./img/gallery.png" style="height: 20px;" alt="See" /></a></acronym></td>
-									<td class="center large-6 columns"><a data-reveal-id="tournamentModal" href="#"><?php echo (String)ucfirst($tournamentsList[$i]['title']); ?></a></td>
-									<td class="smaller center large-3 columns"><?php echo Tournament::countPlayersByTournament( $tournamentsList[$i]['id'] ); ?></td>
+									<td class="center large-5 columns"><a href="challonge.php?id=<?php echo (int)$tournamentsList[$i]['id']; ?>"><?php echo (String)ucfirst($tournamentsList[$i]['title']); ?></a></td>
+									<td class="smaller center large-2 columns"><?php echo Tournament::countPlayersByTournament( $tournamentsList[$i]['id'] ); ?></td>
+									<td class="smaller center large-2 columns"><a href="#" data-reveal-id="tournamentModal">S'inscrire</a></td>
 								</tr>
 							<?php
 							}
@@ -34,8 +35,9 @@
 					<tfoot>
 						<tr>
 							<th class="center large-3 columns"></th>
-							<th class="center large-6 columns"><?php echo $Lang->getGeneralText('tournamentName'); ?></th>
-							<th class="smaller center large-3 columns"><?php echo $Lang->getGeneralText('event'); ?></th>
+							<th class="center large-5 columns"><?php echo $Lang->getGeneralText('tournamentName'); ?></th>
+							<th class="smaller center large-2 columns"><?php echo ucfirst($Lang->getGeneralText('event')); ?></th>
+							<th class="smaller center large-2 columns"></th>
 						</tr>
 					</tfoot>
 				</table>

@@ -256,7 +256,7 @@ class User
 					/* Destruction de la session au cas où ! */
 					$Engine->destroySession("SpaceEngineConnected");
 					$Engine->destroySession("SpaceEngineToken");
-					if( self::addUser( $name, $username, $password ) )
+					if( self::addUser( $username, $username, $password ) )	// On n'utilise plus le nom à l'ajout, remplacé par l'username pour ne pas faire planter (Astuce ><)
 						return 1; // Succès !
 					else
 						return 0;

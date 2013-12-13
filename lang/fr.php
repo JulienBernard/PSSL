@@ -44,7 +44,7 @@
 	$header["account"] = "Mon compte";
 	$header["tournament"] = "Liste des tournois";
 	$header["logout"] = "Déconnexion";
-	$header["subscribe"] = "S'inscrire à la prochaine LAN du 29 novembre 2013";
+	$header["subscribe"] = "S'inscrire à la prochaine LAN du 20 décembre 2013";
 
 	/* error */
 	$error["loginSuccess"] = "Connexion réussie. <a style='color: black;' href='index.php'>Si la redirection ne se fait pas, cliquez ici</a> !";
@@ -124,6 +124,8 @@
 	$general["deconnection"] = "Vous avez été correctement déconnecté du site.";
 	$general["gamer"] = "joueur";
 	$general["spectator"] = "spectateur";
+	$general["renting"] = "Location";
+	$general["localization"] = "Localisation (provenance)";
 	$general["users"] = "utilisateurs";
 	$general["pages"] = "pages";
 	$general["tournament"] = "Tournois";
@@ -131,7 +133,7 @@
 	$general["event"] = "participants";
 	$general["name"] = "Nom";
 	$general["mail"] = "Mail";
-	$general["price"] = "Prix (a payé)";
+	$general["price"] = "Prix";
 	$general["status"] = "Statut";
 	$general["tournaments"] = "tournois";
 	$general["fastNavigation"] = "Navigation";

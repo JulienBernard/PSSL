@@ -28,6 +28,8 @@
 			$mail = htmlspecialchars($_POST['mail']);
 			$participate = htmlspecialchars($_POST['switch-visible']);
 			$price = htmlspecialchars($_POST['price']);
+			$renting = htmlspecialchars($_POST['renting']);
+			$localization = htmlspecialchars($_POST['localization']);
 			
 			$fields = array('name' => $name, 'mail' => $mail, 'participate' => $participate);
 			$return = $Engine->checkParams( $fields );
@@ -35,7 +37,7 @@
 			/* Champs valides */
 			if( $return == 1  )
 			{
-				$sendReturn = Event::addEvent( $name, $mail, $price, $participate, 0 );
+				$sendReturn = Event::addEvent( $name, $mail, $price, $renting, $localization, $participate, 0 );
 				if( $sendReturn )
 					$Engine->setSuccess("'".$name." a bien été enregistré.");
 				else
@@ -65,11 +67,14 @@
 		$price = $Event->getPrice();
 		$mail = $Event->getMail();
 		$participate = $Event->getParticipate();
+		$renting = $Event->getRenting();
+		$localization = $Event->getLocalization();
 		
 		if( isset($_POST['update']) )
 		{
 			$price = htmlspecialchars($_POST['price']);
 			$mail = htmlspecialchars($_POST['mail']);
+			$localization = htmlspecialchars($_POST['localization']);
 			$participate = htmlspecialchars($_POST['switch-visible']);
 			
 			$fields = array('mail' => $mail, 'participate' => $participate);
@@ -78,7 +83,7 @@
 			/* Champs valides */
 			if( $return == 1  )
 			{
-				$sendReturn = Event::updateEvent( $id, $mail, $price, $participate);
+				$sendReturn = Event::updateEvent( $id, $mail, $price, $renting, $localization, $participate);
 				if( $sendReturn )
 					$Engine->setSuccess("Mise à jour de la personne OK.");
 				else

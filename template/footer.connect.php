@@ -136,7 +136,7 @@
 					{
 						for( $i = 0 ; $i < count($userTournamentList) ; $i++ )
 						{
-							echo "<tr>\n<td style='text-align: center;'><a href='pages.php?id=".$userTournamentList[$i]['gameId']."'>".ucfirst($userTournamentList[$i]['title'])."</a></td><td style='text-align: center;'>".strtoupper($userTournamentList[$i]['team'])."</td></tr>\n";
+							echo "<tr>\n<td style='text-align: center;'><a href='challonge.php?id=".$userTournamentList[$i]['id']."'>".ucfirst($userTournamentList[$i]['title'])."</a></td><td style='text-align: center;'>".strtoupper($userTournamentList[$i]['team'])."</td></tr>\n";
 						}
 						$tournamentUserList = Tournament::getTournamentUser( (int)$userTournamentList[0]['tournamentId'] );
 						$countPlayers = Tournament::countPlayersByTournament( (int)$userTournamentList[0]['tournamentId'] );
@@ -152,27 +152,6 @@
 				</tr>
 			</tfoot>
 		</table>
-		<br /><br />
-		<p class="lead center"><?php echo $Lang->getGeneralText('tournamentTeamsAndGamers'); ?> (<?php echo $countPlayers; ?> <?php echo $Lang->getGeneralText('gamer'); ?><?php if( $countPlayers > 1 ) echo 's'; ?>)</p>
-		<br />
-		<div class="row" style="margin:auto; width: 50%;">
-			<?php
-			if( $tournamentUserList != 0 ) 
-			{
-				echo '<div class="panel large-3 columns">';
-				for( $i = 0 ; $i < count($tournamentUserList) ; $i++ )
-				{
-					if( $i == 0 )
-						echo ''.strtoupper($tournamentUserList[$i]['team']).'<br /><a data-dropdown="dropFeature2">'.ucfirst($tournamentUserList[$i]['username']).'</a><br />';
-					else if( $i != 0 && $tournamentUserList[$i]['team'] == $tournamentUserList[$i-1]['team'] )
-						echo '<a data-dropdown="dropFeature2">'.ucfirst($tournamentUserList[$i]['username']).'</a><br />';
-					else
-						echo '</div><div class="panel large-3 columns">'.strtoupper($tournamentUserList[$i]['team']).'<br /><a data-dropdown="dropFeature2">'.ucfirst($tournamentUserList[$i]['username']).'</a><br />';
-				}
-				echo '</div>';
-			}
-			?>
-		</div>
 		<br /><hr /><br />
 		<p class="lead center"><?php echo $Lang->getGeneralText('tournamentChangeTournament'); ?></p>
 		<br />
@@ -271,8 +250,8 @@
 					</div>
 					<div class="large-4 columns">
 						<ul class="inline-list right">
-							<li><a href="pages.php"><?php echo $Lang->getHeaderText('project'); ?></a></li>
-							<li><a href="pages.php"><?php echo $Lang->getHeaderText('team'); ?></a></li>
+							<li><a href="pages.php?id=5"><?php echo $Lang->getHeaderText('project'); ?></a></li>
+							<li><a href="pages.php?id=6"><?php echo $Lang->getHeaderText('team'); ?></a></li>
 							<li><a href="logout.php"><strong><?php echo $Lang->getHeaderText('logout'); ?></strong></a></li>
 						</ul>
 						<span class="right smaller"><a href="https://github.com/JulienBernard/PSSL/">Site sous licence GNU !</a></span>

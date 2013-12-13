@@ -7,6 +7,8 @@ class Event
 	private $_name;
 	private $_mail;
 	private $_price;
+	private $_renting;
+	private $_localization;
 	private $_participate;
 	
 	/* Constructeur de la classe */
@@ -21,6 +23,8 @@ class Event
 		$this->_mail = $sqlData['mail'];
 		$this->_userId = $sqlData['userId'];
 		$this->_price = $sqlData['price'];
+		$this->_renting = $sqlData['renting'];
+		$this->_localization = $sqlData['localization'];
 		$this->_participate = $sqlData['participate'];
 	}
 	
@@ -39,6 +43,14 @@ class Event
 	public function getMail()
 	{
 		return $this->_mail;
+	}
+	public function getRenting()
+	{
+		return $this->_renting;
+	}
+	public function getLocalization()
+	{
+		return $this->_localization;
 	}
 	public function getPrice()
 	{
@@ -174,10 +186,10 @@ class Event
 		return $req->rowCount();
 	}
 	
-	public static function updateEvent( $id, $mail, $price, $participate )
+	public static function updateEvent( $id, $mail, $price, $renting, $localization, $participate )
 	{
 		/* Validation des paramètres */
-		if( !is_numeric($id) || !is_string($mail) || !is_string($participate) )
+		if( !is_numeric($id) || !is_string($mail) || !is_string($participate) || !is_string($localization) )
 			return false;
 			
 		if( $participate == "true" )
@@ -186,10 +198,12 @@ class Event
 			$participate = 0;
 			
 		$sql = MyPDO::get();
-		$req = $sql->prepare('UPDATE next_event SET mail=:mail, price=:price, participate=:participate WHERE id=:id');
+		$req = $sql->prepare('UPDATE next_event SET mail=:mail, price=:price, renting=:renting, localization=:localization, participate=:participate WHERE id=:id');
 		$result = $req->execute( array(
 			':mail' => (String)$mail,
-			':price' => (String)$price,
+			':price' => (float)$price,
+			':renting' => (float)$renting,
+			':localization' => (String)$localization,
 			':participate' => (int)$participate,
 			':id' => (int)$id
 			));
@@ -246,54 +260,24 @@ class Event
 	}
 	
 	/**
-	 * Vérifie si l'inscription d'un utilisateur peut se faire. Renvoie différente erreur si une erreur en ressort.
-	 * @param String name
-	 * @param String username
-	 * @param String password
-	 * @return
-	 *	1	: Inscription correcte, l'utilisateur est désormais inscrit dans la base de données.
-	 *	0	: Une erreur importante est apparue
-	 *	-1	: L'utilisateur existe déjà
-	 *	-2	: La taille de l'utilisateur ou du mot de passe est inférieur/supérieur à x caractères (défaut 2)
-	 */
-	public static function checkSubscribe( $name, $username, $password ) {
-		$Engine = new Engine( "mock" );
-		/* Validation des paramètres */
-		if( !is_string($name) || !is_string($username) || !is_string($password) || empty($name) || empty($username) || empty($password) )
-			return 0;
-			
-		if( !self::checkUsernameExist($username) ) {
-			if( self::checkStringLength($name, 2, 20) && self::checkStringLength($password, 2, 100) ) {
-				/* Destruction de la session au cas où ! */
-				$Engine->destroySession("SpaceEngineConnected");
-				$Engine->destroySession("SpaceEngineToken");
-				if( self::addEvent( $name, $username, $password ) )
-					return 1; // Succès !
-				else
-					return 0;
-			} else
-				return -2;
-		} else
-			return -1;
-	}
-	
-	/**
 	 * Enregistre le nouvel utilisateur dans la base de donnée.
 	 * return int lastInsertId	Retourne le dernier ID inséré dans la bdd, ici l'user id !
 	 */
-	public static function addEvent( $name, $mail, $price, $participate, $userId ) {
+	public static function addEvent( $name, $mail, $price, $renting, $localization, $participate, $userId ) {
 		
 		/* Validation des paramètres */
 		if( !is_string($name) || !is_string($mail) || empty($name) || empty($mail) )
 			return false;
 		
 		$sql = MyPDO::get();
-		$req = $sql->prepare('INSERT INTO next_event VALUES("", :userId, :name, :mail, :price, :participate)');
+		$req = $sql->prepare('INSERT INTO next_event VALUES("", :userId, :name, :mail, :price, :renting, :localization, :participate)');
 		$result = $req->execute( array(
 			':userId' => (int)time(),
 			':name' => (String)$name,
 			':mail' => (String)$mail,
 			':price' => (float)$price,
+			':renting' => (float)$renting,
+			':localization' => (String)$localization,
 			':participate' => (int)$participate
 		));
 		
@@ -301,33 +285,7 @@ class Event
 			return $sql->lastInsertId();
 		return 0;
 	}
-	
-	/**
-	 * Vérifie si l'name et le password sont exactes. 
-	 * @param String username
-	 * @param String password
-	 * @return id de l'utilisateur ou 0 (erreur)
-	 */
-	private static function checkUserAccountMatch( $username, $password ) {
-		
-		/* Validation des paramètres */
-		if( !is_string($username) || !is_string($password) || empty($username) || empty($password) )
-			return false;
-		
-		$sql = MyPDO::get();
-		
-		$rq = $sql->prepare('SELECT id FROM users WHERE username=:username AND password=:password');
-		$data = array(':username' => (String)$username, ':password' => (String)crypt(md5($password), PASSWORD_SALT));
-		$rq->execute($data);
 
-		if( $rq->rowCount() != 0)
-		{
-			$row = $rq->fetch();
-			return (int)$row['id'];
-		}
-		else
-			return 0;
-	}
 	
 	/**
 	 * Vérifie si l'username existe dans la bdd.

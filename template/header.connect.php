@@ -59,14 +59,14 @@
 			<section class="top-bar-section" style="padding: 0 5px 0 5px;">
 				<ul class="right">
 					<li class="link">
-						<a href="#" data-reveal-id="tournamentModal" style="background: #191919;"><?php echo $Lang->getHeaderText('tournament'); ?></a>
+						<a href="tournaments.php"  style="background: #191919;"><?php echo $Lang->getHeaderText('tournament'); ?></a>
 					</li>
 					<li class="divider"></li>
 					<li class="link">
-						<a href="#" data-dropdown="dropFeatureMedium" style="background: #191919;"><?php echo $Lang->getHeaderText('project'); ?></a>
+						<a href="pages.php?id=5" style="background: #191919;"><?php echo $Lang->getHeaderText('project'); ?></a>
 					</li>
 					<li class="link">
-						<a href="#" data-dropdown="dropFeatureMedium" style="background: #191919;"><?php echo $Lang->getHeaderText('team'); ?></a>
+						<a href="pages.php?id=6" style="background: #191919;"><?php echo $Lang->getHeaderText('team'); ?></a>
 					</li>
 					<li class="has-button">
 						<a href="" class="success button" data-reveal-id="accountModal"><?php echo $Lang->getHeaderText('account'); ?></a>

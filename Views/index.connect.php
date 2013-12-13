@@ -2,7 +2,7 @@
 		<div class="row">
 			<div data-alert class="large-12 alert-box">
 				<p class="center">
-					<a href="subscribe.php" style="color: black;">>> <?php echo $Lang->getHeaderText('subscribe'); ?> <<</a>
+					<a href="https://www.facebook.com/events/679001462130888" style="color: black;">>> <?php echo $Lang->getHeaderText('subscribe'); ?> <<</a>
 				</p>
 				<a href="#" class="close">&times;</a>
 			</div>
