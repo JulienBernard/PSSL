@@ -16,8 +16,8 @@
 			include_once(PATH_MODELS."game.class.php");
 		
 			$name = (String)htmlspecialchars(strtolower($_POST['name']));
-			
 			$game = Game::addGame( $name, $User->getId() );
+			User::updateActivity( $User->getId() );
 			if( $game == 1 ) {
 				$Engine->setSuccess($Lang->getErrorText('suggestSuccess'));
 				?><script type="text/javascript">redirection(3, 'index.php');</script><?php
@@ -40,12 +40,13 @@
 			$level = (int)htmlspecialchars(strtolower($_POST['level']));
 			
 			$game = Game::addGameToUserList( $gameId, $level, $User->getId() );
+			User::updateActivity( $User->getId() );
 			if( $game == 1 ) {
-				$Engine->setSuccess($Lang->getErrorText('suggestSuccess'));
+				$Engine->setSuccess($Lang->getErrorText('addSuccess'));
 				?><script type="text/javascript">redirection(3, 'index.php');</script><?php
 			}
 			else if( $game == 0 )
-				$Engine->setError($Lang->getErrorText('suggestError'));
+				$Engine->setError($Lang->getErrorText('addError'));
 		}
 		else
 			$Engine->setInfo("Un des champs est vide.");
@@ -64,27 +65,15 @@
 			else
 				$team = null;
 				
-			if( !Tournament::checkUserTournamentExist( $User->getId() ) )
-			{
-				$tournament = Tournament::addTournamentToUserList( $tournamentId, $team, $User->getId() );
-				
-				if( $tournament == 1 ) {
-					$Engine->setSuccess($Lang->getErrorText('tournamentUserSuccess'));
-					?><script type="text/javascript">redirection(3, 'index.php');</script><?php
-				}
-				else if( $tournament == 0 )
-					$Engine->setError($Lang->getErrorText('tournamentUserError'));
+			$tournament = Tournament::addTournamentToUserList( $tournamentId, $team, $User->getId() );
+			User::updateActivity( $User->getId() );
+
+			if( $tournament == 1 ) {
+				$Engine->setSuccess($Lang->getErrorText('tournamentUserSuccess'));
+				?><script type="text/javascript">redirection(3, 'index.php');</script><?php
 			}
-			else
-			{
-				$tournament = Tournament::changeTournamentToUserList( $tournamentId, $team, $User->getId() );
-				if( $tournament == 1 ) {
-					$Engine->setSuccess($Lang->getErrorText('tournamentUserSuccess'));
-					?><script type="text/javascript">redirection(3, 'index.php');</script><?php
-				}
-				else if( $tournament == 0 )
-					$Engine->setError($Lang->getErrorText('tournamentUserSuccess'));
-			}
+			else if( $tournament == 0 )
+				$Engine->setError($Lang->getErrorText('tournamentUserError'));
 		}
 		else
 			$Engine->setInfo("Un des champs est vide.");

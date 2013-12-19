@@ -74,7 +74,12 @@ class Game
         $data = array(':gameId' => $gameId );
 		$rq->execute($data);
 		
-		if( $rq->rowCount() == 0 ) return 0;
+		if( $rq->rowCount() == 0 )
+		{
+			$rq = $sql->prepare('SELECT * FROM mod_games WHERE id>:gameId');
+			$data = array(':gameId' => $gameId );
+			$rq->execute($data);
+		}
 		$row = $rq->fetch();
 		return $row;
 	}
@@ -95,7 +100,7 @@ class Game
 				FROM mod_games
 				JOIN user_to_game ON user_to_game.userId=:userId
 				WHERE valide=:true
-				AND user_to_game.gameId=mod_games.id
+				AND user_to_game.gameId!=mod_games.id
 				ORDER BY mod_games.id DESC
 			');
 			$rq->bindValue('userId', (int)$userId, PDO::PARAM_INT);
@@ -111,9 +116,11 @@ class Game
 				FROM mod_games
 				JOIN user_to_game ON user_to_game.userId=:userId
 				WHERE valide=:true
-				AND user_to_game.gameId!=mod_games.id
+				AND user_to_game.gameId=mod_games.id
 				ORDER BY mod_games.id DESC
 			');
+			//				AND user_to_game.gameId!=mod_games.id
+
 			$rq->bindValue('userId', (int)$userId, PDO::PARAM_INT);
 			$rq->bindValue('true', (int)1, PDO::PARAM_INT);
 			$rq->execute() or die(print_r($rq->errorInfo()));
@@ -343,5 +350,15 @@ class Game
 			return $req->rowCount();
 		}
 		return 0;
+	}
+	
+	/** Retourne le nombre de jeux
+	 * @param int $valide	:	le jeu est a t'il été validé ?
+	 */
+	public static function countGamePlayers( $gameId ) {
+		$sql = MyPDO::get();
+		$req = $sql->prepare('SELECT userId FROM user_to_game WHERE gameId=:gameId');
+		$req->execute(array(':gameId' => $gameId));
+		return $req->rowCount();
 	}
 }

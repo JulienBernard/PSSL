@@ -31,7 +31,7 @@
 								<img style="height: 500px;" src="./img/<?php echo $specialGame->getImage(); ?>" style="border-radius: 5px 5px 0 0" />
 							</a>
 						</div>
-						<h6 class="panel" style="margin-bottom: 0;"><?php echo ucfirst($specialGame->getName()); ?><br /><a href="#" data-reveal-id="accountModal">Je jouerai à ce jeu !</a><br /><span class="smaller">(? membres)</span></h6>
+						<h6 class="panel" style="margin-bottom: 0;"><?php echo ucfirst($specialGame->getName()); ?><br /><a href="#" data-reveal-id="accountModal">Je jouerai à ce jeu !</a><br /><span class="smaller">(<?php echo Game::countGamePlayers($specialGame->getId()); ?> joueur<?php if( Game::countGamePlayers($specialGame->getId()) > 1 ) echo 's'; ?>)</span></h6>
 						<h6 class="panel smaller" style="margin-top: 0; border-radius:0 0 5px 5px; padding-bottom: 10px;"><?php echo $specialGame->getPitch(); ?></h6>
 					</div>
 					<?php

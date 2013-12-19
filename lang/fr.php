@@ -66,14 +66,16 @@
 	$error["addError3"] = "Ce mail n'est pas valide.";
 	$error["addError4"] = "Une importante erreur est survenue : impossible de vous ajouter dans la base de données !";
 	$error["suggestSuccess"] = "Le jeu a bien été proposé aux administrateurs. Merci de votre participation !<br />La validation d'un jeu (incluant la création de sa propre page) peut prendre quelque jours, merci de votre patience.";
+	$error["addSuccess"] = "Vous avez bien ajouté un jeu à votre liste. Merci de votre participation !";
 	$error["suggestError"] = "Une erreur semble être survenue :<br />- Vous ne pouvez proposer qu'un seul jeu à la fois<br />- Ce jeu a déjà été proposé par un autre utilisateur.";
+	$error["addError"] = "Une erreur semble être survenue :<br />Merci de contacter l'administrateur si le problème persiste.";
 	$error["tournamentSuccess"] =  "Tournoi créé avec succès. <a style='color: black;' href='tournaments.php'>Si la redirection ne se fait pas, cliquez ici</a> !";
 	$error["tournamentError"] = "Une erreur importante semble être survenue. Merci de contacter l'administrateur du site.";
 	$error["tournamentError1"] = "Une erreur semble être survenue :<br />- Le NOM doit être supérieur à 3 caractères.<br />- Le NOM doit être unique et ne pas déjà existé";
 	$error["tournamentError2"] = "Vous devez renseigner les champs suivants : nom du tournoi, jeu du tournoi";
 	$error["tournamentError3"] = "Les noms des tournois doivent être unique : ce nom est déja utilisé.";
 	$error["tournamentUserSuccess"] = "Vous êtes désormais inscrit à ce tournoi. Merci de votre participation !";
-	$error["tournamentUserError"] = "Une erreur semble être survenue :<br />- Ce tournoi n'existe plus ou n'est plus valide<br />- Vous êtes déjà inscrit à un autre tournoi.";
+	$error["tournamentUserError"] = "Une erreur semble être survenue :<br />- Ce tournoi n'existe plus ou n'est plus valide<br />- Vous êtes déjà inscrit à ce tournoi.";
 
 	/* admin */
 	$admin["generalAccountType"] = "vous êtes connecté en tant que";

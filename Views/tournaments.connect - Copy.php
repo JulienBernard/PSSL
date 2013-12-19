@@ -29,15 +29,14 @@
 				<div class="row" style="margin: auto; width: 90%;">
 					<p class="lead center">Brackets</p>
 					<?php
+						$name = null;
 						if( $tournament['gameId'] == 1 )
 							$name = 'LOL';
 						elseif( $tournament['gameId'] == 2 )
 							$name = 'SC2';
 						elseif( $tournament['gameId'] == 3 )
 							$name = 'BF4';
-						elseif( $tournament['gameId'] == 5 )
-							$name = 'SHOOT';
-					?>
+					?>	
 					<iframe src="http://challonge.com/PSSLan<?php echo $name; ?>/module" width="100%" height="400" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>
 				</div>
 			</div>

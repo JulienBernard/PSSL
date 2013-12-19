@@ -5,8 +5,12 @@
 			include_once(PATH_MODELS."user.class.php");
 			include_once(PATH_MODELS."game.class.php");
 			$User = new User( $_SESSION['SpaceEngineConnected'] );
-			$gamesList = Game::getGamesList( 0, 999, (int)$User->getId(), false );
-			$userGamesList = Game::getGamesList( 0, 999, (int)$User->getId(), true );
+			$userGamesList = Game::getGamesList( 0, 999, (int)$User->getId(), false );
+			$gamesList = Game::getGamesList( 0, 999, (int)$User->getId(), true );			
+			if( $gamesList == null )
+				$gamesList = Game::getGamesList( 0, 999, 0, false );
+			if( count($userGamesList) == Game::countGames(1) )
+				$gamesList = null;	
 		?>
 		<h2><?php echo $Lang->getHeaderText('account'); ?></h2>
 		<p class="lead center"><?php echo $Lang->getGeneralText('DataPrivate'); ?></p>
@@ -166,7 +170,7 @@
 					else {
 					?>
 					<div class="large-12">
-						<p class="center">Vous ne pouvez participez que à un seul tournoi.</p>
+						<p class="center">Je souhaite participer à ce tournoi</p>
 					</div>
 					<div class="large-12">
 						<select id="customDropdown1" name="tournament">
@@ -199,6 +203,31 @@
 		</form>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
+	
+	<div id="faq" class="reveal-modal">
+		<p class="lead">Foire Aux Questions</p>
+		<p>
+			<strong>Qu'est ce que PSSL ?</strong> <a href="pages.php?id=5"> + En savoir plus</a><br />
+			PSSL est l'acronyme de Paris Sud Student Lan et représente un groupe d'étudiant portant un projet de grande envergure : organiser une soirée E-Sport de plus de 100 personnes à Ivry-Sur-Seine (94200) sur une durée de 48h !
+		</p>
+		<p>
+			<strong>Comment y participer ?</strong><br />
+			Vous pouvez d'ores et déjà participer à nos LANs internes dans nos locaux à Ivry-Sur-Seine (<a target="_blank" href="http://www.intechinfo.fr/contacts-%282097%29.cml">localisation ?</a>).
+		</p>
+		<p>
+			<strong>Combien ça coûte ?</strong><br />
+			Le prix de participation à l'une de nos LANs internes est de 1€ et vous permet de participer à un tournoi (un ticket de participation vous est offert à l'entrée).
+		</p>
+		<p>
+			<strong>Comment m'inscrire à un tournoi ? Puis-je participer à plusieurs tournois dans la soirée ?</strong><br />
+			Pour participer à un ou plusieurs tournois, vous devez être inscrit sur ce site et renseignez vos tournois sur la page <a href="tournaments.php">"Liste des tournois"</a>.
+		</p>
+		<p>
+			<strong>A quoi servent les tickets de participation ?</strong><br />
+			Vous pouvez participer à n'importe quel tournoi dès que vous êtes inscrit à celui-ci via ce site. Cependant pour prétendre recevoir des lots si vous gagnez ce tournoi, vous devrez fournir le ticket de participation correspondant. Un ticket vous est offert à l'inscription pour le tournoi de votre choix, il vous faudra débourser 1€ supplémentaire par ticket de participation supplémentaire (achat à l'accueil).
+		</p>
+	</div>
+
 	
 	<ul id="dropFeature1" class="f-dropdown content small" data-dropdown-content>
 		<p style="color: black;"><span class="bold">J'ai une équipe :</span><br />Tous les membres de votre équipe doivent renseignez le même nom.</p>

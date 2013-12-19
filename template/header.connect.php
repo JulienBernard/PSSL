@@ -59,7 +59,11 @@
 			<section class="top-bar-section" style="padding: 0 5px 0 5px;">
 				<ul class="right">
 					<li class="link">
-						<a href="tournaments.php"  style="background: #191919;"><?php echo $Lang->getHeaderText('tournament'); ?></a>
+						<a href="#" data-reveal-id="faq" style="background: #191919;">FAQ</a>
+					</li>
+					<li class="divider"></li>
+					<li class="link">
+						<a href="tournaments.php" style="background: #191919;"><?php echo $Lang->getHeaderText('tournament'); ?></a>
 					</li>
 					<li class="divider"></li>
 					<li class="link">

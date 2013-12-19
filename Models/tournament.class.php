@@ -297,6 +297,17 @@ class Tournament
 		if( empty($team) )
 			$team = "aucune";
 			
+		$userTournamentList = Tournament::getTournamentsList( 0, 999, (int)$userId, true );
+		if( $userTournamentList != 0 ) 
+		{
+			for( $i = 0 ; $i < count($userTournamentList) ; $i++ )
+			{
+				// Le joueur est déjà inscrit à ce tournoi
+				if( (int)$userTournamentList[$i]['tournamentId'] == (int)$tournamentId )
+					return 0;
+			}
+		}
+			
 		$sql = MyPDO::get();
 		$req = $sql->prepare('INSERT INTO user_to_tournament VALUES(:userId, :tournamentId, :team)');
 		$result = $req->execute( array(

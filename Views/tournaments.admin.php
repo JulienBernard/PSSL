@@ -23,6 +23,9 @@
 									$name = 'SC2';
 								elseif( $tournamentsList[$i]['gameId'] == 3 )
 									$name = 'BF4';
+								elseif( $tournamentsList[$i]['gameId'] == 5 )
+									$name = 'SHOOT';
+																	
 								if( $User->getRank() == 3 ) {
 							?>
 								<tr>
